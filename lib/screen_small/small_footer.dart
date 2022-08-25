@@ -35,7 +35,7 @@ class SmallFooter extends StatelessWidget {
                           children: [
                             Container(
                               width: screenSize.width * 0.3,
-                              height: screenSize.height * 0.08,
+                              height: screenSize.height * 0.1,
                               decoration: const BoxDecoration(
                                 //color: Colors.lightBlueAccent,
                                   image: DecorationImage(

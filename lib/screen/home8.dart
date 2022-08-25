@@ -20,7 +20,7 @@ class Home8_contact_us extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Container(
-      height: 445,
+      height: 455,
       width: screenSize.width,
       // color: Colors.blue,
       decoration: const BoxDecoration(
@@ -80,7 +80,7 @@ class Home8_contact_us extends StatelessWidget {
           ),
           const Spacer(),
           Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(10),
             height: screenSize.height * 0.75,
             width: screenSize.width * 0.45,
             child: Form(
