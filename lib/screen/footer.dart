@@ -47,7 +47,7 @@ class Footer extends StatelessWidget {
                           ),
                           const Spacer(),
                           Container(
-                            width: screenSize.width * 0.17,
+                            width: screenSize.width * 0.2,
                             height: screenSize.height * 0.04,
                             //color: Colors.blue,
                             child: Center(
