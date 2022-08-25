@@ -14,15 +14,14 @@ class SmallFooter extends StatelessWidget {
     var screenSize = MediaQuery.of(context).size;
     return Container(
         width: screenSize.width,
-        height: 1000,
-        color: Colors.white,
+        height: 850,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: screenSize.width,
-              height: 800,
+              height: 750,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +120,7 @@ class SmallFooter extends StatelessWidget {
                           ],
                         )),
                   ),
-                  SizedBox(height: 25,),
+                  SizedBox(height: 30,),
                   Center(
                     child: Container(
                         width: screenSize.width * 0.6,
@@ -137,7 +136,7 @@ class SmallFooter extends StatelessWidget {
                   Center(
                     child: Container(
                         width: screenSize.width * 0.95,
-                        height: screenSize.height * 0.33,
+                        height: screenSize.height * 0.38,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -201,7 +200,7 @@ class SmallFooter extends StatelessWidget {
                                 ),
                                 Container(
                                   width: screenSize.width * 0.5,
-                                  height: screenSize.height * 0.25,
+                                  height: screenSize.height * 0.3,
                                   child: ListTile(
                                       minLeadingWidth: 2,
                                       leading: const Icon(
@@ -212,7 +211,7 @@ class SmallFooter extends StatelessWidget {
                                       title: Container(
                                         padding: const EdgeInsets.only(left: 10),
                                         width: screenSize.width * 0.48,
-                                        height: screenSize.height * 0.26,
+                                        height: screenSize.height * 0.3,
                                         child: Text(
                                           'PT. Tiga Daya Digital Indonesia \nThe East '
                                               'Tower 19th Floor \nJl. Dr. Ide Anak Agung '
@@ -242,9 +241,9 @@ class SmallFooter extends StatelessWidget {
               height: 3,
               thickness: 3,
             ),
-            SizedBox(
+            Container(
               width: screenSize.width,
-              height: screenSize.height * 0.13,
+              height: screenSize.height * 0.04,
               child: Center(
                   child: Text(
                     'PT. Tiga Daya Digital Indonesia © 2018, All Rights Reserved.',
