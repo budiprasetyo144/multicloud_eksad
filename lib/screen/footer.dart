@@ -272,7 +272,7 @@ void _launchLinkedIn() async {
 
 void _launchTwitter() async {
   String url() {
-    return "https://twitter.com/eksad_technology/";
+    return "https://twitter.com/eksadtechnology/";
   }
 
   if (await canLaunch(url())) {
@@ -296,7 +296,7 @@ void _launchInstagram() async {
 
 void _launchYoutube() async {
   String url() {
-    return "https://youtube.com/eksad_technology";
+    return "https://www.youtube.com/channel/UCiZgIbpWgrAMrHW-TaS9EPw";
   }
 
   if (await canLaunch(url())) {
