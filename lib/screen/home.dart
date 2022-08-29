@@ -9,6 +9,15 @@ import 'package:multi_cloudv3/screen/home4_edit.dart';
 import 'package:multi_cloudv3/screen/home6_advantage.dart';
 import 'package:multi_cloudv3/screen/home7_news.dart';
 import 'package:multi_cloudv3/screen/home2.dart';
+import 'package:multi_cloudv3/screen_small/small_footer.dart';
+import 'package:multi_cloudv3/screen_small/small_home1.dart';
+import 'package:multi_cloudv3/screen_small/small_home2.dart';
+import 'package:multi_cloudv3/screen_small/small_home3.dart';
+import 'package:multi_cloudv3/screen_small/small_home4.dart';
+import 'package:multi_cloudv3/screen_small/small_home5.dart';
+import 'package:multi_cloudv3/screen_small/small_home6.dart';
+import 'package:multi_cloudv3/screen_small/small_home7.dart';
+import 'package:multi_cloudv3/screen_small/small_home8.dart';
 import 'package:multi_cloudv3/widget/whatsapp.dart';
 import '../widget/responsive.dart';
 import 'appbar.dart';
@@ -39,50 +48,167 @@ class _HomePageState extends State<HomePage> {
   }
 
   int selectedIndex = 0;
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      key: _scaffoldKey,
       appBar: ResponsiveWidget.isSmallScreen(context)
-          ? AppbarSmallSize(screenSize)
+          ? AppbarSmall(screenSize)
           : AppbarLarge(screenSize),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: WAChat(),
-      body: ListView(
-        scrollDirection: Axis.vertical,
-        controller: controller2,
-        children: [
-          Home(
-            wijet: Button_scroll(),
-          ),
-          const Home2(),
-          const Home3_partner(),
-          Home4_solution(screenSize: screenSize),
-          const Home5_industry(),
-          const Home6_advantages(),
-          const Home7_news(),
-          Home8_contact_us(),
-          Footer(
-            content1: konten1(screenSize),
-            content2: konten2(screenSize),
-          ),
-        ],
-      ),
+      drawer: _drawerWidget(),
+      body: ResponsiveWidget.isSmallScreen(context)
+          ? ListView(
+              scrollDirection: Axis.vertical,
+              controller: controller2,
+              children: [
+                SmallHome(wijet: Button_scroll_small()),
+                const SmallHome2(),
+                const SmallHome3_partner(),
+                SmallHome4_solution(screenSize: screenSize),
+                const SmallHome5_industry(),
+                const SmallHome6_advantages(),
+                const SmallHome7_news(),
+                SmallHome8_contact_us(),
+                SmallFooter(
+                  content1: kontenkecil1(screenSize),
+                  content2: kontenkecil2(screenSize),
+                ),
+              ],
+            )
+          : ListView(
+              scrollDirection: Axis.vertical,
+              controller: controller2,
+              children: [
+                Home(wijet: Button_scroll_small()),
+                const Home2(),
+                const Home3_partner(),
+                Home4_solution(screenSize: screenSize),
+                const Home5_industry(),
+                const Home6_advantages(),
+                const Home7_news(),
+                Home8_contact_us(),
+                Footer(
+                  content1: konten1(screenSize),
+                  content2: konten2(screenSize),
+                ),
+              ],
+            ),
     );
   }
+
+  Drawer _drawerWidget() => Drawer(
+    width: 200,
+    child: Column(
+      children: [
+        SizedBox(height: 50,),
+
+        ListTile(
+          leading: Icon(Icons.home),
+          title: Text('Home'),
+          onTap: () => _scrollToIndex(0) ,
+        ),
+        ListTile(
+          leading: Icon(Icons.people),
+          title: Text('About Us'),
+          onTap: () => _scrollToIndex(420),
+        ),
+        ListTile(
+          leading: Icon(Icons.lightbulb_outline_rounded),
+          title: Text('Solution'),
+          onTap: () => _scrollToIndex(840),
+        ),
+        ListTile(
+          leading: Icon(Icons.contact_phone),
+          title: Text('Contact Us'),
+          onTap: () => _scrollToIndex(5110),
+        ),
+      ],
+    ),
+  );
 
   ElevatedButton Button_scroll() {
     return ElevatedButton(
       onPressed: () {
-        _scrollToIndex(3845);
+        _scrollToIndex(3780);
       },
       style: ElevatedButton.styleFrom(
         primary: const Color(0xff1e5ea8),
       ),
       child: Text(
         'CONTACT US',
-        style: GoogleFonts.poppins(fontSize: 17, letterSpacing: 2,fontWeight: FontWeight.w500),
+        style: GoogleFonts.poppins(
+            fontSize: 17, letterSpacing: 2, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
+
+  ElevatedButton Button_scroll_small() {
+    return ElevatedButton(
+      onPressed: () {
+        _scrollToIndex(5110);
+      },
+      style: ElevatedButton.styleFrom(
+          primary: const Color(0xff1e5ea8), fixedSize: Size(50, 20)),
+      child: Text(
+        'CONTACT US',
+        style: GoogleFonts.poppins(
+            fontSize: 15, letterSpacing: 1.5, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
+
+  PreferredSize AppbarSmall(Size screenSize) {
+    return PreferredSize(
+      preferredSize: Size(screenSize.width, 80),
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+                color: Colors.grey, width: 1, style: BorderStyle.solid),
+          ),
+        ),
+        child: Row(
+          children: [
+            const Spacer(
+              flex: 1,
+            ),
+            IconButton(onPressed: () => _scaffoldKey.currentState!.openDrawer(), icon: Icon(Icons.list_outlined,size: 30,),),
+            const Spacer(
+              flex:2,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Image.asset("assets/logo/multicloudsolution.jpg"),
+            ),
+            const Spacer(
+              flex: 1,
+            ),
+            SizedBox(
+              height: 40,
+              width: 150,
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Search",
+                  suffixIcon: const Icon(Icons.search),
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(width: 1, color: Colors.grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(width: 1, color: Colors.grey),
+                  ),
+                ),
+              ),
+            ),
+            const Spacer(
+              flex: 1,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -100,7 +226,7 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           children: [
             SizedBox(
-              width: screenSize.width * 0.1,
+              width: screenSize.width * 0.06,
             ),
             Container(
               padding: const EdgeInsets.only(left: 15, top: 8, bottom: 8),
@@ -111,7 +237,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              width: screenSize.width * 0.1,
+              width: screenSize.width * 0.08,
             ),
             Row(
               children: [
@@ -133,7 +259,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    _scrollToIndex(440); //// POSISI ABOUT US
+                    _scrollToIndex(420); //// POSISI ABOUT US
                   },
                   style: Color_button_appbar(),
                   child: Text(
@@ -149,7 +275,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    _scrollToIndex(770); //// POSISI SOLUTION
+                    _scrollToIndex(750); //// POSISI SOLUTION
                   },
                   style: Color_button_appbar(),
                   child: Text(
@@ -165,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    _scrollToIndex(3845); //// POSISI CONTACT US
+                    _scrollToIndex(3780); //// POSISI CONTACT US
                   },
                   style: Color_button_appbar(),
                   child: Text(
@@ -223,6 +349,13 @@ class _HomePageState extends State<HomePage> {
             fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 2),
       );
 
+  Center FooterHeadSmall(String title2) => Center(
+    child: Text(title2,
+    style: GoogleFonts.poppins(
+        fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 2),
+    ),
+  );
+
   Column konten1(Size screenSize) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -246,7 +379,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(440);
+              _scrollToIndex(420);
             },
             child: FooterBody(
               teks: 'About Us',
@@ -254,7 +387,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(770);
+              _scrollToIndex(750);
             },
             child: FooterBody(
               teks: 'Solution',
@@ -262,7 +395,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(3845);
+              _scrollToIndex(3780);
             },
             child: FooterBody(
               teks: 'Contact Us',
@@ -288,7 +421,7 @@ class _HomePageState extends State<HomePage> {
         ),
         TextButton(
             onPressed: () {
-              _scrollToIndex(1240);
+              _scrollToIndex(1230);
             },
             child: FooterBody(
               teks: 'Cloud Migration',
@@ -296,7 +429,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(1240);
+              _scrollToIndex(1230);
             },
             child: FooterBody(
               teks: 'Consultation',
@@ -304,7 +437,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(1240);
+              _scrollToIndex(1230);
             },
             child: FooterBody(
               teks: 'Local Support',
@@ -312,7 +445,108 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(1240);
+              _scrollToIndex(1230);
+            },
+            child: FooterBody(
+              teks: 'Cloud Implementation',
+            )),
+        const Spacer(
+          flex: 6,
+        ),
+      ],
+    );
+  }
+
+  Column kontenkecil1(Size screenSize) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: screenSize.width * 0.3,
+          height: screenSize.height * 0.05,
+          child: FooterHeadSmall('Sitemap'),
+        ),
+        const Spacer(
+          flex: 3,
+        ),
+        TextButton(
+            onPressed: () {
+              _scrollToIndex(0);
+            },
+            child: FooterBody(
+              teks: 'Home',
+            )),
+        const Spacer(),
+        TextButton(
+            onPressed: () {
+              _scrollToIndex(420);
+            },
+            child: FooterBody(
+              teks: 'About Us',
+            )),
+        const Spacer(),
+        TextButton(
+            onPressed: () {
+              _scrollToIndex(840);
+            },
+            child: FooterBody(
+              teks: 'Solution',
+            )),
+        const Spacer(),
+        TextButton(
+            onPressed: () {
+              _scrollToIndex(5110);
+            },
+            child: FooterBody(
+              teks: 'Contact Us',
+            )),
+        const Spacer(
+          flex: 6,
+        ),
+      ],
+    );
+  }
+
+  Column kontenkecil2(Size screenSize) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+            width: screenSize.width * 0.3,
+            height: screenSize.height * 0.05,
+            child: FooterHeadSmall('Solution')),
+        const Spacer(
+          flex: 3,
+        ),
+        TextButton(
+            onPressed: () {
+              _scrollToIndex(1550);
+            },
+            child: FooterBody(
+              teks: 'Cloud Migration',
+            )),
+        const Spacer(),
+        TextButton(
+            onPressed: () {
+              _scrollToIndex(1550);
+            },
+            child: FooterBody(
+              teks: 'Consultation',
+            )),
+        const Spacer(),
+        TextButton(
+            onPressed: () {
+              _scrollToIndex(1550);
+            },
+            child: FooterBody(
+              teks: 'Local Support',
+            )),
+        const Spacer(),
+        TextButton(
+            onPressed: () {
+              _scrollToIndex(1550);
             },
             child: FooterBody(
               teks: 'Cloud Implementation',

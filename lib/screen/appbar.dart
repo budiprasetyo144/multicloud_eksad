@@ -19,8 +19,12 @@ PreferredSize AppbarSmallSize(Size screenSize) {
           const Spacer(
             flex: 1,
           ),
+          IconButton(onPressed: (){}, icon: Icon(Icons.list_outlined)),
+          const Spacer(
+            flex: 1,
+          ),
           Container(
-            padding: const EdgeInsets.only(left: 30, top: 20, bottom: 20),
+
             child: Image.asset("assets/logo/multicloudsolution.jpg"),
           ),
           const Spacer(
