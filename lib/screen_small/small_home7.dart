@@ -29,7 +29,7 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
       height: 850,
       width: screenSize.width,
       color: Colors.white,
@@ -41,7 +41,7 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
               color: const Color.fromARGB(255, 29, 59, 189),
               borderRadius: BorderRadius.circular(30),
             ),
-            width: screenSize.width * 0.9,
+            width: screenSize.width * 0.95,
             height: 200,
             child: Row(
               children: [
@@ -56,7 +56,7 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
                   ),
                 ),
                 Container(
-                  width: screenSize.width*0.55,
+                  width: screenSize.width*0.5,
                   height: 200,
 
                   child: Column(
@@ -65,18 +65,18 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
                     children: [
                       Container(
                         height: 55,
-                        width: screenSize.width * 0.45,
-                        padding: EdgeInsets.only(left: 25,top: 5,right: 25),
+                        width: screenSize.width * 0.47,
+                        padding: EdgeInsets.only(left:5,top: 5,right: 15),
 
                         child: Text('Top Performing Partner of the year',
                             style: GoogleFonts.poppins(
-                                color: Colors.white, fontSize: 18),
+                                color: Colors.white, fontSize: 17),
                             textAlign: TextAlign.center),
                       ),
                       Container(
                         width: screenSize.width,
-                        height: 87,
-                        padding: EdgeInsets.only(left: 25,right: 25,top: 7),
+                        height: 92,
+                        padding: EdgeInsets.only(left: 5,right: 5,top: 7),
                         child: Text(row1,
                             style: GoogleFonts.poppins(
                                 color: Colors.white,
@@ -111,7 +111,7 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
               color: Colors.grey,
               borderRadius: BorderRadius.circular(30),
             ),
-            width: screenSize.width * 0.9,
+            width: screenSize.width * 0.95,
             height: 200,
             child: Row(
               children: [
@@ -126,7 +126,7 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
                   ),
                 ),
                 Container(
-                  width: screenSize.width*0.55,
+                  width: screenSize.width*0.5,
                   height: 200,
 
                   child: Column(
@@ -136,18 +136,18 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
                       Container(
                         height: 55,
                         width: screenSize.width * 0.45,
-                        padding: EdgeInsets.only(left: 25,top: 5,right: 25),
+                        padding: EdgeInsets.only(left: 5,top: 5,right: 10),
                         child: Text(
                           'Cloud Demand in Indonesia is Predicted to Continue to Increase',
                           style: GoogleFonts.poppins(
-                              color: Colors.black, fontSize: 18),
+                              color: Colors.black, fontSize: 17,),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       Container(
                         width: screenSize.width,
                         height: 87,
-                        padding: EdgeInsets.only(left: 25,right: 25,top: 7),
+                        padding: EdgeInsets.only(left: 5,right: 5,top: 7),
                         child: Text(row2,
                             style: GoogleFonts.poppins(
                                 color: Colors.black,
@@ -182,7 +182,7 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
               color: const Color.fromARGB(255, 29, 59, 189),
               borderRadius: BorderRadius.circular(30),
             ),
-            width: screenSize.width * 0.9,
+            width: screenSize.width *0.9,
             height: 200,
             child: Row(
               children: [
@@ -197,7 +197,7 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
                   ),
                 ),
                 Container(
-                  width: screenSize.width*0.55,
+                  width: screenSize.width*0.5,
                   height: 200,
 
                   child: Column(
@@ -210,17 +210,17 @@ class _SmallHome7_newsState extends State<SmallHome7_news> {
                         padding: EdgeInsets.only(left: 25,top: 5,right: 25),
                         child: Text('Advancing Indonesia’s clouds',
                             style: GoogleFonts.poppins(
-                                color: Colors.white, fontSize: 18),
+                                color: Colors.white, fontSize: 17),
                             textAlign: TextAlign.center),
                       ),
                       Container(
                         width: screenSize.width,
                         height: 87,
-                        padding: EdgeInsets.only(left: 25,right: 25,top: 7),
+                        padding: EdgeInsets.only(left: 6,right: 6,top: 7),
                         child: Text(row3,
                             style: GoogleFonts.poppins(
                                 color: Colors.white,
-                                fontSize: 14,
+                                fontSize: 13,
                                 height: 1.2,
                                 letterSpacing: 1.2),
                             textAlign: TextAlign.center),

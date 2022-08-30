@@ -11,18 +11,19 @@ class SmallHome2 extends StatelessWidget {
 
     return Container(
       width: screenSize.width * 0.5,
-      height: 450,
+      height: screenSize.height*0.8,
       padding: EdgeInsets.only(
         left: screenSize.width * 0.05,
         right: screenSize.width * 0.05,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 10),
+            // padding: const EdgeInsets.only(top: 10),
             width: screenSize.width,
-            height: 80,
+            height: 70,
             child: Text('\nHow do we help?',
                 style: GoogleFonts.poppins(
                     fontSize: 25,
@@ -43,7 +44,7 @@ class SmallHome2 extends StatelessWidget {
           ),
           Container(
             width: screenSize.width,
-            height: 230,
+            height: 300,
             child: Text(
                 '\nInstead of operating within the constraints of a single cloud vendor,'
                     ' a multi-cloud strategy allows you to access the cloud services from '

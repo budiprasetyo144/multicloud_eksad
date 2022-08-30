@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
         ListTile(
           leading: Icon(Icons.contact_phone),
           title: Text('Contact Us'),
-          onTap: () => _scrollToIndex(5110),
+          onTap: () => _scrollToIndex(5410),
         ),
       ],
     ),
@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage> {
   ElevatedButton Button_scroll_small() {
     return ElevatedButton(
       onPressed: () {
-        _scrollToIndex(5110);
+        _scrollToIndex(5410);
       },
       style: ElevatedButton.styleFrom(
           primary: const Color(0xff1e5ea8), fixedSize: Size(50, 20)),
@@ -182,6 +182,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10),
+              height:75,
               child: Image.asset("assets/logo/multicloudsolution.jpg"),
             ),
             const Spacer(
@@ -496,7 +497,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(5110);
+              _scrollToIndex(5410);
             },
             child: FooterBody(
               teks: 'Contact Us',
@@ -522,7 +523,7 @@ class _HomePageState extends State<HomePage> {
         ),
         TextButton(
             onPressed: () {
-              _scrollToIndex(1550);
+              _scrollToIndex(1650);
             },
             child: FooterBody(
               teks: 'Cloud Migration',
@@ -530,7 +531,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(1550);
+              _scrollToIndex(1650);
             },
             child: FooterBody(
               teks: 'Consultation',
@@ -538,7 +539,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(1550);
+              _scrollToIndex(1650);
             },
             child: FooterBody(
               teks: 'Local Support',
@@ -546,7 +547,7 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         TextButton(
             onPressed: () {
-              _scrollToIndex(1550);
+              _scrollToIndex(1650);
             },
             child: FooterBody(
               teks: 'Cloud Implementation',

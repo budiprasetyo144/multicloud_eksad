@@ -17,7 +17,7 @@ class SmallHome extends StatelessWidget {
       children: [
         Container(
           width: screenSize.width,
-          height: screenSize.height * 0.7,
+          height: screenSize.height * 0.8,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(
@@ -27,7 +27,7 @@ class SmallHome extends StatelessWidget {
         ),
         Container(
           width: screenSize.width,
-          height: screenSize.height * 0.68,
+          height: screenSize.height * 0.77,
           padding: EdgeInsets.only(
               left: screenSize.width * 0.05, top: screenSize.height * 0.02),
           child: Column(
@@ -39,7 +39,7 @@ class SmallHome extends StatelessWidget {
                   delayStart: const Duration(seconds: 1),
                   direction: Direction.horizontal,
                   child: Text(
-                    'Cloud Consulting Services.',
+                    'Cloud Consulting Services',
                     style: GoogleFonts.poppins(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -50,8 +50,8 @@ class SmallHome extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.only(top: 5),
-                width: screenSize.width * 0.75,
-                height: screenSize.height * 0.22,
+                width: screenSize.width * 0.8,
+                height: screenSize.height * 0.23,
                 child: ShowUpAnimation(
                   delayStart: const Duration(seconds: 1),
                   curve: Curves.bounceIn,
@@ -68,16 +68,17 @@ class SmallHome extends StatelessWidget {
                 ),
               ),
               Container(
-                width: screenSize.width * 0.95,
-                height: screenSize.height * 0.28,
+                padding: EdgeInsets.only(top: screenSize.height*0.02),
+                width: screenSize.width * 0.9,
+                height: screenSize.height * 0.35,
                 child: ShowUpAnimation(
                   delayStart: const Duration(seconds: 1),
                   direction: Direction.horizontal,
                   child: Text(
-                      'Our Cloud managed services \nmake it possible for organizations \n'
-                          'to reduce their overheads and \nbetter productivity, in addition to lowering '
-                          'costs \nand reducing time-to-market. We assist customers \nwith our on-demand '
-                          'enterprise Cloud solutions, tools, \nand applications such as servers, storage,'
+                      'Our Cloud managed \nservices make it possible \nfor organizations '
+                          'to reduce \ntheir overheads and better productivity, in addition to lowering '
+                          'costs and reducing time-to-market. We assist customers with our on-demand '
+                          'enterprise Cloud solutions, tools, and applications such as servers, storage,'
                           ' databases, networking, software, and apps, among others.',
                       style: GoogleFonts.poppins(
                           fontSize: 13,
@@ -88,7 +89,7 @@ class SmallHome extends StatelessWidget {
                 ),
               ),
               Container(
-                width: screenSize.width * 0.3,
+                width: screenSize.width * 0.4,
                 height: screenSize.height * 0.06,
                 child: ShowUpAnimation(
                     delayStart: const Duration(seconds: 1),

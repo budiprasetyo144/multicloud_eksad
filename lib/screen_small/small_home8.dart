@@ -20,7 +20,7 @@ class SmallHome8_contact_us extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Container(
-      height: 650,
+      height: screenSize.height*1.4,
       width: screenSize.width,
       padding: EdgeInsets.symmetric(horizontal: 15),
       // color: Colors.blue,
@@ -98,82 +98,72 @@ class SmallHome8_contact_us extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            child: Text(
-                              "Phone Number",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 92,
-                          ),
-                          Container(
-                            child: Text(
-                              "Email",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                          ),
-                        ],
+                      Container(
+                        child: Text(
+                          "Phone Number",
+                          style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            width: 220,
-                            child: TextFormField(
-                              controller: phoneController,
-                              decoration: const InputDecoration(
-                                hintText: "Enter a valid phone number",
-                                fillColor: Colors.white,
-                                filled: true,
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.white),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.white),
-                                ),
-                              ),
+                      const SizedBox(
+                        width: 92,
+                      ),
+                      Container(
+                        width: 450,
+                        child: TextFormField(
+                          controller: phoneController,
+                          decoration: const InputDecoration(
+                            hintText: "Enter a valid phone number",
+                            fillColor: Colors.white,
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero,
+                              borderSide:
+                              BorderSide(width: 1, color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero,
+                              borderSide:
+                              BorderSide(width: 1, color: Colors.white),
                             ),
                           ),
-                          const SizedBox(
-                            width: 7,
-                          ),
-                          Container(
-                            width: 220,
-                            child: TextFormField(
-                              controller: emailController,
-                              decoration: const InputDecoration(
-                                hintText: "Enter a valid email address",
-                                fillColor: Colors.white,
-                                filled: true,
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.white),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.white),
-                                ),
-                              ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        child: Text(
+                          "Email",
+                          style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ),
+                      Container(
+                        width: 450,
+                        child: TextFormField(
+
+                          controller: emailController,
+                          decoration: const InputDecoration(
+                            hintText: "Enter a valid email address",
+                            fillColor: Colors.white,
+                            filled: true,
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero,
+                              borderSide:
+                              BorderSide(width: 1, color: Colors.white),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero,
+                              borderSide:
+                              BorderSide(width: 1, color: Colors.white),
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        ],
+                        ),
                       ),
                       const SizedBox(
                         height: 20,

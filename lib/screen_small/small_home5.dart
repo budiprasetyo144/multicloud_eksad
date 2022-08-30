@@ -16,7 +16,7 @@ class _SmallHome5_industryState extends State<SmallHome5_industry> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Container(
-      height: screenSize.height*1.8,
+      height: screenSize.height*1.9,
       width: screenSize.width,
       child: Column(
         children: [
@@ -48,7 +48,7 @@ class _SmallHome5_industryState extends State<SmallHome5_industry> {
             ),
           ),
           Container(
-            width: screenSize.width * 0.8,
+            width: screenSize.width * 0.93,
             child: Expansionpanel_small(),
           ),
         ],

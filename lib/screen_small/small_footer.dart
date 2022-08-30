@@ -12,247 +12,245 @@ class SmallFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    return Container(
-        width: screenSize.width,
-        height: 850,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: screenSize.width,
-              height: 750,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Container(
-                        padding: const EdgeInsets.only(left: 5),
-                        width: screenSize.width * 0.45,
-                        height: screenSize.height * 0.2,
-                        child: Column(
-                          children: [
-                            Container(
-                              width: screenSize.width * 0.3,
-                              height: screenSize.height * 0.1,
-                              decoration: const BoxDecoration(
-                                //color: Colors.lightBlueAccent,
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/logo/logo-eksad.png'),
-                                      fit: BoxFit.fill)),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: screenSize.width,
+          height: screenSize.height*1.75,
+          padding: EdgeInsets.symmetric(horizontal: screenSize.height*0.1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+               SizedBox(height: 15,),
+              Center(
+                child: Container(
+                    padding: const EdgeInsets.only(left: 5),
+                    width: screenSize.width,
+                    height: screenSize.height * 0.2,
+                    child: Column(
+                      children: [
+                        Container(
+                          width: screenSize.width * 0.3,
+                          height: screenSize.height * 0.1,
+                          decoration: const BoxDecoration(
+                            //color: Colors.lightBlueAccent,
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/logo/logo-eksad.png'),
+                                  fit: BoxFit.fill)),
+                        ),
+                        const Spacer(),
+                        Container(
+                          width: screenSize.width,
+                          height: screenSize.height * 0.04,
+                          //color: Colors.blue,
+                          child: Center(
+                            child: Text(
+                              '  Your one stop IT Solution.',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.poppins(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1.3,
+                                  fontSize: 14),
                             ),
-                            const Spacer(),
-                            Container(
-                              width: screenSize.width * 0.45,
-                              height: screenSize.height * 0.04,
-                              //color: Colors.blue,
-                              child: Center(
-                                child: Text(
-                                  '  Your one stop IT Solution.',
-                                  textAlign: TextAlign.left,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.black87,
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 1.3,
-                                      fontSize: 14),
-                                ),
-                              ),
-                            ),
-                            const Spacer(
-                              flex: 2,
-                            ),
-                            Container(
-                              width: screenSize.width * 0.4,
-                              height: screenSize.height * 0.03,
-                              //color: Colors.blue,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  IconButton(
-                                      onPressed: () {
-                                        _launchLinkedIn();
-                                      },
-                                      icon: const Icon(
-                                        FontAwesomeIcons.linkedinIn,
-                                        size: 25,
-                                      ),
-                                      iconSize: 25,
-                                      color: Colors.black),
-                                  IconButton(
-                                    onPressed: () {
-                                      _launchTwitter();
-                                    },
-                                    icon: const Icon(
-                                      FontAwesomeIcons.twitter,
-                                      size: 25,
-                                    ),
-                                    iconSize: 25,
-                                    color: Colors.black,
+                          ),
+                        ),
+                        const Spacer(
+                          flex: 2,
+                        ),
+                        Container(
+                          width: screenSize.width * 0.6,
+                          height: screenSize.height * 0.03,
+                          //color: Colors.blue,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    _launchLinkedIn();
+                                  },
+                                  icon: const Icon(
+                                    FontAwesomeIcons.linkedinIn,
+                                    size: 25,
                                   ),
-                                  IconButton(
-                                      onPressed: () {
-                                        _launchInstagram();
-                                      },
-                                      icon: const Icon(
-                                        FontAwesomeIcons.instagram,
-                                        size: 25,
-                                      ),
-                                      iconSize: 25,
-                                      color: Colors.black),
-                                  IconButton(
-                                      onPressed: () {
-                                        _launchYoutube();
-                                      },
-                                      icon: const Icon(
-                                        FontAwesomeIcons.youtube,
-                                        size: 25,
-                                      ),
-                                      iconSize: 25,
-                                      color: Colors.black)
-                                ],
+                                  iconSize: 25,
+                                  color: Colors.black),
+                              IconButton(
+                                onPressed: () {
+                                  _launchTwitter();
+                                },
+                                icon: const Icon(
+                                  FontAwesomeIcons.twitter,
+                                  size: 25,
+                                ),
+                                iconSize: 25,
+                                color: Colors.black,
                               ),
-                            ),
-                            const Spacer(
-                              flex: 2,
-                            )
-                          ],
-                        )),
-                  ),
-                  SizedBox(height: 30,),
-                  Center(
-                    child: Container(
-                        width: screenSize.width * 0.6,
-                        height: screenSize.height * 0.3,
-                        child: content1),
-                  ),
-                  Center(
-                    child: Container(
-                        width: screenSize.width * 0.6,
-                        height: screenSize.height * 0.3,
-                        child: content2),
-                  ),
-                  Center(
-                    child: Container(
-                        width: screenSize.width * 0.95,
-                        height: screenSize.height * 0.38,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                              IconButton(
+                                  onPressed: () {
+                                    _launchInstagram();
+                                  },
+                                  icon: const Icon(
+                                    FontAwesomeIcons.instagram,
+                                    size: 25,
+                                  ),
+                                  iconSize: 25,
+                                  color: Colors.black),
+                              IconButton(
+                                  onPressed: () {
+                                    _launchYoutube();
+                                  },
+                                  icon: const Icon(
+                                    FontAwesomeIcons.youtube,
+                                    size: 25,
+                                  ),
+                                  iconSize: 25,
+                                  color: Colors.black)
+                            ],
+                          ),
+                        ),
+                        const Spacer(
+                          flex: 2,
+                        )
+                      ],
+                    )),
+              ),
+               SizedBox(height: 30,),
+              Center(
+                child: Container(
+                    width: screenSize.width * 0.6,
+                    height: screenSize.height * 0.4,
+                    child: content1),
+              ),
+               SizedBox(height: 10,),
+              Center(
+                child: Container(
+                    width: screenSize.width * 0.6,
+                    height: screenSize.height * 0.4,
+                    child: content2),
+              ),
+               SizedBox(height: 10,),
+              Center(
+                child: Container(
+                    width: screenSize.width,
+                    height: screenSize.height * 0.55,
+
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                         // padding: EdgeInsets.only(left: 10),
+                          width: screenSize.width,
+                          height: screenSize.height * 0.08,
+                          child: Center(child: FooterHeadSmall('Contact'),),
+                        ),
+                        Column(
                           children: [
                             Container(
-                             // padding: EdgeInsets.only(left: 10),
                               width: screenSize.width,
-                              height: screenSize.height * 0.08,
-                              child: Center(child: FooterHeadSmall('Contact'),),
-                            ),
-                            Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    Container(
-                                      width: screenSize.width * 0.42,
-                                      child: ListTile(
-                                        minLeadingWidth: 2,
-                                        leading: const Icon(
-                                          Icons.phone,
-                                          size: 19,
-                                          color: Colors.black,
-                                        ),
-                                        title: TextButton(
-                                            onPressed: () {
-                                              launch('tel:02157958040');
-                                            },
-                                            child: Text(
-                                              '(021) 5795 - 8040',
-                                              style: GoogleFonts.poppins(
-                                                fontSize: 14,
-                                                color: Colors.black87,
-                                              ),
-                                            )),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: screenSize.width * 0.43,
-
-                                      child: ListTile(
-                                        minLeadingWidth: 2,
-                                        leading: const Icon(
-                                          Icons.mail,
-                                          size: 19,
-                                          color: Colors.black,
-                                        ),
-                                        title: TextButton(
-                                          onPressed: () {
-                                            launch(
-                                                'mailto:Info@eksad.com?subject=Info MCS');
-                                          },
-                                          child: Text(
-                                            'info@eksad.com',
-                                            style: GoogleFonts.poppins(
-                                                fontSize: 14, color: Colors.black87,letterSpacing: 1.1),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                              child: ListTile(
+                                minLeadingWidth: 1,
+                                leading: const Icon(
+                                  Icons.phone,
+                                  size: 19,
+                                  color: Colors.black,
                                 ),
-                                Container(
-                                  width: screenSize.width * 0.5,
-                                  height: screenSize.height * 0.3,
-                                  child: ListTile(
-                                      minLeadingWidth: 2,
-                                      leading: const Icon(
-                                        Icons.location_on,
-                                        size: 24,
-                                        color: Colors.black,
+                                title: TextButton(
+                                    onPressed: () {
+                                      launch('tel:02157958040');
+                                    },
+                                    child: Text(
+                                      '(021) 5795 - 8040',
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 13,
+                                        color: Colors.black87,
                                       ),
-                                      title: Container(
-                                        padding: const EdgeInsets.only(left: 10),
-                                        width: screenSize.width * 0.48,
-                                        height: screenSize.height * 0.3,
-                                        child: Text(
-                                          'PT. Tiga Daya Digital Indonesia \nThe East '
-                                              'Tower 19th Floor \nJl. Dr. Ide Anak Agung '
-                                              '\nGde Agung Blok E3.2 '
-                                              '\nMega Kuningan, \nJakarta Selatan 12950',
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 13,
-                                              height: 1.45,
-                                              letterSpacing: 1.1
-                                          ),
-                                          textAlign: TextAlign.left,
-                                        ),
-                                      )),
-                                ),
-                              ],
+                                    )),
+                              ),
                             ),
+                            Container(
+                              width: screenSize.width,
 
-
+                              child: ListTile(
+                                minLeadingWidth: 1,
+                                leading: const Icon(
+                                  Icons.mail,
+                                  size: 19,
+                                  color: Colors.black,
+                                ),
+                                title: TextButton(
+                                  onPressed: () {
+                                    launch(
+                                        'mailto:Info@eksad.com?subject=Info MCS');
+                                  },
+                                  child: Text(
+                                    'info@eksad.com',
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 13, color: Colors.black87,letterSpacing: 1.1),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
-                        )),
-                  ),
+                        ),
+                        Container(
+                          width: screenSize.width,
+                          height: screenSize.height * 0.25,
+                          child: ListTile(
+                              minLeadingWidth: 1,
+                              leading: const Icon(
+                                Icons.location_on,
+                                size: 24,
+                                color: Colors.black,
+                              ),
+                              title: Container(
+                                width: screenSize.width,
+                                height: screenSize.height * 0.25,
+                                child: Text(
+                                  'PT. Tiga Daya Digital Indonesia \nThe East '
+                                      'Tower 19th Floor \nJl. Dr. Ide Anak Agung '
+                                      '\nGde Agung Blok E3.2 '
+                                      '\nMega Kuningan, \nJakarta Selatan 12950',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 13,
+                                      height: 1.45,
+                                      letterSpacing: 1.1
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              )),
+                        ),
 
-                ],
+
+                      ],
+                    )),
               ),
-            ),
-            const Divider(
-              height: 3,
-              thickness: 3,
-            ),
-            Container(
-              width: screenSize.width,
-              height: screenSize.height * 0.04,
-              child: Center(
-                  child: Text(
-                    'PT. Tiga Daya Digital Indonesia © 2018, All Rights Reserved.',
-                    style: GoogleFonts.poppins(
-                        letterSpacing: 1.3, height: 1.4, fontSize: 12),
-                  )),
-            )
-          ],
-        ));
+
+            ],
+          ),
+        ),
+        const Divider(
+          height: 3,
+          thickness: 3,
+        ),
+        Container(
+          width: screenSize.width,
+          height: screenSize.height * 0.1,
+          child: Center(
+              child: Text(
+                'PT. Tiga Daya Digital Indonesia © 2018, \nAll Rights Reserved.',
+                style: GoogleFonts.poppins(
+                    letterSpacing: 1.3, height: 1.4, fontSize: 12),
+                textAlign: TextAlign.center,
+              )),
+        )
+      ],
+    );
   }
 
   Text FooterHeadSmall(String title) => Text(
