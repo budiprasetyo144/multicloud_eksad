@@ -21,10 +21,10 @@ class SmallHome4_solution extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-            height: 25,
+            height: 20,
           ),
           Center(
-            child: Text("\nWhy Choose Us?",
+            child: Text("Why Choose Us?",
                 style: GoogleFonts.poppins(
                     fontSize: 29,
                     color: const Color(0xff1e5ea8),
@@ -38,7 +38,7 @@ class SmallHome4_solution extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: screenSize.width * 0.38,
+                width: screenSize.width * 0.4,
                 child: Column(
                   children: [
                     Container(
@@ -66,7 +66,7 @@ class SmallHome4_solution extends StatelessWidget {
                           "MIGRATION",
                           style: GoogleFonts.poppins(
                             color: const Color(0xff1e5ea8),
-                            fontSize: 20,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -76,8 +76,8 @@ class SmallHome4_solution extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      width: 250,
-                      height: 110,
+                      width: 270,
+                      height: 170,
                       child: ShowUpAnimation(
                         delayStart: const Duration(seconds: 2),
                         direction: Direction.horizontal,
@@ -95,7 +95,7 @@ class SmallHome4_solution extends StatelessWidget {
                 ),
               ),
               Container(
-                width: screenSize.width * 0.38,
+                width: screenSize.width * 0.4,
                 child: Column(
                   children: [
                     Container(
@@ -123,7 +123,7 @@ class SmallHome4_solution extends StatelessWidget {
                           "CONSULTING",
                           style: GoogleFonts.poppins(
                             color: const Color(0xff1e5ea8),
-                            fontSize: 20,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -133,8 +133,8 @@ class SmallHome4_solution extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      width: 250,
-                      height: 110,
+                      width: 270,
+                      height: 170,
                       child: ShowUpAnimation(
                         delayStart: const Duration(seconds: 2),
                         direction: Direction.horizontal,
@@ -160,7 +160,7 @@ class SmallHome4_solution extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: screenSize.width * 0.35,
+                width: screenSize.width * 0.4,
                 child: Column(
                   children: [
                     Container(
@@ -188,7 +188,7 @@ class SmallHome4_solution extends StatelessWidget {
                           "LOCAL SUPPORT",
                           style: GoogleFonts.poppins(
                             color: const Color(0xff1e5ea8),
-                            fontSize: 20,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -198,8 +198,8 @@ class SmallHome4_solution extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      width: 250,
-                      height: 105,
+                      width: 260,
+                      height: 130,
                       child: ShowUpAnimation(
                         delayStart: const Duration(seconds: 2),
                         direction: Direction.horizontal,
@@ -217,7 +217,7 @@ class SmallHome4_solution extends StatelessWidget {
                 ),
               ),
               Container(
-                width: screenSize.width * 0.37,
+                width: screenSize.width * 0.4,
                 child: Column(
                   children: [
                     Container(
@@ -245,7 +245,7 @@ class SmallHome4_solution extends StatelessWidget {
                           "IMPLEMENTATION",
                           style: GoogleFonts.poppins(
                             color: const Color(0xff1e5ea8),
-                            fontSize: 20,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -255,8 +255,8 @@ class SmallHome4_solution extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      width: 250,
-                      height: 105,
+                      width: 260,
+                      height: 130,
                       child: ShowUpAnimation(
                         delayStart: const Duration(seconds: 2),
                         direction: Direction.horizontal,
