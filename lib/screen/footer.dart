@@ -36,19 +36,21 @@ class Footer extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            width: screenSize.width * 0.1,
-                            height: screenSize.height * 0.1,
+                            width: screenSize.width * 0.10,
+                            height: screenSize.height * 0.09,
                             decoration: const BoxDecoration(
-                              //color: Colors.lightBlueAccent,
+                                //color: Colors.lightBlueAccent,
                                 image: DecorationImage(
                                     image: AssetImage(
                                         'assets/logo/multicloudsolution.jpg'),
                                     fit: BoxFit.fill)),
                           ),
-                          const Spacer(),
+                          const Spacer(
+                            flex: 8,
+                          ),
                           Container(
-                            width: screenSize.width * 0.11,
-                            height: screenSize.height * 0.08,
+                            width: screenSize.width * 0.10,
+                            height: screenSize.height * 0.07,
                             decoration: const BoxDecoration(
                                 //color: Colors.lightBlueAccent,
                                 image: DecorationImage(
@@ -56,7 +58,9 @@ class Footer extends StatelessWidget {
                                         'assets/logo/logo-eksad.png'),
                                     fit: BoxFit.fill)),
                           ),
-                          const Spacer(),
+                          const Spacer(
+                            flex: 8,
+                          ),
                           Container(
                             width: screenSize.width * 0.2,
                             height: screenSize.height * 0.04,
@@ -190,7 +194,9 @@ class Footer extends StatelessWidget {
                                 child: Text(
                                   'info@eksad.com',
                                   style: GoogleFonts.poppins(
-                                      fontSize: 16, color: Colors.black87,letterSpacing: 1.1),
+                                      fontSize: 16,
+                                      color: Colors.black87,
+                                      letterSpacing: 1.1),
                                 ),
                               ),
                             ),
@@ -214,10 +220,9 @@ class Footer extends StatelessWidget {
                                     '\nGde Agung Blok E3.2 '
                                     '\nMega Kuningan, \nJakarta Selatan 12950',
                                     style: GoogleFonts.poppins(
-                                      fontSize: 15,
-                                      height: 1.45,
-                                      letterSpacing: 1.1
-                                    ),
+                                        fontSize: 15,
+                                        height: 1.45,
+                                        letterSpacing: 1.1),
                                     textAlign: TextAlign.left,
                                   ),
                                 )),
