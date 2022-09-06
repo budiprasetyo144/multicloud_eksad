@@ -30,7 +30,7 @@ class _Home5_industryState extends State<Home5_industry> {
             child: (Text(
               "VARIOUS INDUSTRY AND SECTORS",
               style: GoogleFonts.poppins(
-                fontSize: 36,
+                fontSize: 30,
                 color: const Color(0xff1e5ea8),
                 fontWeight: FontWeight.bold,
               ),
@@ -41,7 +41,7 @@ class _Home5_industryState extends State<Home5_industry> {
                 horizontal: screenSize.width * 0.15, vertical: 20),
             child: Text(
               'Each industry has a unique request. We are ready to assist and provide specific requirements based on the client\'s needs, from the first discussion to providing expert consultants.',
-              style: GoogleFonts.poppins(fontSize: 17),
+              style: GoogleFonts.poppins(fontSize: 16),
               textAlign: TextAlign.center,
             ),
           ),

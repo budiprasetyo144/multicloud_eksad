@@ -67,13 +67,13 @@ class _Home7_newsState extends State<Home7_news> {
                           textAlign: TextAlign.center),
                     ),
                     Container(
-                      height: 100,
+                      height: 110,
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 20),
                       child: Text(row1,
                           style: GoogleFonts.poppins(
                               color: Colors.white,
-                              fontSize: 17,
+                              fontSize: 15,
                               height: 1.2,
                               letterSpacing: 1.2),
                           textAlign: TextAlign.center),
@@ -126,13 +126,13 @@ class _Home7_newsState extends State<Home7_news> {
                       ),
                     ),
                     Container(
-                      height: 100,
+                      height: 110,
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 20),
                       child: Text(row2,
                           style: GoogleFonts.poppins(
                               color: Colors.black,
-                              fontSize: 17,
+                              fontSize: 15,
                               height: 1.2,
                               letterSpacing: 1.2),
                           textAlign: TextAlign.center),
@@ -182,13 +182,13 @@ class _Home7_newsState extends State<Home7_news> {
                           textAlign: TextAlign.center),
                     ),
                     Container(
-                      height: 100,
+                      height: 110,
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 20),
                       child: Text(row3,
                           style: GoogleFonts.poppins(
                               color: Colors.white,
-                              fontSize: 17,
+                              fontSize: 15,
                               height: 1.2,
                               letterSpacing: 1.2),
                           textAlign: TextAlign.center),

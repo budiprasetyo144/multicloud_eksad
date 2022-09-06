@@ -36,7 +36,18 @@ class Footer extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            width: screenSize.width * 0.12,
+                            width: screenSize.width * 0.13,
+                            height: screenSize.height * 0.13,
+                            decoration: const BoxDecoration(
+                              //color: Colors.lightBlueAccent,
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/logo/multicloudsolution.jpg'),
+                                    fit: BoxFit.fill)),
+                          ),
+                          const Spacer(),
+                          Container(
+                            width: screenSize.width * 0.11,
                             height: screenSize.height * 0.08,
                             decoration: const BoxDecoration(
                                 //color: Colors.lightBlueAccent,

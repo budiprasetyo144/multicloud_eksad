@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
                   child: Text(
                     'Cloud Consulting Services.',
                     style: GoogleFonts.poppins(
-                        fontSize: 37,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                     overflow: TextOverflow.ellipsis,

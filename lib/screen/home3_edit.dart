@@ -16,7 +16,7 @@ class Home3_partner extends StatelessWidget {
         children: [
           Container(
             width: screenSize.width,
-            height: screenSize.height * 0.2,
+            height: screenSize.height * 0.15,
             color: const Color.fromARGB(255, 12, 94, 149),
             child: Center(
               child: Column(
@@ -29,7 +29,7 @@ class Home3_partner extends StatelessWidget {
                     "Strategic Partnerships",
                     style: GoogleFonts.robotoCondensed(
                         color: Colors.white,
-                        fontSize: 40,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
                   const Spacer(
@@ -40,7 +40,7 @@ class Home3_partner extends StatelessWidget {
                     "Our expertise and experience in dealing with the leading public cloud platforms make us a perfect choice for your business:",
                     style: GoogleFonts.robotoCondensed(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
                         letterSpacing: 1.1),
                   ),
