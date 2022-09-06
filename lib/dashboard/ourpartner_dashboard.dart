@@ -520,7 +520,15 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                     ),
                                   );
                                 },
-                                child: const Text('Edit Partner'),
+                                child: const Text('Edit'),
+                                style: TextButton.styleFrom(
+                                  padding: const EdgeInsets.all(16.0),
+                                  primary: Colors.white,
+                                  backgroundColor: const Color.fromARGB(
+                                      200, 23, 104, 210),
+                                  textStyle: const TextStyle(fontSize: 15),
+
+                                ),
                               ),
                               const SizedBox(
                                 width: 10,
