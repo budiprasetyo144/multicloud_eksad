@@ -308,23 +308,23 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               width: screenSize.width * 0.03,
             ),
-            SizedBox(
-              height: 50,
-              width: 170,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Search",
-                  suffixIcon: const Icon(Icons.search),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
-              ),
-            ),
+            // SizedBox(
+            //   height: 50,
+            //   width: 170,
+            //   child: TextFormField(
+            //     decoration: InputDecoration(
+            //       labelText: "Search",
+            //       suffixIcon: const Icon(Icons.search),
+            //       enabledBorder: const OutlineInputBorder(
+            //         borderSide: BorderSide(width: 1, color: Colors.grey),
+            //       ),
+            //       focusedBorder: OutlineInputBorder(
+            //         borderRadius: BorderRadius.circular(15),
+            //         borderSide: const BorderSide(width: 1, color: Colors.grey),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             const Spacer(),
           ],
         ),
