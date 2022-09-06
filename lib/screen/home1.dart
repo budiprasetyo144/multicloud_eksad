@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
       children: [
         Container(
           width: screenSize.width,
-          height: screenSize.height * 0.7,
+          height: screenSize.height * 0.77,
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(
@@ -27,7 +27,7 @@ class Home extends StatelessWidget {
         ),
         Container(
           width: screenSize.width * 0.5,
-          height: screenSize.height * 0.65,
+          height: screenSize.height * 0.75,
           padding: EdgeInsets.only(
               left: screenSize.width * 0.1, top: screenSize.height * 0.02),
           child: Column(
@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
                   child: Text(
                     'Cloud Consulting Services.',
                     style: GoogleFonts.poppins(
-                        fontSize: 30,
+                        fontSize: 27,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                     overflow: TextOverflow.ellipsis,
@@ -51,7 +51,7 @@ class Home extends StatelessWidget {
               Container(
                 padding: EdgeInsets.only(top: 5),
                 width: screenSize.width * 0.5,
-                height: screenSize.height * 0.19,
+                height: screenSize.height * 0.21,
                 child: ShowUpAnimation(
                   delayStart: const Duration(seconds: 1),
                   curve: Curves.bounceIn,
@@ -60,7 +60,7 @@ class Home extends StatelessWidget {
                   child: Text(
                       'We help organizations in transforming their IT environments through the use of cost-effective Cloud services. Our expert team provides cutting-edge Cloud computing consulting services that help companies boost productivity to new heights.',
                       style: GoogleFonts.poppins(
-                          fontSize: 14,
+                          fontSize: 15,
                           letterSpacing: 1.3,
                           height: 1.5,
                           fontWeight: FontWeight.w400,
@@ -69,7 +69,7 @@ class Home extends StatelessWidget {
               ),
               Container(
                 width: screenSize.width * 0.5,
-                height: screenSize.height * 0.26,
+                height: screenSize.height * 0.3,
                 child: ShowUpAnimation(
                   delayStart: const Duration(seconds: 1),
                   direction: Direction.horizontal,
@@ -80,7 +80,7 @@ class Home extends StatelessWidget {
                       'enterprise Cloud solutions, tools, and applications such as servers, storage,'
                       ' databases, networking, software, and apps, among others.',
                       style: GoogleFonts.poppins(
-                          fontSize: 14,
+                          fontSize: 15,
                           letterSpacing: 1.3,
                           height: 1.5,
                           fontWeight: FontWeight.w400,
@@ -89,7 +89,7 @@ class Home extends StatelessWidget {
               ),
               Container(
                 width: screenSize.width * 0.135,
-                height: screenSize.height * 0.07,
+                height: screenSize.height * 0.065,
                 child: ShowUpAnimation(
                     delayStart: const Duration(seconds: 1),
                     curve: Curves.bounceIn,

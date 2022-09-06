@@ -22,7 +22,7 @@ class Home6_advantages extends StatelessWidget {
           Center(
             child: Text("Why Multi Cloud Solutions",
                 style: GoogleFonts.poppins(
-                    fontSize: 33,
+                    fontSize: 27,
                     color: const Color.fromARGB(255, 12, 66, 101),
                     fontWeight: FontWeight.bold)),
           ),
@@ -45,7 +45,7 @@ class Home6_advantages extends StatelessWidget {
                     Text(
                       "Efficiency Improvement",
                       style: GoogleFonts.poppins(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 10,
@@ -58,7 +58,7 @@ class Home6_advantages extends StatelessWidget {
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             color: Colors.black,
-                            fontSize: 16,
+                            fontSize: 15,
                             letterSpacing: 1,
                             height: 1.4),
                       ),
@@ -83,7 +83,7 @@ class Home6_advantages extends StatelessWidget {
                     Text(
                       "Better Scalability",
                       style: GoogleFonts.poppins(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 10,
@@ -96,7 +96,7 @@ class Home6_advantages extends StatelessWidget {
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             color: Colors.black,
-                            fontSize: 16,
+                            fontSize: 15,
                             letterSpacing: 1,
                             height: 1.4),
                       ),
@@ -130,7 +130,7 @@ class Home6_advantages extends StatelessWidget {
                     Text(
                       "Agility & Adaptability",
                       style: GoogleFonts.poppins(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 17, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 10,
@@ -143,7 +143,7 @@ class Home6_advantages extends StatelessWidget {
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             color: Colors.black,
-                            fontSize: 16,
+                            fontSize: 15,
                             letterSpacing: 1,
                             height: 1.4),
                       ),
@@ -169,7 +169,7 @@ class Home6_advantages extends StatelessWidget {
                       "Faster Development Cycles",
                       style: GoogleFonts.poppins(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
@@ -183,7 +183,7 @@ class Home6_advantages extends StatelessWidget {
                         textAlign: TextAlign.justify,
                         style: GoogleFonts.poppins(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 15,
                             letterSpacing: 1,
                             height: 1.4),
                       ),

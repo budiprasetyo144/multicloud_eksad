@@ -15,7 +15,7 @@ class Home4_solution extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: screenSize.height * 0.55,
+      height: screenSize.height * 0.62,
       width: screenSize.width,
       color: Colors.grey[200],
       child: Column(
@@ -26,7 +26,7 @@ class Home4_solution extends StatelessWidget {
           Center(
             child: Text("Why Choose Us?",
                 style: GoogleFonts.poppins(
-                    fontSize: 29,
+                    fontSize: 27,
                     color: const Color(0xff1e5ea8),
                     fontWeight: FontWeight.bold)),
           ),
@@ -77,7 +77,7 @@ class Home4_solution extends StatelessWidget {
                     ),
                     Container(
                       width: 200,
-                      height: 100,
+                      height: 115,
                       child: ShowUpAnimation(
                         delayStart: const Duration(seconds: 1),
                         direction: Direction.horizontal,
@@ -86,7 +86,7 @@ class Home4_solution extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                             color: const Color(0xff111111),
-                            fontSize: 16,
+                            fontSize: 15,
                           ),
                         ),
                       ),
@@ -134,7 +134,7 @@ class Home4_solution extends StatelessWidget {
                     ),
                     Container(
                       width: 200,
-                      height: 100,
+                      height: 115,
                       child: ShowUpAnimation(
                         delayStart: const Duration(seconds: 1),
                         direction: Direction.horizontal,
@@ -143,7 +143,7 @@ class Home4_solution extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                             color: const Color(0xff111111),
-                            fontSize: 16,
+                            fontSize: 15,
                           ),
                         ),
                       ),
@@ -191,7 +191,7 @@ class Home4_solution extends StatelessWidget {
                     ),
                     Container(
                       width: 200,
-                      height: 100,
+                      height: 115,
                       child: ShowUpAnimation(
                         delayStart: const Duration(seconds: 1),
                         direction: Direction.horizontal,
@@ -200,7 +200,7 @@ class Home4_solution extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                             color: const Color(0xff111111),
-                            fontSize: 16,
+                            fontSize: 15,
                           ),
                         ),
                       ),
@@ -248,7 +248,7 @@ class Home4_solution extends StatelessWidget {
                     ),
                     Container(
                       width: 200,
-                      height: 100,
+                      height: 115,
                       child: ShowUpAnimation(
                         delayStart: const Duration(seconds: 1),
                         direction: Direction.horizontal,
@@ -257,7 +257,7 @@ class Home4_solution extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                             color: const Color(0xff111111),
-                            fontSize: 16,
+                            fontSize: 15,
                           ),
                         ),
                       ),

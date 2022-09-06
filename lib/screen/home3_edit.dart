@@ -16,38 +16,42 @@ class Home3_partner extends StatelessWidget {
         children: [
           Container(
             width: screenSize.width,
-            height: screenSize.height * 0.15,
+            height: screenSize.height * 0.20,
             color: const Color.fromARGB(255, 12, 94, 149),
             child: Center(
-              child: Column(
-                children: [
-                  const Spacer(
-                    flex: 1,
-                  ),
-                  Text(
-                    overflow: TextOverflow.ellipsis,
-                    "Strategic Partnerships",
-                    style: GoogleFonts.robotoCondensed(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                  Text(
-                    overflow: TextOverflow.ellipsis,
-                    "Our expertise and experience in dealing with the leading public cloud platforms make us a perfect choice for your business:",
-                    style: GoogleFonts.robotoCondensed(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        letterSpacing: 1.1),
-                  ),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                ],
+              child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal: screenSize.width * 0.1),
+                child: Column(
+                  children: [
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    Text(
+                      overflow: TextOverflow.ellipsis,
+                      "Strategic Partnerships",
+                      style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 27,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    Text(
+                      // overflow: TextOverflow.ellipsis,
+                      "Our expertise and experience in dealing with the leading public cloud platforms make us a perfect choice for your business:",
+                      style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 1.1),
+                      textAlign: TextAlign.center,
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

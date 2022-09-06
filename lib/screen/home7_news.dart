@@ -87,7 +87,7 @@ class _Home7_newsState extends State<Home7_news> {
                         child: const Text(
                           'READ MORE',
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 15,
                               decoration: TextDecoration.underline,
                               color: Colors.white),
                         ))
@@ -146,7 +146,7 @@ class _Home7_newsState extends State<Home7_news> {
                         child: const Text(
                           'READ MORE',
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 15,
                               decoration: TextDecoration.underline,
                               color: Colors.black),
                         ))
