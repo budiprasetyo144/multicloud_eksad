@@ -144,7 +144,7 @@ class _DashboardAdminState extends State<DashboardAdmin> {
                 onTap: () {
                   page.jumpToPage(3);
                 },
-                icon: const Icon(Icons.table_rows),
+                icon: const Icon(Icons.newspaper),
               ),
               SideMenuItem(
                 priority: 4,
@@ -152,7 +152,7 @@ class _DashboardAdminState extends State<DashboardAdmin> {
                 onTap: () {
                   page.jumpToPage(4);
                 },
-                icon: const Icon(Icons.person),
+                icon: const Icon(Icons.people_alt),
               ),
               SideMenuItem(
                 priority: 5,
