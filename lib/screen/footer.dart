@@ -154,7 +154,7 @@ class Footer extends StatelessWidget {
                           SizedBox(
                             width: screenSize.width * 0.25,
                             height: screenSize.height * 0.04,
-                            child: FooterHead('Contact'),
+                            child: FooterHead('  Contact'),
                           ),
                           const Spacer(),
                           Container(

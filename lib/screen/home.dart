@@ -366,7 +366,7 @@ class _HomePageState extends State<HomePage> {
         Container(
           width: screenSize.width * 0.1,
           height: screenSize.height * 0.05,
-          child: FooterHead('Sitemap'),
+          child: FooterHead(' Sitemap'),
         ),
         const Spacer(
           flex: 3,
@@ -417,7 +417,7 @@ class _HomePageState extends State<HomePage> {
         Container(
             width: screenSize.width * 0.13,
             height: screenSize.height * 0.05,
-            child: FooterHead('Solution')),
+            child: FooterHead(' Solution')),
         const Spacer(
           flex: 3,
         ),
