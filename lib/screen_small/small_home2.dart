@@ -44,7 +44,7 @@ class SmallHome2 extends StatelessWidget {
           ),
           Container(
             width: screenSize.width,
-            height: 300,
+            height: 275,
             child: Text(
                 '\nInstead of operating within the constraints of a single cloud vendor,'
                     ' a multi-cloud strategy allows you to access the cloud services from '

@@ -34,6 +34,17 @@ class SmallFooter extends StatelessWidget {
                       children: [
                         Container(
                           width: screenSize.width * 0.3,
+                          height: screenSize.height * 0.08,
+                          decoration: const BoxDecoration(
+                            //color: Colors.lightBlueAccent,
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/logo/multicloudsolution.jpg'),
+                                  fit: BoxFit.fill)),
+                        ),
+                        SizedBox(height: 5,),
+                        Container(
+                          width: screenSize.width * 0.37,
                           height: screenSize.height * 0.1,
                           decoration: const BoxDecoration(
                             //color: Colors.lightBlueAccent,
