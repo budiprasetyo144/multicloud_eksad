@@ -48,7 +48,7 @@ class Home8_contact_us extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(
-                    flex: 1,
+                    flex: 2,
                   ),
                   Text("Leave your contact info and",
                       style: GoogleFonts.poppins(
@@ -72,7 +72,7 @@ class Home8_contact_us extends StatelessWidget {
                       style: GoogleFonts.poppins(
                           color: Colors.white, fontSize: 23)),
                   const Spacer(
-                    flex: 2,
+                    flex: 3,
                   ),
                 ],
               ),

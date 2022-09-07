@@ -9,7 +9,7 @@ String redline = 'Our comprehensive cloud migration framework brings '
     'across all cloud models and multiple delivery methods (IaaS, PaaS, and SaaS).';
 
 String row1 =
-    "Thank you Alibaba Cloud, Indonet our Distributor and all beloved customer for your strong support to Eksad";
+    "Thank you Alibaba Cloud, Indonet our Distributor and all beloved customer for your strong support to Eksad.";
 
 String row2 =
     'Although invisible, cloud computing is in the daily life of most people.';

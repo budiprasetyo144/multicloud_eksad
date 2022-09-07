@@ -242,6 +242,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               children: [
+                SizedBox(width: screenSize.width*0.05,),   //ilangin jika menggunakan searchbar
                 TextButton(
                   onPressed: () {
                     _scrollToIndex(0);
