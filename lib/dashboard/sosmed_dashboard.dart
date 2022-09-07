@@ -32,11 +32,13 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Social Media Setting",
-                        style: TextStyle(
+                   Text("Social Media Setting",
+                        style: GoogleFonts.poppins(
                             color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.normal)),
+                            fontSize: 25,
+                            fontWeight: FontWeight.w600,
+                          letterSpacing: 1.1
+                        )),
                     // SizedBox(
                     //   height: 0,
                     //   width: 820,
