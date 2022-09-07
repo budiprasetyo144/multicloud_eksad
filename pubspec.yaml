@@ -38,6 +38,7 @@ dependencies:
   show_up_animation: ^2.0.0
   url_launcher: ^6.1.5
   side_navigation: ^1.0.2
+  easy_sidemenu: ^0.3.1
   cupertino_icons: ^1.0.2
   fly_animation: ^0.0.2
   google_fonts: ^3.0.1

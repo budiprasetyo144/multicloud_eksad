@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multi_cloudv3/dashboard/dashboard.dart';
+import 'package:multi_cloudv3/dashboard/new_sidemenu.dart';
 import 'package:multi_cloudv3/login.dart';
 import 'package:multi_cloudv3/screen/home.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         // When navigating to the "/second" route, build the SecondScreen widget.
-        '/admin': (context) => const login(),
+        '/admin': (context) => const DashboardAdmin(),
 
       },
 

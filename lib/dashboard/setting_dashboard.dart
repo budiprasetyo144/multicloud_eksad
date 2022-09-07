@@ -75,15 +75,17 @@ class _SettingDashboardState extends State<SettingDashboard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 10,),
           const Text(
             "General Setting",
             textAlign: TextAlign.start,
             style: TextStyle(
                 color: Colors.black, fontSize: 37, fontWeight: FontWeight.bold),
           ),
+          SizedBox(height: 10,),
           Container(
             color: Colors.white,
-            height: 480,
+            height: screenSize.height*0.75,
             width: 900,
             padding: const EdgeInsets.only(left: 30,top: 15,right: 20,bottom: 15),
             child: Form(
@@ -145,9 +147,7 @@ class _SettingDashboardState extends State<SettingDashboard> {
                     // endIndent: 0,
                     color: Colors.grey,
                   ),
-                  const Spacer(
-                    flex: 1,
-                  ),
+                  SizedBox(height: 25,),
                   Row(
                     children: [
                       Container(
@@ -340,6 +340,14 @@ class _SettingDashboardState extends State<SettingDashboard> {
                           const SizedBox(
                             height: 10,
                           ),
+
+                        ],
+                      ),
+                      SizedBox(width: 30,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
                           const Text(
                             "No Office",
                             style: TextStyle(
@@ -364,8 +372,11 @@ class _SettingDashboardState extends State<SettingDashboard> {
                               enabled: enb,
                             ),
                           ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                         ],
-                      ),
+                      )
                       // const SizedBox(
                       //   width: 30,
                       // ),

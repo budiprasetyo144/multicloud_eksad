@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multi_cloudv3/dashboard/dashboard.dart';
+import 'package:multi_cloudv3/dashboard/new_sidemenu.dart';
 import 'package:multi_cloudv3/screen/home.dart';
 
 class login extends StatefulWidget {
@@ -221,7 +222,7 @@ class _loginState extends State<login> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (Context) {
-                                          return Dashboard();
+                                          return DashboardAdmin();
                                         },
                                       ),
                                     );
