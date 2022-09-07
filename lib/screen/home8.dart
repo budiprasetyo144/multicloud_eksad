@@ -50,29 +50,30 @@ class Home8_contact_us extends StatelessWidget {
                   const Spacer(
                     flex: 2,
                   ),
-                  Text("Leave your contact info and",
+                  Text("Leave Your Contact Info and Let's Discuss Business",
                       style: GoogleFonts.poppins(
                           color: Colors.white,
-                          fontSize: 25,
+                          fontSize: 30,
                           fontWeight: FontWeight.w500)),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                  Text("Let's Discuss Business",
-                      style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 35,
-
-                          fontWeight: FontWeight.w500,
-                          // fontWeight: FontWeight.bold,
-                          letterSpacing: 1.1)),
+                  // const Spacer(
+                  //   flex: 1,
+                  // ),
+                  // Text("Let's Discuss Business",
+                  //     style: GoogleFonts.poppins(
+                  //         color: Colors.white,
+                  //         fontSize: 35,
+                  //
+                  //         fontWeight: FontWeight.w500,
+                  //         // fontWeight: FontWeight.bold,
+                  //         letterSpacing: 1.1)
+                  // ),
                   const Spacer(
                     flex: 1,
                   ),
                   Text(
                       "We’ll contact you immediately to discuss potential business",
                       style: GoogleFonts.poppins(
-                          color: Colors.white, fontSize: 25,
+                          color: Colors.white, fontSize: 18,
                           fontWeight: FontWeight.w500)),
                   const Spacer(
                     flex: 3,
