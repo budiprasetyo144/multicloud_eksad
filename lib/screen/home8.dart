@@ -54,14 +54,16 @@ class Home8_contact_us extends StatelessWidget {
                       style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontSize: 25,
-                          fontWeight: FontWeight.bold)),
+                          fontWeight: FontWeight.w500)),
                   const Spacer(
                     flex: 1,
                   ),
                   Text("Let's Discuss Business",
                       style: GoogleFonts.poppins(
                           color: Colors.white,
-                          fontSize: 40,
+                          fontSize: 35,
+
+                          fontWeight: FontWeight.w500,
                           // fontWeight: FontWeight.bold,
                           letterSpacing: 1.1)),
                   const Spacer(
@@ -70,7 +72,8 @@ class Home8_contact_us extends StatelessWidget {
                   Text(
                       "We’ll contact you immediately to discuss potential business",
                       style: GoogleFonts.poppins(
-                          color: Colors.white, fontSize: 23)),
+                          color: Colors.white, fontSize: 25,
+                          fontWeight: FontWeight.w500)),
                   const Spacer(
                     flex: 3,
                   ),
