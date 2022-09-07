@@ -45,7 +45,7 @@ class SmallFooter extends StatelessWidget {
                         SizedBox(height: 5,),
                         Container(
                           width: screenSize.width * 0.35,
-                          height: screenSize.height * 0.1,
+                          height: screenSize.height * 0.08,
                           decoration: const BoxDecoration(
                             //color: Colors.lightBlueAccent,
                               image: DecorationImage(
@@ -130,7 +130,7 @@ class SmallFooter extends StatelessWidget {
                       ],
                     )),
               ),
-               SizedBox(height: 30,),
+               SizedBox(height: 40,),
               Center(
                 child: Container(
                     width: screenSize.width * 0.6,
