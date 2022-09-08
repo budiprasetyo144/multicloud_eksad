@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.vertical,
               controller: controller2,
               children: [
-                Home(wijet: Button_scroll_small()),
+                Home(wijet: Button_scroll()),
                 const Home2(),
                 const Home3_partner(),
                 Home4_solution(screenSize: screenSize),
