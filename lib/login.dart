@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:multi_cloudv3/dashboard/dashboard.dart';
 import 'package:multi_cloudv3/dashboard/new_sidemenu.dart';
 import 'package:multi_cloudv3/screen/home.dart';
@@ -16,6 +17,8 @@ class _loginState extends State<login> {
   final formKey = GlobalKey<FormState>();
   String _usmail = '';
   String _uspswd = '';
+  var focusNode = FocusNode();
+
 
   @override
   Widget build(BuildContext context) {
@@ -112,26 +115,81 @@ class _loginState extends State<login> {
                         Container(
                           height: 40,
                           width: screenSize.width * 0.2,
-                          child: TextFormField(
-                            textAlign: TextAlign.start,
-                            decoration: InputDecoration(
-                              labelText: "Enter Your Email",
-                              hintStyle: TextStyle(),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value == null || value.trim().isEmpty) {
-                                return "please enter your email address";
-                              } else if (!RegExp(r'\S+@\S+\.\S+')
-                                  .hasMatch(value)) {
-                                return 'Please enter a valid email address';
-                              } else {
-                                return null;
-                              }
+                          child: RawKeyboardListener(
+                            focusNode: focusNode,
+                            onKey: (event) {
+                              if (event.isKeyPressed(LogicalKeyboardKey.enter)) {}
+
                             },
-                            onChanged: (value) => _usmail = value,
+                            child: TextFormField(
+                              onFieldSubmitted: (String value){
+                                if (_usmail == 'admin@admin.com' &&
+                                    _uspswd != 'administrator') {
+                                  showDialog<String>(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        AlertDialog(
+                                          title: const Text('Gagal login'),
+                                          content: const Text(
+                                              'Password anda salah!!!'),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context, 'OK'),
+                                              child: const Text('OK'),
+                                            ),
+                                          ],
+                                        ),
+                                  );
+                                } else if (_usmail == 'admin@admin.com' &&
+                                    _uspswd == 'administrator') {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (Context) {
+                                        return DashboardAdmin();
+                                      },
+                                    ),
+                                  );
+                                } else {
+                                  showDialog<String>(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        AlertDialog(
+                                          title: const Text('Gagal login'),
+                                          content: const Text(
+                                              'Akun Belum terdaftar, Silahkan Registrasi'),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context, 'OK'),
+                                              child: const Text('OK'),
+                                            ),
+                                          ],
+                                        ),
+                                  );
+                                }
+                              },
+                              textAlign: TextAlign.start,
+                              decoration: InputDecoration(
+                                labelText: "Enter Your Email",
+                                hintStyle: TextStyle(),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return "please enter your email address";
+                                } else if (!RegExp(r'\S+@\S+\.\S+')
+                                    .hasMatch(value)) {
+                                  return 'Please enter a valid email address';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              onChanged: (value) => _usmail = value,
+                            ),
                           ),
                         ),
                         Spacer(
@@ -157,6 +215,54 @@ class _loginState extends State<login> {
                           height: 40,
                           width: screenSize.width * 0.2,
                           child: TextFormField(
+                            onFieldSubmitted: (String value){
+                              if (_usmail == 'admin@admin.com' &&
+                                  _uspswd != 'administrator') {
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: const Text('Gagal login'),
+                                        content: const Text(
+                                            'Password anda salah!!!'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context, 'OK'),
+                                            child: const Text('OK'),
+                                          ),
+                                        ],
+                                      ),
+                                );
+                              } else if (_usmail == 'admin@admin.com' &&
+                                  _uspswd == 'administrator') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (Context) {
+                                      return DashboardAdmin();
+                                    },
+                                  ),
+                                );
+                              } else {
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: const Text('Gagal login'),
+                                        content: const Text(
+                                            'Akun Belum terdaftar, Silahkan Registrasi'),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context, 'OK'),
+                                            child: const Text('OK'),
+                                          ),
+                                        ],
+                                      ),
+                                );
+                              }
+                            },
                             textAlign: TextAlign.start,
                             obscureText: _isObscure,
                             decoration: InputDecoration(

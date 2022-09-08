@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         // When navigating to the "/second" route, build the SecondScreen widget.
-        '/admin': (context) => const DashboardAdmin(),
+        //'/admin': (context) => const DashboardAdmin(),
+        '/admin': (context) => const login(),
 
       },
 
