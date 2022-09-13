@@ -210,6 +210,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                             gradient: LinearGradient(
                               colors: <Color>[
                                 Color(0xFF42A5F5),
+                                Color(0xFF3FA4F6),
                               ],
                             ),
                           ),
