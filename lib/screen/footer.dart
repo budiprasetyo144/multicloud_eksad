@@ -179,30 +179,7 @@ class Footer extends StatelessWidget {
                                   )),
                             ),
                           ),
-                          Container(
-                            width: screenSize.width * 0.2,
-                            child: ListTile(
-                              leading: const Icon(
-                                Icons.mail,
-                                size: 23,
-                                color: Colors.black,
-                              ),
-                              title: TextButton(
-                                onPressed: () {
-                                  launch(
-                                      'mailto:Info@eksad.com?subject=Info MCS');
-                                },
-                                child: SettingAPI(),
-                                // child: Text(
-                                //   'info@eksad.com',
-                                //   style: GoogleFonts.poppins(
-                                //       fontSize: 16,
-                                //       color: Colors.black87,
-                                //       letterSpacing: 1.1),
-                                // ),
-                              ),
-                            ),
-                          ),
+                          SettingAPI(),
                           Container(
                             width: screenSize.width * 0.26,
                             height: screenSize.height * 0.27,
@@ -333,8 +310,10 @@ class SettingAPI extends StatefulWidget {
 }
 
 class _SettingAPIState extends State<SettingAPI> {
+  String email = '';
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return FutureBuilder<List<dynamic>>(
       future: getSettingDesc(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -344,10 +323,31 @@ class _SettingAPIState extends State<SettingAPI> {
             snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         }
-        return Text(pgm['email'],style: GoogleFonts.poppins(
-            fontSize: 16,
-            color: Colors.black87,
-            letterSpacing: 1.1),);
+        return Container(
+          width: screenSize.width * 0.2,
+          child: ListTile(
+            leading: const Icon(
+              Icons.mail,
+              size: 23,
+              color: Colors.black,
+            ),
+            title: TextButton(
+              onPressed: () {
+                email = pgm['email'];
+                launch(
+                    'mailto:$email?subject=Info MCS');
+              },
+              // child: SettingAPI(),
+              child: Text(email,style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  color: Colors.black87,
+                  letterSpacing: 1.1),)
+            ),
+          ),
+        );
+
+
+
       },
     );
   }
