@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:multi_cloudv3/api/setting_api.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatelessWidget {
@@ -191,13 +192,14 @@ class Footer extends StatelessWidget {
                                   launch(
                                       'mailto:Info@eksad.com?subject=Info MCS');
                                 },
-                                child: Text(
-                                  'info@eksad.com',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      color: Colors.black87,
-                                      letterSpacing: 1.1),
-                                ),
+                                child: SettingAPI(),
+                                // child: Text(
+                                //   'info@eksad.com',
+                                //   style: GoogleFonts.poppins(
+                                //       fontSize: 16,
+                                //       color: Colors.black87,
+                                //       letterSpacing: 1.1),
+                                // ),
                               ),
                             ),
                           ),
@@ -319,5 +321,34 @@ void _launchYoutube() async {
     await launch(url());
   } else {
     throw 'Could not launch ${url()}';
+  }
+}
+
+
+class SettingAPI extends StatefulWidget {
+  const SettingAPI({Key? key}) : super(key: key);
+
+  @override
+  State<SettingAPI> createState() => _SettingAPIState();
+}
+
+class _SettingAPIState extends State<SettingAPI> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<dynamic>>(
+      future: getSettingDesc(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        var pgm = snapshot.data[0];
+        if (snapshot.hasError ||
+            snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        return Text(pgm['email'],style: GoogleFonts.poppins(
+            fontSize: 16,
+            color: Colors.black87,
+            letterSpacing: 1.1),);
+      },
+    );
   }
 }

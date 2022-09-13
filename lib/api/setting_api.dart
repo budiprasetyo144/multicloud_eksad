@@ -45,3 +45,9 @@ Future<List<dynamic>> getSetting() async {
       Uri.parse('http://10.107.243.222:8082/setting/getAllSettingByIdRole'));
   return jsonDecode(response.body)['data'];
 }
+
+Future<List<dynamic>> getSettingDesc() async {
+  var response = await http.get(
+      Uri.parse('http://10.107.243.222:8082/setting/getSettingByIdDesc'));
+  return jsonDecode(response.body)['data'];
+}
