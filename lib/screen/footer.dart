@@ -158,28 +158,8 @@ class Footer extends StatelessWidget {
                             child: FooterHead('  Contact'),
                           ),
                           const Spacer(),
-                          Container(
-                            width: screenSize.width * 0.19,
-                            child: ListTile(
-                              leading: const Icon(
-                                Icons.phone,
-                                size: 23,
-                                color: Colors.black,
-                              ),
-                              title: TextButton(
-                                  onPressed: () {
-                                    launch('tel:02157958040');
-                                  },
-                                  child: Text(
-                                    '(021) 5795 - 8040',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      color: Colors.black87,
-                                    ),
-                                  )),
-                            ),
-                          ),
-                          SettingAPI(),
+
+                          EmailAPI(),
                           Container(
                             width: screenSize.width * 0.26,
                             height: screenSize.height * 0.27,
@@ -301,15 +281,69 @@ void _launchYoutube() async {
   }
 }
 
-
-class SettingAPI extends StatefulWidget {
-  const SettingAPI({Key? key}) : super(key: key);
+class TelphoneApi extends StatefulWidget {
+  const TelphoneApi({Key? key}) : super(key: key);
 
   @override
-  State<SettingAPI> createState() => _SettingAPIState();
+  State<TelphoneApi> createState() => _TelphoneApiState();
 }
 
-class _SettingAPIState extends State<SettingAPI> {
+class _TelphoneApiState extends State<TelphoneApi> {
+
+  String no = '';
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return FutureBuilder<List<dynamic>>(
+      future: getSettingDesc(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        var pgm = snapshot.data[0];
+        if (snapshot.hasError ||
+            snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        return Container(
+          width: screenSize.width * 0.19,
+          child: ListTile(
+            leading: const Icon(
+              Icons.phone,
+              size: 23,
+              color: Colors.black,
+            ),
+            title: TextButton(
+                onPressed: () {
+                  no = pgm['no'];
+                  launch('tel:$no');
+                },
+                child: Text(
+                  pgm['no'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    color: Colors.black87,
+                  ),
+                )),
+          ),
+        );
+
+
+
+      },
+    );
+
+  }
+}
+
+
+
+class EmailAPI extends StatefulWidget {
+  const EmailAPI({Key? key}) : super(key: key);
+
+  @override
+  State<EmailAPI> createState() => _EmailAPIState();
+}
+
+class _EmailAPIState extends State<EmailAPI> {
   String email = '';
   @override
   Widget build(BuildContext context) {
@@ -338,7 +372,7 @@ class _SettingAPIState extends State<SettingAPI> {
                     'mailto:$email?subject=Info MCS');
               },
               // child: SettingAPI(),
-              child: Text(email,style: GoogleFonts.poppins(
+              child: Text(pgm['email'],style: GoogleFonts.poppins(
                   fontSize: 16,
                   color: Colors.black87,
                   letterSpacing: 1.1),)
