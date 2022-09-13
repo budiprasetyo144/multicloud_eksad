@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 Future<bool> createSetting(im, tt, tl, em, no) async {
   final response = await http.post(
-      Uri.parse('http://10.3.4.231:8081/setting/saveSetting'),
+      Uri.parse('http://10.107.243.222:8081/setting/saveSetting'),
       body: jsonEncode(
           {"image": im, "title": tt, "tagline": tl, "email": em, "no": no}),
       headers: {
@@ -19,7 +19,7 @@ Future<bool> createSetting(im, tt, tl, em, no) async {
 
 Future<bool> updateSetting(id, image, name, title, tagline, email, no) async {
   final response = await http
-      .put(Uri.parse('http://10.3.4.231:8081/setting/updateSetting'),
+      .put(Uri.parse('http://10.107.243.222:8081/setting/updateSetting'),
           body: jsonEncode({
             "idsetting": id,
             "image": image,
@@ -42,6 +42,6 @@ Future<bool> updateSetting(id, image, name, title, tagline, email, no) async {
 
 Future<List<dynamic>> getSetting() async {
   var response = await http.get(
-      Uri.parse('http://10.3.4.231:8082/setting/getAllSettingByIdRole'));
+      Uri.parse('http://10.107.243.222:8082/setting/getAllSettingByIdRole'));
   return jsonDecode(response.body)['data'];
 }

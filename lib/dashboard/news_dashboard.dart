@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:multi_cloudv3/dashboard/dashboard.dart';
 import 'package:multi_cloudv3/api/news_api.dart';
+import 'package:multi_cloudv3/dashboard/new_sidemenu.dart';
 
 class NewsDashboard extends StatefulWidget {
   const NewsDashboard({Key? key}) : super(key: key);
@@ -59,7 +60,13 @@ class _NewsDashboardState extends State<NewsDashboard> {
                       showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          title: const Center(child: Text('Add News')),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.note),
+                              Text('Add News'),
+                            ],
+                          ),
                           content: Form(
                             key: formKey,
                             child: Column(
@@ -125,27 +132,45 @@ class _NewsDashboardState extends State<NewsDashboard> {
                           actions: <Widget>[
                             TextButton(
                               onPressed: () {
+                                Navigator.pop(context);
                                 if (title.trim().isEmpty &&
                                     news == null &&
                                     images == null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text('Title Can\'t Be Empty')),
+                                  );
                                   print('Title News Kosong');
                                 } else if (news.trim().isEmpty &&
                                     title == null &&
                                     images == null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text('News Can\'t Be Empty')),
+                                  );
                                   print('Isi News kosong');
                                 } else if (images.trim().isEmpty &&
                                     title == null &&
                                     news == null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text('Image Can\'t Be Empty')),
+                                  );
                                   print('Images Kosong');
                                 }
                                 createNews(title, news, images);
-                                print('Data Tersimpan');
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const Dashboard(),
-                                  ),
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Data Saved')),
                                 );
+                                print('Data Tersimpan');
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => const DashboardAdmin(),
+                                //   ),
+                                // );
+
                               },
                               child: const Text('Save'),
                             ),
@@ -236,7 +261,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                         DataColumn(label: Text('Title')),
                         DataColumn(label: Text('News')),
                         DataColumn(label: Text('Images')),
-                        DataColumn(label: Text('Status')),
+                        // DataColumn(label: Text('Status')),
                         DataColumn(label: Text('Action')),
                       ],
                       rows: List.generate(
@@ -245,20 +270,20 @@ class _NewsDashboardState extends State<NewsDashboard> {
                           var pgm = snapshot.data[index];
                           return DataRow(cells: [
                             DataCell(
-                              Text(pgm['idpost'].toString()),
+                              Text(pgm['idnews'].toString()),
                             ),
                             DataCell(
                               Text(pgm['title']),
                             ),
                             DataCell(
-                              Text(pgm['post']),
+                              Text(pgm['news']),
                             ),
                             DataCell(
                               Text(pgm['image']),
                             ),
-                            DataCell(
-                              Text(pgm['status']),
-                            ),
+                            // DataCell(
+                            //   Text(pgm['status']),
+                            // ),
                             DataCell(
                               Row(
                                 children: [
@@ -268,11 +293,11 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                     onPressed: () {
                                       var pgm = snapshot.data[index];
                                       selectedIndex = index;
-                                      id = pgm['idpost'];
+                                      id = pgm['idnews'];
                                       selecttitle = pgm['title'];
-                                      selectnews = pgm['post'];
+                                      selectnews = pgm['news'];
                                       print(selectedIndex);
-                                      print(pgm['idpost']);
+                                      print(pgm['idnews']);
                                       print(selecttitle);
 
                                       _controllerNews.clear();
@@ -473,7 +498,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                                 child: const Text("Yes"),
                                                 onPressed: () {
                                                   Navigator.pop(context);
-                                                  deleteNews(pgm['idpost'])
+                                                  deleteNews(pgm['idnews'])
                                                       .then((isSuccess) {
                                                     if (isSuccess) {
                                                       setState(() {});

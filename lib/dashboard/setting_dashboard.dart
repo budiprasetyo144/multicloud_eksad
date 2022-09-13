@@ -86,7 +86,7 @@ class _SettingDashboardState extends State<SettingDashboard> {
           Container(
             color: Colors.white,
             height: screenSize.height*0.75,
-            width: 900,
+            width: screenSize.width*0.7,
             padding: const EdgeInsets.only(left: 30,top: 15,right: 20,bottom: 15),
             child: Form(
               key: formKey,
