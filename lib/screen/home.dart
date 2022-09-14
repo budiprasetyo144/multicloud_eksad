@@ -19,9 +19,21 @@ import 'package:multi_cloudv3/screen_small/small_home6.dart';
 import 'package:multi_cloudv3/screen_small/small_home7.dart';
 import 'package:multi_cloudv3/screen_small/small_home8.dart';
 import 'package:multi_cloudv3/widget/whatsapp.dart';
+import '../api/setting_api.dart';
 import '../widget/responsive.dart';
 import 'appbar.dart';
 import 'home5.dart';
+import 'package:flutter/services.dart';
+
+
+
+void setPageTitle(String title, BuildContext context) async {
+  SystemChrome.setApplicationSwitcherDescription(ApplicationSwitcherDescription(
+    label: title,
+    primaryColor: Theme.of(context).primaryColor.value, // This line is required
+  ));
+}
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,11 +59,44 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.fastLinearToSlowEaseIn);
   }
 
+    late String titel;
+
+    @override
+    void initState(){
+      super.initState();
+      FutureBuilder<List<dynamic>> buildFutureBuilder2() {
+        return FutureBuilder<List<dynamic>>(
+          future: getSettingDesc(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            var pgm = snapshot.data[0];
+            if (snapshot.hasError ||
+                snapshot.data == null ||
+                snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            }
+            return Text(titel=pgm['title']);
+          },
+
+        );
+      }
+      titel = buildFutureBuilder2().toString();
+    }
+
+
+  String title = 'Multi Cloud Solution By Eksad';
+
+
+ // late String title;
+ // String title ='';
+
   int selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    // setPageTitle('$titel', context);
+    setPageTitle(title, context);
+
     return Scaffold(
       key: _scaffoldKey,
       appBar: ResponsiveWidget.isSmallScreen(context)
@@ -99,6 +144,10 @@ class _HomePageState extends State<HomePage> {
             ),
     );
   }
+
+
+
+
 
   Drawer _drawerWidget() => Drawer(
     width: 200,
