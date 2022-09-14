@@ -62,6 +62,7 @@ class _SettingDashboardState extends State<SettingDashboard> {
   String tl = '';
   String em = '';
   String no = '';
+  final String role = 'MCS';
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +116,7 @@ class _SettingDashboardState extends State<SettingDashboard> {
                           switch (btnText) {
                             case 'Save Setting':
                               createSetting(im.toString(), tt.toString(),
-                                  tl.toString(), em.toString(), no.toString());
+                                  tl.toString(), em.toString(), no.toString(),role.toString());
                               setState(() {
                                 btnText = 'Update Setting';
                                 enb = false;

@@ -158,7 +158,7 @@ class Footer extends StatelessWidget {
                             child: FooterHead('  Contact'),
                           ),
                           const Spacer(),
-
+                          TelphoneApi(),
                           EmailAPI(),
                           Container(
                             width: screenSize.width * 0.26,
@@ -321,16 +321,13 @@ class _TelphoneApiState extends State<TelphoneApi> {
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     color: Colors.black87,
+                    letterSpacing: 1.5
                   ),
                 )),
           ),
         );
-
-
-
       },
     );
-
   }
 }
 
@@ -379,9 +376,6 @@ class _EmailAPIState extends State<EmailAPI> {
             ),
           ),
         );
-
-
-
       },
     );
   }
