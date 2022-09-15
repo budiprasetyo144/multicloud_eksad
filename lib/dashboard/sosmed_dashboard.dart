@@ -148,7 +148,18 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                                 context: context, 
                                 builder: (BuildContext context)=>
                                     AlertDialog(
-                                      content: Text('Nomer'),
+                                      content:FutureBuilder<List<dynamic>>(
+                                        future: getSosmedDesc(),
+                                        builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                          var pgm = snapshot.data[0];
+                                          if (snapshot.hasError ||
+                                              snapshot.data == null ||
+                                              snapshot.connectionState == ConnectionState.waiting) {
+                                            return const CircularProgressIndicator();
+                                          }
+                                          return Text('Active WA : '+pgm['whatsapp']);
+                                        },
+                                      ),
                                     ) ,
                             );
                           }, child: Text('View Active'))),
@@ -173,7 +184,18 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                               context: context,
                               builder: (BuildContext context)=>
                                   AlertDialog(
-                                    content: Text('Linkedin'),
+                                    content:FutureBuilder<List<dynamic>>(
+                                      future: getSosmedDesc(),
+                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                        var pgm = snapshot.data[0];
+                                        if (snapshot.hasError ||
+                                            snapshot.data == null ||
+                                            snapshot.connectionState == ConnectionState.waiting) {
+                                          return const CircularProgressIndicator();
+                                        }
+                                        return Text('Active Linkedin : '+pgm['linkedin']);
+                                      },
+                                    ),
                                   ) ,
                             );
                           }, child: Text('View Active'))),
@@ -198,7 +220,18 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                               context: context,
                               builder: (BuildContext context)=>
                                   AlertDialog(
-                                    content: Text('Twitter'),
+                                    content:FutureBuilder<List<dynamic>>(
+                                      future: getSosmedDesc(),
+                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                        var pgm = snapshot.data[0];
+                                        if (snapshot.hasError ||
+                                            snapshot.data == null ||
+                                            snapshot.connectionState == ConnectionState.waiting) {
+                                          return const CircularProgressIndicator();
+                                        }
+                                        return Text('Active Twitter : '+pgm['twitter']);
+                                      },
+                                    ),
                                   ) ,
                             );
                           }, child: Text('View Active'))),
@@ -223,7 +256,18 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                               context: context,
                               builder: (BuildContext context)=>
                                   AlertDialog(
-                                    content: Text('Instagram'),
+                                    content:FutureBuilder<List<dynamic>>(
+                                      future: getSosmedDesc(),
+                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                        var pgm = snapshot.data[0];
+                                        if (snapshot.hasError ||
+                                            snapshot.data == null ||
+                                            snapshot.connectionState == ConnectionState.waiting) {
+                                          return const CircularProgressIndicator();
+                                        }
+                                        return Text('Active Instagram : '+pgm['instagram']);
+                                      },
+                                    ),
                                   ) ,
                             );
                           }, child: Text('View Active'))),
@@ -248,7 +292,18 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                               context: context,
                               builder: (BuildContext context)=>
                                   AlertDialog(
-                                    content: Text('Youtube'),
+                                    content:FutureBuilder<List<dynamic>>(
+                                      future: getSosmedDesc(),
+                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                        var pgm = snapshot.data[0];
+                                        if (snapshot.hasError ||
+                                            snapshot.data == null ||
+                                            snapshot.connectionState == ConnectionState.waiting) {
+                                          return const CircularProgressIndicator();
+                                        }
+                                        return Text('Active Youtube : '+pgm['youtube']);
+                                      },
+                                    ),
                                   ) ,
                             );
                           }, child: Text('View Active'))),

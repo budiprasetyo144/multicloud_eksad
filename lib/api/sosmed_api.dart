@@ -2,17 +2,19 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+var cmd = 'https://dmsdev-api.eksad.com/gateway/mcs/v1/cmd';
+var qry = 'https://dmsdev-api.eksad.com/gateway/mcs/v1/qry';
 
 Future<bool> createSosmed (wa, ln, tw, ig, yt) async{
   final response = await http.post(
-    Uri.parse('http://10.107.243.222:8081/settingsosmed/saveSettingSosmed'),
+    Uri.parse('$cmd/settingsosmed/saveSettingSosmed'),
     body: jsonEncode(
       {
-        'whatsapp': wa,
-        'linkedin': ln,
-        'twitter': tw,
-        'instagram': ig,
-        'youtube': yt,
+        "whatsapp": wa,
+        "linkedin": ln,
+        "twitter": tw,
+        "instagram": ig,
+        "youtube": yt,
       }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -26,7 +28,7 @@ Future<bool> createSosmed (wa, ln, tw, ig, yt) async{
 
 Future<bool> updateSosmed (wa,ln,tw,ig,yt) async {
   final response = await http 
-      .put(Uri.parse('http://10.107.243.222:8081/settingsosmed/updateSettingSosmed'),
+      .put(Uri.parse('$cmd/settingsosmed/updateSettingSosmed'),
     body: jsonEncode({
       'whatsapp': wa,
       'linkedin': ln,
@@ -42,4 +44,11 @@ Future<bool> updateSosmed (wa,ln,tw,ig,yt) async {
   } else {
     return false;
   }
+}
+
+
+Future<List<dynamic>> getSosmedDesc() async {
+  var response = await http.get(
+      Uri.parse('$qry/settingsosmed/getSettingSosmedByIdDesc'));
+  return jsonDecode(response.body)['data'];
 }
