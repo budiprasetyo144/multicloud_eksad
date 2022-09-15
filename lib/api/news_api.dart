@@ -41,7 +41,7 @@ Future<bool> updateNews(id, title, news) async {
 
 Future<List<dynamic>> getNews() async {
   var response = await http
-      .get(Uri.parse('$qry/cms/v1/qry/post/getAllPostByIdRole'));
+      .get(Uri.parse('$qry/post/getAllPostByIdRole'));
   return jsonDecode(response.body)['data'];
 }
 
