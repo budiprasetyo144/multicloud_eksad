@@ -10,11 +10,11 @@ Future<bool> createSosmed (wa, ln, tw, ig, yt) async{
     Uri.parse('$cmd/settingsosmed/saveSettingSosmed'),
     body: jsonEncode(
       {
-        'whatsapp': wa,
-        'linkedin': ln,
-        'twitter': tw,
-        'instagram': ig,
-        'youtube': yt,
+        "whatsapp": wa,
+        "linkedin": ln,
+        "twitter": tw,
+        "instagram": ig,
+        "youtube": yt,
       }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -44,4 +44,11 @@ Future<bool> updateSosmed (wa,ln,tw,ig,yt) async {
   } else {
     return false;
   }
+}
+
+
+Future<List<dynamic>> getSosmedDesc() async {
+  var response = await http.get(
+      Uri.parse('$qry/settingsosmed/getSettingSosmedByIdDesc'));
+  return jsonDecode(response.body)['data'];
 }
