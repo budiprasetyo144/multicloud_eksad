@@ -151,23 +151,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                         ),
                       );
                     },
-                    child: const Text('Add New Partner'))
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.black,
-                    textStyle: const TextStyle(fontSize: 15),
-                  ),
-                  onPressed: () {},
-                  child: const Text("All (3)"),
-                ),
+                    child: const Text('Add New Partner')),
                 const Spacer(
                   flex: 3,
                 ),
@@ -183,12 +167,12 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                       prefixIcon: const Icon(Icons.search),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(width: 1, color: Colors.blue),
+                        const BorderSide(width: 1, color: Colors.blue),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            const BorderSide(width: 1, color: Colors.blue),
+                        const BorderSide(width: 1, color: Colors.blue),
                         borderRadius: BorderRadius.circular(5),
                       ),
                     ),
@@ -232,14 +216,31 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
               ],
             ),
           ),
-          Row(
-            children: const [
-              Spacer(
-                flex: 6,
-              ),
-              Text("3 items"),
-            ],
+          SizedBox(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                // TextButton(
+                //   style: TextButton.styleFrom(
+                //     primary: Colors.black,
+                //     textStyle: const TextStyle(fontSize: 15),
+                //   ),
+                //   onPressed: () {},
+                //   child: const Text("All (3)"),
+                // ),
+
+              ],
+            ),
           ),
+          // Row(
+          //   children: const [
+          //     Spacer(
+          //       flex: 6,
+          //     ),
+          //     Text("3 items"),
+          //   ],
+          // ),
           const SizedBox(
             height: 10,
           ),

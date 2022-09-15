@@ -130,14 +130,14 @@ class _DashboardAdminState extends State<DashboardAdmin> {
                 },
                 icon: const Icon(Icons.settings),
               ),
-              SideMenuItem(
-                priority: 2,
-                title: 'Pages',
-                onTap: () {
-                  page.jumpToPage(2);
-                },
-                icon: const Icon(Icons.file_copy),
-              ),
+              // SideMenuItem(
+              //   priority: 2,
+              //   title: 'Pages',
+              //   onTap: () {
+              //     page.jumpToPage(2);
+              //   },
+              //   icon: const Icon(Icons.file_copy),
+              // ),
               SideMenuItem(
                 priority: 3,
                 title: 'News',
