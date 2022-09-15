@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+var cmd = 'https://dmsdev-api.eksad.com/gateway/mcs/v1/cmd';
+var qry = 'https://dmsdev-api.eksad.com/gateway/mcs/v1/qry';
 
 Future<bool> createSosmed (wa, ln, tw, ig, yt) async{
   final response = await http.post(
-    Uri.parse('http://10.107.243.222:8081/settingsosmed/saveSettingSosmed'),
+    Uri.parse('$cmd/settingsosmed/saveSettingSosmed'),
     body: jsonEncode(
       {
         'whatsapp': wa,
@@ -26,7 +28,7 @@ Future<bool> createSosmed (wa, ln, tw, ig, yt) async{
 
 Future<bool> updateSosmed (wa,ln,tw,ig,yt) async {
   final response = await http 
-      .put(Uri.parse('http://10.107.243.222:8081/settingsosmed/updateSettingSosmed'),
+      .put(Uri.parse('$cmd/settingsosmed/updateSettingSosmed'),
     body: jsonEncode({
       'whatsapp': wa,
       'linkedin': ln,
