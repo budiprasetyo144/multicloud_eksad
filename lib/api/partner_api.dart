@@ -6,10 +6,13 @@ import 'package:http/http.dart' as http;
 var cmd = 'https://dmsdev-api.eksad.com/gateway/mcs/v1/cmd';
 var qry = 'https://dmsdev-api.eksad.com/gateway/mcs/v1/qry';
 
-Future<bool> createPartner(image, name) async {
+Future<bool> createPartner(id,image, name) async {
   final response = await http.post(
       Uri.parse('$cmd/partner/savePartner'),
-      body: jsonEncode({"filename": name, "filepath": image}),
+      body: jsonEncode({
+        "partnerId": id,
+        "filename": name,
+        "filepath": image}),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       });
@@ -24,7 +27,7 @@ Future<bool> updatePartner(id, name, image) async {
   final response = await http.put(
       Uri.parse('$cmd/partner/savePartner'),
       body:
-          jsonEncode({"idpartner": id, "file_name": name, "file_path": image}),
+          jsonEncode({"partnerId": id, "file_name": name, "file_path": image}),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       });

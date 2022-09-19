@@ -486,6 +486,16 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                       textStyle: const TextStyle(fontSize: 15),
                                     ),
                                     onPressed: () {
+                                      var pgm = snapshot.data[index];
+                                      selectedIndex = index;
+                                      id = pgm['idnews'];
+                                      selecttitle = pgm['title'];
+                                      selectnews = pgm['news'];
+                                      print(selectedIndex);
+                                      print(pgm['idnews']);
+                                      print(selecttitle);
+
+
                                       showDialog(
                                         context: context,
                                         builder: (context) {
@@ -498,7 +508,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                                 child: const Text("Yes"),
                                                 onPressed: () {
                                                   Navigator.pop(context);
-                                                  deleteNews(pgm['idnews'])
+                                                  deleteNews(id)
                                                       .then((isSuccess) {
                                                     if (isSuccess) {
                                                       setState(() {});

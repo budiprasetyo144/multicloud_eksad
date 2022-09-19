@@ -13,6 +13,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
   final formKey = GlobalKey<FormState>();
   String nm = '';
   String pt = '';
+  String ulahfahrur ='';
   int selectedIndex = 0;
   int id = 0;
   String selectname = '';
@@ -66,7 +67,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                           borderRadius:
                                               BorderRadius.circular(5.0)),
                                     ),
-                                    onChanged: (value) => pt = value,
+                                    onChanged: (value) => nm = value,
                                   ),
                                 ),
                                 const SizedBox(
@@ -84,7 +85,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                           borderRadius:
                                               BorderRadius.circular(5.0)),
                                     ),
-                                    onChanged: (value) => nm = value,
+                                    onChanged: (value) => pt = value,
                                   ),
                                 ),
                               ],
@@ -128,7 +129,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                         content: Text('Name Can\'t Be Empty')),
                                   );
                                 } else {
-                                  createPartner(nm, pt).then(
+                                  createPartner(ulahfahrur,nm, pt).then(
                                     (isSuccess) {
                                       if (isSuccess) {
                                         setState(() {});
@@ -260,7 +261,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                     DataColumn(label: Text('Id')),
                     DataColumn(label: Text('Name')),
                     DataColumn(label: Text('Path')),
-                    DataColumn(label: Text('Status')),
+                  //  DataColumn(label: Text('Status')),
                     DataColumn(label: Text('Action')),
                   ],
                   rows: List.generate(
@@ -277,9 +278,9 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                         DataCell(
                           Text(pgm['filepath']),
                         ),
-                        DataCell(
-                          Text(pgm['status']),
-                        ),
+                        // DataCell(
+                        //   Text(pgm['status']),
+                        // ),
                         // DataCell(
                         //   TextButton(
                         //     style: TextButton.styleFrom(

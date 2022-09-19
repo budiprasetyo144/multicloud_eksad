@@ -240,6 +240,9 @@ class _SettingDashboardState extends State<SettingDashboard> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            const SizedBox(
+                              height: 20,
+                            ),
                             const Text(
                               "Site title",
                               style: TextStyle(
@@ -267,30 +270,30 @@ class _SettingDashboardState extends State<SettingDashboard> {
                             const SizedBox(
                               height: 20,
                             ),
-                            const Text(
-                              "Site tagline",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            // const Text(
+                            //   "Site tagline",
+                            //   style: TextStyle(
+                            //       color: Colors.black,
+                            //       fontSize: 17,
+                            //       fontWeight: FontWeight.bold),
+                            // ),
                             const SizedBox(
                               height: 7,
                             ),
-                            Container(
-                              height: 40,
-                              width: screenSize1 * 0.5,
-                              child: TextFormField(
-                                decoration: const InputDecoration(
-                                    labelText: "Cloud Partner with Eksad",
-                                    hintStyle: TextStyle(),
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            width: 1, color: Colors.grey))),
-                                onChanged: (value) => tl = value,
-                                enabled: enb,
-                              ),
-                            ),
+                            // Container(
+                            //   height: 40,
+                            //   width: screenSize1 * 0.5,
+                            //   child: TextFormField(
+                            //     decoration: const InputDecoration(
+                            //         labelText: "Cloud Partner with Eksad",
+                            //         hintStyle: TextStyle(),
+                            //         border: OutlineInputBorder(
+                            //             borderSide: BorderSide(
+                            //                 width: 1, color: Colors.grey))),
+                            //     onChanged: (value) => tl = value,
+                            //     enabled: enb,
+                            //   ),
+                            // ),
                             const SizedBox(
                               height: 10,
                             ),
