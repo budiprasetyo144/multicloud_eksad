@@ -20,7 +20,7 @@ class Home8_contact_us extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Container(
-      height: 455,
+      height: 470,
       width: screenSize.width,
       // color: Colors.blue,
       decoration: const BoxDecoration(
@@ -110,6 +110,7 @@ class Home8_contact_us extends StatelessWidget {
                         hintText: "Enter your Name",
                         fillColor: Colors.white,
                         filled: true,
+                        errorStyle: TextStyle(color: Colors.white),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.zero,
                           borderSide: BorderSide(width: 1, color: Colors.white),
@@ -119,6 +120,12 @@ class Home8_contact_us extends StatelessWidget {
                           borderSide: BorderSide(width: 1, color: Colors.white),
                         ),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   const SizedBox(
@@ -159,6 +166,7 @@ class Home8_contact_us extends StatelessWidget {
                             hintText: "Enter a valid phone number",
                             fillColor: Colors.white,
                             filled: true,
+                            errorStyle: TextStyle(color: Colors.white),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.zero,
                               borderSide:
@@ -170,6 +178,12 @@ class Home8_contact_us extends StatelessWidget {
                                   BorderSide(width: 1, color: Colors.white),
                             ),
                           ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your phone number';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const SizedBox(
@@ -183,6 +197,7 @@ class Home8_contact_us extends StatelessWidget {
                             hintText: "Enter a valid email address",
                             fillColor: Colors.white,
                             filled: true,
+                            errorStyle: TextStyle(color: Colors.white),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.zero,
                               borderSide:
@@ -194,6 +209,12 @@ class Home8_contact_us extends StatelessWidget {
                                   BorderSide(width: 1, color: Colors.white),
                             ),
                           ),
+                           validator: (value) {
+                            if (value == null || value.isEmpty || !value.isValidEmail()) {
+                              return 'Please enter your email address';
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       const SizedBox(
@@ -219,6 +240,7 @@ class Home8_contact_us extends StatelessWidget {
                         hintText: "Enter your message",
                         fillColor: Colors.white,
                         filled: true,
+                        errorStyle: TextStyle(color: Colors.white),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.zero,
                           borderSide: BorderSide(width: 1, color: Colors.white),
@@ -229,9 +251,9 @@ class Home8_contact_us extends StatelessWidget {
                         ),
                       ),
                       maxLines: 5,
-                      validator: (value) {
+                     validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return '*Required';
+                          return 'Please enter message';
                         }
                         return null;
                       },
@@ -327,5 +349,13 @@ class Home8_contact_us extends StatelessWidget {
           }
         }));
     return response.statusCode;
+  }
+}
+
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
   }
 }
