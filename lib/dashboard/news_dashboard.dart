@@ -20,6 +20,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
   String title = '';
   String news = '';
   String images = '';
+  String link = '';
   int id = 0;
   String selecttitle = '';
   String selectnews = '';
@@ -34,7 +35,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
     var screenSize = MediaQuery.of(context).size;
     return Container(
       width: screenSize.width,
-      padding: const EdgeInsets.only(left: 80, right: 80),
+      padding: const EdgeInsets.only(left: 40, right: 40),
       color: const Color.fromRGBO(238, 224, 224, 1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +45,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
             child: Row(
               children: [
                 Container(
-                  child: const Text("Post     ",
+                  child: const Text("News     ",
                       style: TextStyle(
                         fontSize: 20,
                       )),
@@ -126,6 +127,22 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                     onChanged: (value) => news = value,
                                   ),
                                 ),
+                                SizedBox(height: 25,),
+                                Container(
+                                  width: 230,
+                                  child: TextFormField(
+                                    textAlign: TextAlign.start,
+                                    maxLines: 1,
+                                    decoration: InputDecoration(
+                                      labelText: "Masukkan Link News",
+                                      hintStyle: const TextStyle(),
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(5.0)),
+                                    ),
+                                    onChanged: (value) => link = value,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -158,7 +175,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                   );
                                   print('Images Kosong');
                                 }
-                                createNews(title, news, images);
+                                createNews(title, news, images,link);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       content: Text('Data Saved')),
@@ -255,14 +272,16 @@ class _NewsDashboardState extends State<NewsDashboard> {
                     }
                     return DataTable(
                       decoration: const BoxDecoration(color: Colors.white),
-                      columnSpacing: 70,
+                     // columnSpacing: 70,
                       columns: const [
                         DataColumn(label: Text('Id')),
                         DataColumn(label: Text('Title')),
                         DataColumn(label: Text('News')),
                         DataColumn(label: Text('Images')),
+                        DataColumn(label: Text('Link')),
                         // DataColumn(label: Text('Status')),
                         DataColumn(label: Text('Action')),
+
                       ],
                       rows: List.generate(
                         snapshot.data.length,
@@ -280,6 +299,9 @@ class _NewsDashboardState extends State<NewsDashboard> {
                             ),
                             DataCell(
                               Text(pgm['image']),
+                            ),
+                            DataCell(
+                              Text(pgm['link']),
                             ),
                             // DataCell(
                             //   Text(pgm['status']),

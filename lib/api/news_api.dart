@@ -5,13 +5,15 @@ import 'package:http/http.dart' as http;
 var cmd = 'https://dmsdev-api.eksad.com/gateway/mcs/v1/cmd';
 var qry = 'https://dmsdev-api.eksad.com/gateway/mcs/v1/qry';
 
-Future<bool> createNews(title, news, image) async {
+Future<bool> createNews(title, news, image,link) async {
   final response = await http.post(
       Uri.parse('$cmd/post/savePost'),
       body: jsonEncode({
         "title": title,
         "news": news,
-        "image": image}),
+        "image": image,
+        "link": link
+      }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       });
