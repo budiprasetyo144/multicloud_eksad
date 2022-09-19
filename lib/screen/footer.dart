@@ -4,11 +4,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_cloudv3/api/setting_api.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../api/sosmed_api.dart';
+
 class Footer extends StatelessWidget {
-  const Footer({Key? key, required this.content1, required this.content2})
+  Footer({Key? key, required this.content1, required this.content2})
       : super(key: key);
   final Widget content1;
   final Widget content2;
+  String ln = '';
+  String tw = '';
+  String ig = '';
+  String yt = '';
 
   @override
   Widget build(BuildContext context) {
@@ -85,52 +91,72 @@ class Footer extends StatelessWidget {
                             width: screenSize.width * 0.14,
                             height: screenSize.height * 0.03,
                             //color: Colors.blue,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      _launchLinkedIn();
-                                    },
-                                    icon: const Icon(
-                                      FontAwesomeIcons.linkedinIn,
-                                      size: 25,
+                            child: FutureBuilder<List<dynamic>>(
+                              future: getSosmedDesc(),
+                              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                var pgm = snapshot.data[0];
+                                if (snapshot.hasError ||
+                                    snapshot.data == null ||
+                                    snapshot.connectionState == ConnectionState.waiting) {
+                                  return const CircularProgressIndicator();
+                                }
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    IconButton(
+                                        onPressed: () {
+                                          ln = pgm['linkedin'];
+                                          launch(ln);
+                                          // _launchLinkedIn();
+                                        },
+                                        icon: const Icon(
+                                          FontAwesomeIcons.linkedinIn,
+                                          size: 25,
+                                        ),
+                                        iconSize: 25,
+                                        color: Colors.black),
+                                    IconButton(
+                                      onPressed: () {
+                                        tw = pgm['twitter'];
+                                        launch(tw);
+                                        //_launchTwitter();
+                                      },
+                                      icon: const Icon(
+                                        FontAwesomeIcons.twitter,
+                                        size: 25,
+                                      ),
+                                      iconSize: 25,
+                                      color: Colors.black,
                                     ),
-                                    iconSize: 25,
-                                    color: Colors.black),
-                                IconButton(
-                                  onPressed: () {
-                                    _launchTwitter();
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.twitter,
-                                    size: 25,
-                                  ),
-                                  iconSize: 25,
-                                  color: Colors.black,
-                                ),
-                                IconButton(
-                                    onPressed: () {
-                                      _launchInstagram();
-                                    },
-                                    icon: const Icon(
-                                      FontAwesomeIcons.instagram,
-                                      size: 25,
-                                    ),
-                                    iconSize: 25,
-                                    color: Colors.black),
-                                IconButton(
-                                    onPressed: () {
-                                      _launchYoutube();
-                                    },
-                                    icon: const Icon(
-                                      FontAwesomeIcons.youtube,
-                                      size: 25,
-                                    ),
-                                    iconSize: 25,
-                                    color: Colors.black)
-                              ],
+                                    IconButton(
+                                        onPressed: () {
+                                          ig = pgm['instagram'];
+                                          launch(ig);
+                                         // _launchInstagram();
+                                        },
+                                        icon: const Icon(
+                                          FontAwesomeIcons.instagram,
+                                          size: 25,
+                                        ),
+                                        iconSize: 25,
+                                        color: Colors.black),
+                                    IconButton(
+                                        onPressed: () {
+                                          yt = pgm['youtube'];
+                                          launch(yt);
+                                        //  _launchYoutube();
+                                        },
+                                        icon: const Icon(
+                                          FontAwesomeIcons.youtube,
+                                          size: 25,
+                                        ),
+                                        iconSize: 25,
+                                        color: Colors.black)
+                                  ],
+                                );
+                              },
                             ),
+
                           ),
                           const Spacer(
                             flex: 8,
