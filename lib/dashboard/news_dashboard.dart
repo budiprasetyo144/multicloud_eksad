@@ -78,42 +78,47 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                   height: 20,
                                 ),
                                 //IconButton(onPressed: (){}, icon: Icon(Icons.add_photo_alternate_outlined,size: 30,)),
-                                Container(
-                                  width: 230,
-                                  child: TextFormField(
-                                    textAlign: TextAlign.start,
-                                    decoration: InputDecoration(
-                                      labelText: "Masukkan Code Image",
-                                      hintStyle: const TextStyle(),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0)),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 230,
+                                      child: TextFormField(
+                                        textAlign: TextAlign.start,
+                                        decoration: InputDecoration(
+                                          labelText: "Masukkan Code Image",
+                                          hintStyle: const TextStyle(),
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0)),
+                                        ),
+                                        onChanged: (value) => images = value,
+                                      ),
                                     ),
-                                    onChanged: (value) => images = value,
-                                  ),
+                                    const SizedBox(
+                                      width: 30,
+                                    ),
+                                    Container(
+                                      width: 230,
+                                      child: TextFormField(
+                                        textAlign: TextAlign.start,
+                                        decoration: InputDecoration(
+                                          labelText: "Masukkan Title",
+                                          hintStyle: const TextStyle(),
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                              BorderRadius.circular(5.0)),
+                                        ),
+                                        onChanged: (value) => title = value,
+                                      ),
+                                    ),
+                                  ],
                                 ),
+
                                 const SizedBox(
                                   height: 30,
                                 ),
                                 Container(
-                                  width: 230,
-                                  child: TextFormField(
-                                    textAlign: TextAlign.start,
-                                    decoration: InputDecoration(
-                                      labelText: "Masukkan Title",
-                                      hintStyle: const TextStyle(),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0)),
-                                    ),
-                                    onChanged: (value) => title = value,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                Container(
-                                  width: 230,
+                                  width: 490,
                                   child: TextFormField(
                                     textAlign: TextAlign.start,
                                     maxLines: 7,
@@ -129,7 +134,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                 ),
                                 SizedBox(height: 25,),
                                 Container(
-                                  width: 230,
+                                  width: 490,
                                   child: TextFormField(
                                     textAlign: TextAlign.start,
                                     maxLines: 1,
