@@ -17,11 +17,11 @@ class _ScrollUpButtonState extends State<ScrollUpButton> {
   void initState() {
     super.initState();
     widget.controller.addListener(() {
-      if (widget.controller.position.pixels > 20 && !_showScrollUp) {
+      if (widget.controller.position.pixels > 150 && !_showScrollUp) {
         setState(() {
           _showScrollUp = true;
         });
-      } else if (widget.controller.position.pixels < 20 && _showScrollUp) {
+      } else if (widget.controller.position.pixels < 150 && _showScrollUp) {
         setState(() {
           _showScrollUp = false;
         });
