@@ -15,12 +15,8 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
   var enb = true;
   final formKey = GlobalKey<FormState>();
 
-  TextEditingController waController = new TextEditingController();
- // final waController = TextEditingController();
-  final linkedController = TextEditingController();
-  final twitterController = TextEditingController();
-  final igController = TextEditingController();
-  final youtubeController = TextEditingController();
+  //TextEditingController waController = new TextEditingController();
+
 
   String wa = '';
   String ln = '';
@@ -123,192 +119,162 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                 // endIndent: 0,
                 color: Colors.grey,
               ),
+              Text('Data Must Be Edited'),
+              Text('For data that is not modified, can copy last data , delete then paste again'),
               SizedBox(
                 height: 25,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  listsosmed(
-                      Icon(
-                        Icons.whatsapp,
-                        color: Colors.green,
-                      ),
-                      TextFormField(
-                        controller: waController,
-                        decoration: InputDecoration(
-                            hintText:
+              FutureBuilder<List<dynamic>>(
+                future: getSosmedDesc(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  var pgm = snapshot.data[0];
+                  final waController = TextEditingController();
+                  final linkedController = TextEditingController();
+                  final twitterController = TextEditingController();
+                  final igController = TextEditingController();
+                  final youtubeController = TextEditingController();
+                  if (snapshot.hasError ||
+                      snapshot.data == null ||
+                      snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      listsosmed(
+                          Icon(
+                            Icons.whatsapp,
+                            color: Colors.green,
+                          ),
+                          TextFormField(
+                            //controller: waController,
+                            initialValue: pgm['whatsapp'],
+                            decoration: InputDecoration(
+                                hintText:
                                 'Enter WhatsApp number without +,   Ex : 6280000000000 '),
-                        onChanged: (value) => wa = value,
-                        enabled: enb,
+                            onChanged: (value) => wa = value,
+                            enabled: enb,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context)=>
+                                      AlertDialog(
+                                        content:Text('Active WA : '+pgm['whatsapp'])
+                                      ) ,
+                                );
+                              }, child: Text('View Active'))),
+                      SizedBox(
+                        height: 10,
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                                context: context, 
-                                builder: (BuildContext context)=>
-                                    AlertDialog(
-                                      content:FutureBuilder<List<dynamic>>(
-                                        future: getSosmedDesc(),
-                                        builder: (BuildContext context, AsyncSnapshot snapshot) {
-                                          var pgm = snapshot.data[0];
-                                          if (snapshot.hasError ||
-                                              snapshot.data == null ||
-                                              snapshot.connectionState == ConnectionState.waiting) {
-                                            return const CircularProgressIndicator();
-                                          }
-                                          return Text('Active WA : '+pgm['whatsapp']);
-                                        },
-                                      ),
-                                    ) ,
-                            );
-                          }, child: Text('View Active'))),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  listsosmed(
-                      Icon(
-                        FontAwesomeIcons.linkedin,
-                        color: Colors.blue,
+                      listsosmed(
+                          Icon(
+                            FontAwesomeIcons.linkedin,
+                            color: Colors.blue,
+                          ),
+                          TextFormField(
+                            //controller: linkedController,
+                            initialValue: pgm['linkedin'],
+                            decoration: InputDecoration(
+                                hintText: 'Enter a new Linkedin link address'),
+                            onChanged: (value) => ln = value,
+                            enabled: enb,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context)=>
+                                      AlertDialog(
+                                        content:Text('Active Linkedin : '+pgm['linkedin'])
+                                      ) ,
+                                );
+                              }, child: Text('View Active'))),
+                      SizedBox(
+                        height: 10,
                       ),
-                      TextFormField(
-                        controller: linkedController,
-                        decoration: InputDecoration(
-                            hintText: 'Enter a new Linkedin link address'),
-                        onChanged: (value) => ln = value,
-                        enabled: enb,
+                      listsosmed(
+                          Icon(
+                            FontAwesomeIcons.twitterSquare,
+                            color: Colors.blueAccent,
+                          ),
+
+                          TextFormField(
+                            //controller: twitterController,
+                            initialValue: pgm['twitter'],
+                            decoration: InputDecoration(
+                                hintText: 'Enter a new Twitter link address'),
+                            onChanged: (value) => tw = value,
+                            enabled: enb,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context)=>
+                                      AlertDialog(
+                                        content:Text('Active Twitter : '+pgm['twitter'])
+                                      ) ,
+                                );
+                              }, child: Text('View Active'))),
+                      SizedBox(
+                        height: 10,
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context)=>
-                                  AlertDialog(
-                                    content:FutureBuilder<List<dynamic>>(
-                                      future: getSosmedDesc(),
-                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                                        var pgm = snapshot.data[0];
-                                        if (snapshot.hasError ||
-                                            snapshot.data == null ||
-                                            snapshot.connectionState == ConnectionState.waiting) {
-                                          return const CircularProgressIndicator();
-                                        }
-                                        return Text('Active Linkedin : '+pgm['linkedin']);
-                                      },
-                                    ),
-                                  ) ,
-                            );
-                          }, child: Text('View Active'))),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  listsosmed(
-                      Icon(
-                        FontAwesomeIcons.twitterSquare,
-                        color: Colors.blueAccent,
+                      listsosmed(
+                          Icon(
+                            FontAwesomeIcons.instagramSquare,
+                            color: Colors.pink,
+                          ),
+                          TextFormField(
+                            //controller: igController,
+                            initialValue: pgm['instagram'],
+                            decoration: InputDecoration(
+                                hintText: 'Enter a new Instagram link address'),
+                            onChanged: (value) => ig = value,
+                            enabled: enb,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context)=>
+                                      AlertDialog(
+                                        content:Text('Active Instagram : '+pgm['instagram'])
+                                      ) ,
+                                );
+                              }, child: Text('View Active'))),
+                      SizedBox(
+                        height: 10,
                       ),
-                      TextFormField(
-                        controller: twitterController,
-                        decoration: InputDecoration(
-                            hintText: 'Enter a new Twitter link address'),
-                        onChanged: (value) => tw = value,
-                        enabled: enb,
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context)=>
-                                  AlertDialog(
-                                    content:FutureBuilder<List<dynamic>>(
-                                      future: getSosmedDesc(),
-                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                                        var pgm = snapshot.data[0];
-                                        if (snapshot.hasError ||
-                                            snapshot.data == null ||
-                                            snapshot.connectionState == ConnectionState.waiting) {
-                                          return const CircularProgressIndicator();
-                                        }
-                                        return Text('Active Twitter : '+pgm['twitter']);
-                                      },
-                                    ),
-                                  ) ,
-                            );
-                          }, child: Text('View Active'))),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  listsosmed(
-                      Icon(
-                        FontAwesomeIcons.instagramSquare,
-                        color: Colors.pink,
-                      ),
-                      TextFormField(
-                        controller: igController,
-                        decoration: InputDecoration(
-                            hintText: 'Enter a new Instagram link address'),
-                        onChanged: (value) => ig = value,
-                        enabled: enb,
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context)=>
-                                  AlertDialog(
-                                    content:FutureBuilder<List<dynamic>>(
-                                      future: getSosmedDesc(),
-                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                                        var pgm = snapshot.data[0];
-                                        if (snapshot.hasError ||
-                                            snapshot.data == null ||
-                                            snapshot.connectionState == ConnectionState.waiting) {
-                                          return const CircularProgressIndicator();
-                                        }
-                                        return Text('Active Instagram : '+pgm['instagram']);
-                                      },
-                                    ),
-                                  ) ,
-                            );
-                          }, child: Text('View Active'))),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  listsosmed(
-                      Icon(
-                        FontAwesomeIcons.youtube,
-                        color: Colors.red,
-                      ),
-                      TextFormField(
-                        controller: youtubeController,
-                        decoration: InputDecoration(
-                            hintText: 'Enter a new Youtube link address'),
-                        onChanged: (value) => yt = value,
-                        enabled: enb,
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context)=>
-                                  AlertDialog(
-                                    content:FutureBuilder<List<dynamic>>(
-                                      future: getSosmedDesc(),
-                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                                        var pgm = snapshot.data[0];
-                                        if (snapshot.hasError ||
-                                            snapshot.data == null ||
-                                            snapshot.connectionState == ConnectionState.waiting) {
-                                          return const CircularProgressIndicator();
-                                        }
-                                        return Text('Active Youtube : '+pgm['youtube']);
-                                      },
-                                    ),
-                                  ) ,
-                            );
-                          }, child: Text('View Active'))),
-                ],
+                      listsosmed(
+                          Icon(
+                            FontAwesomeIcons.youtube,
+                            color: Colors.red,
+                          ),
+                          TextFormField(
+                           // controller: youtubeController,
+                            initialValue: pgm['youtube'],
+                            decoration: InputDecoration(
+                                hintText: 'Enter a new Youtube link address'),
+                            onChanged: (value) => yt = value,
+                            enabled: enb,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context)=>
+                                      AlertDialog(
+                                        content:Text('Active Youtube : '+pgm['youtube'])
+                                      ) ,
+                                );
+                              }, child: Text('View Active'))),
+                    ],
+                  );
+                },
               ),
+
             ],
           ),
         ),
