@@ -382,7 +382,7 @@ class _EmailAPIState extends State<EmailAPI> {
           return const CircularProgressIndicator();
         }
         return Container(
-          width: screenSize.width * 0.2,
+          width: screenSize.width * 0.22,
           child: ListTile(
             leading: const Icon(
               Icons.mail,

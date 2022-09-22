@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_sidemenu/easy_sidemenu.dart';
+import 'package:multi_cloudv3/dashboard/contact_dashboard.dart';
 import 'package:multi_cloudv3/dashboard/main_dashboard.dart';
 import 'package:multi_cloudv3/dashboard/news_dashboard.dart';
 import 'package:multi_cloudv3/dashboard/ourpartner_dashboard.dart';
@@ -162,6 +163,14 @@ class _DashboardAdminState extends State<DashboardAdmin> {
                 },
                 icon: const Icon(Icons.phone_android),
               ),
+              SideMenuItem(
+                priority: 6,
+                title: 'Contact List',
+                onTap: () {
+                  page.jumpToPage(6);
+                },
+                icon: const Icon(Icons.contact_mail),
+              ),
 
             ],
           ),
@@ -175,6 +184,7 @@ class _DashboardAdminState extends State<DashboardAdmin> {
                 const NewsDashboard(),
                 const OurpartnerDashboard(),
                 const SosmedDashboard(),
+                const ContactDashboard(),
               ],
             ),
           ),
