@@ -16,6 +16,8 @@ class Home8_contact_us extends StatelessWidget {
   final emailController = TextEditingController();
   final messageController = TextEditingController();
 
+  String pattern = r'(\+62|62|0)(\d{2,3})?\)?[ .-]?\d{2,4}[ .-]?\d{2,4}[ .-]?\d{2,4}';
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -85,7 +87,7 @@ class Home8_contact_us extends StatelessWidget {
           const Spacer(),
           Container(
             padding: const EdgeInsets.all(10),
-            height: screenSize.height * 0.75,
+            height: screenSize.height * 0.77,
             width: screenSize.width * 0.45,
             child: Form(
               key: _formKey,
@@ -181,6 +183,8 @@ class Home8_contact_us extends StatelessWidget {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your phone number';
+                            }else if(!RegExp(pattern).hasMatch(value)){
+                              return 'Start with 628 or 08';
                             }
                             return null;
                           },
