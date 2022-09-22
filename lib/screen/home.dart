@@ -18,6 +18,7 @@ import 'package:multi_cloudv3/screen_small/small_home5.dart';
 import 'package:multi_cloudv3/screen_small/small_home6.dart';
 import 'package:multi_cloudv3/screen_small/small_home7.dart';
 import 'package:multi_cloudv3/screen_small/small_home8.dart';
+import 'package:multi_cloudv3/widget/Scroll_top.dart';
 import 'package:multi_cloudv3/widget/whatsapp.dart';
 import '../api/setting_api.dart';
 import '../widget/responsive.dart';
@@ -106,42 +107,52 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: WAChat(),
       drawer: _drawerWidget(),
       body: ResponsiveWidget.isSmallScreen(context)
-          ? ListView(
-              scrollDirection: Axis.vertical,
-              controller: controller2,
-              children: [
-                SmallHome(wijet: Button_scroll_small()),
-                const SmallHome2(),
-                const SmallHome3_partner(),
-                SmallHome4_solution(screenSize: screenSize),
-                const SmallHome5_industry(),
-                const SmallHome6_advantages(),
-                const SmallHome7_news(),
-                SmallHome8_contact_us(),
-                SmallFooter(
-                  content1: kontenkecil1(screenSize),
-                  content2: kontenkecil2(screenSize),
+          ? Stack(
+            children: [
+              ListView(
+                  scrollDirection: Axis.vertical,
+                  controller: controller2,
+                  children: [
+                    SmallHome(wijet: Button_scroll_small()),
+                    const SmallHome2(),
+                    const SmallHome3_partner(),
+                    SmallHome4_solution(screenSize: screenSize),
+                    const SmallHome5_industry(),
+                    const SmallHome6_advantages(),
+                    const SmallHome7_news(),
+                    SmallHome8_contact_us(),
+                    SmallFooter(
+                      content1: kontenkecil1(screenSize),
+                      content2: kontenkecil2(screenSize),
+                    ),
+                  ],
                 ),
-              ],
-            )
-          : ListView(
-              scrollDirection: Axis.vertical,
-              controller: controller2,
-              children: [
-                Home(wijet: Button_scroll()),
-                const Home2(),
-                const Home3_partner(),
-                Home4_solution(screenSize: screenSize),
-                const Home5_industry(),
-                const Home6_advantages(),
-                const Home7_news(),
-                Home8_contact_us(),
-                Footer(
-                  content1: konten1(screenSize),
-                  content2: konten2(screenSize),
+              ScrollUpButton(controller2),
+            ],
+          )
+          : Stack(
+            children: [
+              ListView(
+                  scrollDirection: Axis.vertical,
+                  controller: controller2,
+                  children: [
+                    Home(wijet: Button_scroll()),
+                    const Home2(),
+                    const Home3_partner(),
+                    Home4_solution(screenSize: screenSize),
+                    const Home5_industry(),
+                    const Home6_advantages(),
+                    const Home7_news(),
+                    Home8_contact_us(),
+                    Footer(
+                      content1: konten1(screenSize),
+                      content2: konten2(screenSize),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ScrollUpButton(controller2),
+            ],
+          ),
     );
   }
 
