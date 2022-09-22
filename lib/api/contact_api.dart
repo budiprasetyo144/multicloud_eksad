@@ -10,6 +10,11 @@ Future<List<dynamic>> getcontact() async {
   return jsonDecode(response.body)['data'];
 }
 
+Future<List<dynamic>> getcontactDesc() async {
+  var response = await http.get(Uri.parse('$qry/contact/getContactByDate'));
+  return jsonDecode(response.body)['data'];
+}
+
 Future<bool> savecontact(nama, email, nohp, message) async {
   final response = await http.post(
       Uri.parse('$cmd/contact/save'),

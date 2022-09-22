@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_cloudv3/api/contact_api.dart';
 
+
 class ContactDashboard extends StatefulWidget {
   const ContactDashboard({Key? key}) : super(key: key);
 
@@ -80,7 +81,7 @@ class _ContactDashboardState extends State<ContactDashboard> {
                 controller: ScrollController(),
                 children: [
                   FutureBuilder<List<dynamic>>(
-                    future: getcontact(),
+                    future: getcontactDesc(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (snapshot.hasError ||
                           snapshot.data == null ||
