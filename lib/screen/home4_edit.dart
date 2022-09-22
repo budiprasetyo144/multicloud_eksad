@@ -31,7 +31,7 @@ class Home4_solution extends StatelessWidget {
                     fontWeight: FontWeight.bold)),
           ),
           const SizedBox(
-            height: 20,
+            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +50,7 @@ class Home4_solution extends StatelessWidget {
                         direction: Direction.horizontal,
                         offset: -0.2,
                         child: Image.asset(
-                          "assets/icons/icon1.png",
+                          "assets/icons/mcs1.png",
                           height: screenSize.height * 0.1,
                         ),
                       ),
@@ -107,7 +107,7 @@ class Home4_solution extends StatelessWidget {
                         direction: Direction.horizontal,
                         offset: -0.2,
                         child: Image.asset(
-                          "assets/icons/icon2.png",
+                          "assets/icons/mcs.png",
                           height: screenSize.height * 0.1,
                         ),
                       ),
@@ -164,7 +164,7 @@ class Home4_solution extends StatelessWidget {
                         direction: Direction.horizontal,
                         offset: -0.2,
                         child: Image.asset(
-                          "assets/icons/icon3.png",
+                          "assets/icons/mcs2.png",
                           height: screenSize.height * 0.1,
                         ),
                       ),
@@ -221,7 +221,7 @@ class Home4_solution extends StatelessWidget {
                         direction: Direction.horizontal,
                         offset: -0.2,
                         child: Image.asset(
-                          "assets/icons/icon4.png",
+                          "assets/icons/mcs3.png",
                           height: screenSize.height * 0.1,
                         ),
                       ),

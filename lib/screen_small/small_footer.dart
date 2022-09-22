@@ -29,12 +29,12 @@ class SmallFooter extends StatelessWidget {
                 child: Container(
                     padding: const EdgeInsets.only(left: 5),
                     width: screenSize.width,
-                    height: screenSize.height * 0.2,
+                    height: screenSize.height * 0.232,
                     child: Column(
                       children: [
                         Container(
-                          width: screenSize.width * 0.26,
-                          height: screenSize.height * 0.08,
+                          width: 110,
+                          height: 50,
                           decoration: const BoxDecoration(
                             //color: Colors.lightBlueAccent,
                               image: DecorationImage(
@@ -44,8 +44,8 @@ class SmallFooter extends StatelessWidget {
                         ),
                         SizedBox(height: 5,),
                         Container(
-                          width: screenSize.width * 0.35,
-                          height: screenSize.height * 0.08,
+                          width: 110,
+                          height: 40,
                           decoration: const BoxDecoration(
                             //color: Colors.lightBlueAccent,
                               image: DecorationImage(

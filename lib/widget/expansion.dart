@@ -11,7 +11,7 @@ class Expansionpaneltate extends State<Expansionpanel> {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ExpansionPanelList.radio(
-          initialOpenPanelValue: 'Financial Services',
+          initialOpenPanelValue: 'Non Financial Services',
           expansionCallback: (int index, bool isExpanded) {
             setState(() {
               items[index].isExpanded = isExpanded;
