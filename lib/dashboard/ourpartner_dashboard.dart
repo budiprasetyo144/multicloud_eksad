@@ -133,11 +133,11 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                     (isSuccess) {
                                       if (isSuccess) {
                                         setState(() {});
-                                        Scaffold.of(this.context).showSnackBar(
+                                        ScaffoldMessenger.of(this.context).showSnackBar(
                                             const SnackBar(
                                                 content: Text("Data success")));
                                       } else {
-                                        Scaffold.of(this.context).showSnackBar(
+                                        ScaffoldMessenger.of(this.context).showSnackBar(
                                             const SnackBar(
                                                 content:
                                                     Text("Data failed!!!")));
@@ -497,7 +497,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                                 (isSuccess) {
                                                   if (isSuccess) {
                                                     setState(() {});
-                                                    Scaffold.of(this.context)
+                                                    ScaffoldMessenger.of(this.context)
                                                         .showSnackBar(
                                                       const SnackBar(
                                                         content: Text(
@@ -505,7 +505,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                                       ),
                                                     );
                                                   } else {
-                                                    Scaffold.of(this.context)
+                                                    ScaffoldMessenger.of(this.context)
                                                         .showSnackBar(
                                                       const SnackBar(
                                                         content: Text(
@@ -561,12 +561,12 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                                   .then((isSuccess) {
                                                 if (isSuccess) {
                                                   setState(() {});
-                                                  Scaffold.of(this.context)
+                                                  ScaffoldMessenger.of(this.context)
                                                       .showSnackBar(const SnackBar(
                                                           content: Text(
                                                               "Delete data success")));
                                                 } else {
-                                                  Scaffold.of(this.context)
+                                                  ScaffoldMessenger.of(this.context)
                                                       .showSnackBar(const SnackBar(
                                                           content: Text(
                                                               "Delete data failed")));

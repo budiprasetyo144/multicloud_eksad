@@ -462,7 +462,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                                     (isSuccess) {
                                                       if (isSuccess) {
                                                         setState(() {});
-                                                        Scaffold.of(
+                                                        ScaffoldMessenger.of(
                                                                 this.context)
                                                             .showSnackBar(
                                                           const SnackBar(
@@ -471,7 +471,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                                           ),
                                                         );
                                                       } else {
-                                                        Scaffold.of(
+                                                        ScaffoldMessenger.of(
                                                                 this.context)
                                                             .showSnackBar(
                                                           const SnackBar(
@@ -539,13 +539,13 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                                       .then((isSuccess) {
                                                     if (isSuccess) {
                                                       setState(() {});
-                                                      Scaffold.of(this.context)
+                                                      ScaffoldMessenger.of(this.context)
                                                           .showSnackBar(
                                                               const SnackBar(
                                                                   content: Text(
                                                                       "Delete data success")));
                                                     } else {
-                                                      Scaffold.of(this.context)
+                                                      ScaffoldMessenger.of(this.context)
                                                           .showSnackBar(
                                                               const SnackBar(
                                                                   content: Text(
