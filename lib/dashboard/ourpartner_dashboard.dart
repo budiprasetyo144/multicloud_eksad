@@ -49,7 +49,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                       showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          title: const Center(child: Text('ADD NEW PARTNER')),
+                          title: ListTile(leading: Icon(Icons.person_add),title: Text('Add New Partner'),),
                           content: Form(
                             key: formKey,
                             child: Column(

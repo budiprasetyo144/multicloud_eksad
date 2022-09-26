@@ -16,6 +16,11 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
   final formKey = GlobalKey<FormState>();
 
   //TextEditingController waController = new TextEditingController();
+  final waController = TextEditingController();
+  final linkedController = TextEditingController();
+  final twitterController = TextEditingController();
+  final igController = TextEditingController();
+  final youtubeController = TextEditingController();
 
 
   String wa = '';
@@ -24,6 +29,8 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
   String ig = '';
   String yt = '';
 
+  String pattern = r'(\62)(\d{2,3})?\)?[ .-]?\d{2,4}[ .-]?\d{2,4}[ .-]?\d{2,4}';
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -31,7 +38,7 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
       color: const Color.fromRGBO(238, 224, 224, 1),
       padding: EdgeInsets.symmetric(
           horizontal: screenSize.width * 0.05,
-          vertical: screenSize.height * 0.05),
+          vertical: screenSize.height * 0.04),
       child: Container(
         width: screenSize.width,
         height: screenSize.height * 0.8,
@@ -58,14 +65,32 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                       ),
                       primary: const Color.fromARGB(255, 0, 67, 192),
                     ),
-                    onPressed: () {
-                      switch (btnText) {
+                    onPressed: () async {
+                      switch (btnText)  {
                         case 'Save Setting':
 
-                          createSosmed(wa, ln, tw, ig, yt);
-                          {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Data Success'),));
+                          if (formKey.currentState!.validate()) {
+                            await updateSosmed(wa, ln, tw, ig, yt);
+                            await createSosmed(wa, ln, tw, ig, yt);
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+
+                                const SnackBar(
+                                  content: Text('Data Saved'),
+                                  backgroundColor: Colors.green)
+
+                            );
+                          }else if(formKey.currentState!.validate()){}
+                          else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+
+                                const SnackBar(
+                                    content: Text('Failed to save data, please edit all field'),
+                                    backgroundColor: Colors.red)
+
+                            );
                           }
+
                           // waController.clear();
                           // linkedController.clear();
                           // twitterController.clear();
@@ -92,16 +117,10 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                           });
                           break;
                         case 'Save Update':
-                          createSosmed(wa, ln, tw, ig, yt);
-                          {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Data Success'),));
-                          }
+
                           break;
                         default:
-                          createSosmed(wa, ln, tw, ig, yt);
-                          {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Data Success'),));
-                          }
+
                       }
                     },
                     child: Text(
@@ -120,19 +139,15 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                 color: Colors.grey,
               ),
               Text('Data Must Be Edited'),
-              Text('For data that is not modified, can copy last data , delete then paste again'),
+              Text('For data that is not modified, Please copy last data , delete then paste again'),
               SizedBox(
-                height: 25,
+                height: 10,
               ),
               FutureBuilder<List<dynamic>>(
                 future: getSosmedDesc(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   var pgm = snapshot.data[0];
-                  final waController = TextEditingController();
-                  final linkedController = TextEditingController();
-                  final twitterController = TextEditingController();
-                  final igController = TextEditingController();
-                  final youtubeController = TextEditingController();
+
                   if (snapshot.hasError ||
                       snapshot.data == null ||
                       snapshot.connectionState == ConnectionState.waiting) {
@@ -147,13 +162,27 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                             color: Colors.green,
                           ),
                           TextFormField(
-                            //controller: waController,
-                            initialValue: pgm['whatsapp'],
+                            controller: waController..text = pgm['whatsapp'],
+
+                            //initialValue: pgm['whatsapp'],
+
                             decoration: InputDecoration(
+                                errorStyle: TextStyle(color: Colors.red),
                                 hintText:
-                                'Enter WhatsApp number without +,   Ex : 6280000000000 '),
+                                'Enter WhatsApp number without +,   Ex : 6280000000000 ',
+                              helperText: 'Enter WhatsApp number without +,   Ex : 6280000000000 ',
+                            ),
+
                             onChanged: (value) => wa = value,
                             enabled: enb,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your phone number';
+                              }else if(!RegExp(pattern).hasMatch(value)){
+                                return 'Please enter with 628 only';
+                              }
+                              return null;
+                            },
                           ),
                           ElevatedButton(
                               onPressed: () {
@@ -174,12 +203,19 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                             color: Colors.blue,
                           ),
                           TextFormField(
-                            //controller: linkedController,
-                            initialValue: pgm['linkedin'],
+                            controller: linkedController..text = pgm['linkedin'],
+                            //initialValue: pgm['linkedin'],
                             decoration: InputDecoration(
+                                errorStyle: TextStyle(color: Colors.red),
                                 hintText: 'Enter a new Linkedin link address'),
                             onChanged: (value) => ln = value,
                             enabled: enb,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter linkedin link';
+                              }
+                              return null;
+                            },
                           ),
                           ElevatedButton(
                               onPressed: () {
@@ -201,12 +237,19 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                           ),
 
                           TextFormField(
-                            //controller: twitterController,
-                            initialValue: pgm['twitter'],
+                            controller: twitterController..text = pgm['twitter'],
+                            //initialValue: pgm['twitter'],
                             decoration: InputDecoration(
+                                errorStyle: TextStyle(color: Colors.red),
                                 hintText: 'Enter a new Twitter link address'),
                             onChanged: (value) => tw = value,
                             enabled: enb,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter twitter link';
+                              }
+                              return null;
+                            },
                           ),
                           ElevatedButton(
                               onPressed: () {
@@ -227,12 +270,19 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                             color: Colors.pink,
                           ),
                           TextFormField(
-                            //controller: igController,
-                            initialValue: pgm['instagram'],
+                            controller: igController..text = pgm['instagram'],
+                           // initialValue: pgm['instagram'],
                             decoration: InputDecoration(
+                                errorStyle: TextStyle(color: Colors.red),
                                 hintText: 'Enter a new Instagram link address'),
                             onChanged: (value) => ig = value,
                             enabled: enb,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter instagram link';
+                              }
+                              return null;
+                            },
                           ),
                           ElevatedButton(
                               onPressed: () {
@@ -253,12 +303,19 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                             color: Colors.red,
                           ),
                           TextFormField(
-                           // controller: youtubeController,
-                            initialValue: pgm['youtube'],
+                           controller: youtubeController..text =  pgm['youtube'],
+                            //initialValue: pgm['youtube'],
                             decoration: InputDecoration(
+                                errorStyle: TextStyle(color: Colors.red),
                                 hintText: 'Enter a new Youtube link address'),
                             onChanged: (value) => yt = value,
                             enabled: enb,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter youtube link';
+                              }
+                              return null;
+                            },
                           ),
                           ElevatedButton(
                               onPressed: () {
