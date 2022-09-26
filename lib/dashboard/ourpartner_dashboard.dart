@@ -14,8 +14,9 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
   String nm = '';
   String pt = '';
   String ulahfahrur ='';
+  String link ='';
   int selectedIndex = 0;
-  int id = 0;
+  String id = '';
   String selectname = '';
   String selectpath = '';
   TextEditingController _controllerName = TextEditingController();
@@ -57,11 +58,11 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                               verticalDirection: VerticalDirection.down,
                               children: [
                                 Container(
-                                  width: 200,
+                                  width: 250,
                                   child: TextFormField(
                                     textAlign: TextAlign.start,
                                     decoration: InputDecoration(
-                                      labelText: "Masukkan Nama",
+                                      labelText: "Input Name",
                                       hintStyle: const TextStyle(),
                                       border: OutlineInputBorder(
                                           borderRadius:
@@ -71,15 +72,15 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 40,
+                                  height: 20,
                                 ),
                                 Container(
-                                  width: 200,
+                                  width: 250,
                                   child: TextFormField(
                                     textAlign: TextAlign.start,
-                                    maxLines: 7,
+                                    //maxLines: 2,
                                     decoration: InputDecoration(
-                                      labelText: "Masukkan Keterangan",
+                                      labelText: "Input Path Image",
                                       hintStyle: const TextStyle(),
                                       border: OutlineInputBorder(
                                           borderRadius:
@@ -88,27 +89,29 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                     onChanged: (value) => pt = value,
                                   ),
                                 ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Container(
+                                  width: 250,
+                                  child: TextFormField(
+                                    textAlign: TextAlign.start,
+                                    decoration: InputDecoration(
+                                      labelText: "Input Link",
+                                      hintStyle: const TextStyle(),
+                                      border: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(5.0)),
+                                    ),
+                                    onChanged: (value) => link = value,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
                           actions: <Widget>[
-                            TextButton(
-                              // onPressed: () {
-                              //   if (nm.trim().isEmpty && nm == null) {
-                              //     print('Nama Page Kosong');
-                              //   } else if (pt.trim().isEmpty && pt == null) {
-                              //     print('Isi page kosong');
-                              //   }
+                            ElevatedButton(
 
-                              //   print(nm + '\n' + pt);
-                              //   PartnerApi().createPartner(nm, pt);
-                              //   print('Data Tersimpan');
-                              //   Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //       builder: (context) => const Dashboard(),
-                              //     ),
-                              //   );
                               onPressed: () {
                                 Navigator.pop(context);
 
@@ -129,7 +132,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                         content: Text('Name Can\'t Be Empty')),
                                   );
                                 } else {
-                                  createPartner(ulahfahrur,nm, pt).then(
+                                  createPartner(ulahfahrur,nm, pt,link).then(
                                     (isSuccess) {
                                       if (isSuccess) {
                                         setState(() {});
@@ -218,7 +221,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
             ),
           ),
           SizedBox(
-            height: 50,
+            height: 10,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -242,9 +245,9 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
           //     Text("3 items"),
           //   ],
           // ),
-          const SizedBox(
-            height: 10,
-          ),
+          // const SizedBox(
+          //   height: 10,
+          // ),
           Container(
             child: FutureBuilder<List<dynamic>>(
               future: getPartner(),
@@ -261,6 +264,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                     DataColumn(label: Text('Id')),
                     DataColumn(label: Text('Name')),
                     DataColumn(label: Text('Path')),
+                   // DataColumn(label: Text('Link')),
                   //  DataColumn(label: Text('Status')),
                     DataColumn(label: Text('Action')),
                   ],
@@ -270,7 +274,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                       var pgm = snapshot.data[index];
                       return DataRow(cells: [
                         DataCell(
-                          Text(pgm['partnerId'].toString()),
+                          Text(pgm['partnerId']),
                         ),
                         DataCell(
                           Text(pgm['filename']),
@@ -279,61 +283,10 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                           Text(pgm['filepath']),
                         ),
                         // DataCell(
-                        //   Text(pgm['status']),
+                        //   Text(pgm['link']),
                         // ),
-                        // DataCell(
-                        //   TextButton(
-                        //     style: TextButton.styleFrom(
-                        //       padding: const EdgeInsets.all(16.0),
-                        //       primary: Colors.black,
-                        //       backgroundColor: Color.fromARGB(255, 245, 27, 27),
-                        //       textStyle: const TextStyle(fontSize: 15),
-                        //     ),
-                        //     onPressed: () {
-                        //       showDialog(
-                        //         context: context,
-                        //         builder: (context) {
-                        //           return AlertDialog(
-                        //             title: Text("Warning"),
-                        //             content: Text(
-                        //                 "Are you sure want to delete data partner ${pgm['filename']}?"),
-                        //             actions: <Widget>[
-                        //               TextButton(
-                        //                 child: Text("Yes"),
-                        //                 onPressed: () {
-                        //                   Navigator.pop(context);
-                        //                   PartnerApi()
-                        //                       .deletePartner(pgm['partnerId'])
-                        //                       .then((isSuccess) {
-                        //                     if (isSuccess) {
-                        //                       setState(() {});
-                        //                       Scaffold.of(this.context)
-                        //                           .showSnackBar(SnackBar(
-                        //                               content: Text(
-                        //                                   "Delete data success")));
-                        //                     } else {
-                        //                       Scaffold.of(this.context)
-                        //                           .showSnackBar(SnackBar(
-                        //                               content: Text(
-                        //                                   "Delete data failed")));
-                        //                     }
-                        //                   });
-                        //                 },
-                        //               ),
-                        //               TextButton(
-                        //                 child: Text("No"),
-                        //                 onPressed: () {
-                        //                   Navigator.pop(context);
-                        //                 },
-                        //               ),
-                        //             ],
-                        //           );
-                        //         },
-                        //       );
-                        //     },
-                        //     child: const Text("Delete"),
-                        //   ),
-                        // ),
+
+
                         DataCell(
                           Row(
                             children: [
@@ -373,24 +326,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                           verticalDirection:
                                               VerticalDirection.down,
                                           children: [
-                                            // Container(
-                                            //   width: 200,
-                                            //   child: TextFormField(
-                                            //     controller: _controllerId,
-                                            //     textAlign: TextAlign.start,
-                                            //     decoration: InputDecoration(
-                                            //       labelText: "Masukkan ID News",
-                                            //       hintStyle: TextStyle(),
-                                            //       border: OutlineInputBorder(
-                                            //           borderRadius:
-                                            //           BorderRadius
-                                            //               .circular(5.0)),
-                                            //     ),
-                                            //
-                                            //     onChanged: (value) =>
-                                            //     id = int.parse(value),
-                                            //   ),
-                                            // ),
+
                                             const SizedBox(
                                               height: 10,
                                             ),
@@ -551,7 +487,7 @@ class _OurpartnerDashboardState extends State<OurpartnerDashboard> {
                                       return AlertDialog(
                                         title: const Text("Warning"),
                                         content: Text(
-                                            "Are you sure want to delete data partner ${pgm['title']}?"),
+                                            "Are you sure want to delete data partner ${pgm['partnerId']}?"),
                                         actions: <Widget>[
                                           TextButton(
                                             child: const Text("Yes"),

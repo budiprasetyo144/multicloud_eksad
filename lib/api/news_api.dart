@@ -48,8 +48,9 @@ Future<List<dynamic>> getNews() async {
 }
 
 Future<bool> deleteNews(id) async {
-  final response = await http.delete(
-    Uri.parse('$cmd/post/deletePost/$id'),
+  final response = await http.post(
+    Uri.parse('$cmd/post/updatePost'),
+    body: jsonEncode({"idnews": id,}),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },

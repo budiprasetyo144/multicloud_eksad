@@ -47,9 +47,11 @@ class _ScrollUpButtonState extends State<ScrollUpButton> {
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeIn),
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.grey[100]),
+            fixedSize: MaterialStateProperty.all(Size(30, 30)),
+              backgroundColor: MaterialStateProperty.all(Colors.grey[50]),
               foregroundColor: MaterialStateProperty.all(Colors.black)),
-          child: const Text('Go\nTop',textAlign: TextAlign.center,),
+          child: Icon(Icons.arrow_circle_up,color: Colors.grey,)
+          //child: const Text('Go\nTop',textAlign: TextAlign.center,),
         ))
         : const SizedBox();
   }

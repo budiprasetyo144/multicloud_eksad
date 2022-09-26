@@ -70,89 +70,93 @@ class _NewsDashboardState extends State<NewsDashboard> {
                           ),
                           content: Form(
                             key: formKey,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              verticalDirection: VerticalDirection.down,
-                              children: [
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                //IconButton(onPressed: (){}, icon: Icon(Icons.add_photo_alternate_outlined,size: 30,)),
-                                Row(
-                                  children: [
-                                    Container(
-                                      width: 230,
-                                      child: TextFormField(
-                                        textAlign: TextAlign.start,
-                                        decoration: InputDecoration(
-                                          labelText: "Masukkan Code Image",
-                                          hintStyle: const TextStyle(),
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0)),
+                            child: Container(
+                              width: screenSize.width*0.5,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                verticalDirection: VerticalDirection.down,
+                                children: [
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  //IconButton(onPressed: (){}, icon: Icon(Icons.add_photo_alternate_outlined,size: 30,)),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 230,
+                                        child: TextFormField(
+                                          textAlign: TextAlign.start,
+                                          decoration: InputDecoration(
+                                            labelText: "Masukkan Code Image",
+                                            hintStyle: const TextStyle(),
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0)),
+                                          ),
+                                          onChanged: (value) => images = value,
                                         ),
-                                        onChanged: (value) => images = value,
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      width: 30,
-                                    ),
-                                    Container(
-                                      width: 230,
-                                      child: TextFormField(
-                                        textAlign: TextAlign.start,
-                                        decoration: InputDecoration(
-                                          labelText: "Masukkan Title",
-                                          hintStyle: const TextStyle(),
-                                          border: OutlineInputBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(5.0)),
+                                      const SizedBox(
+                                        width: 30,
+                                      ),
+                                      Container(
+                                        width: 230,
+                                        child: TextFormField(
+                                          textAlign: TextAlign.start,
+                                          decoration: InputDecoration(
+                                            labelText: "Masukkan Title",
+                                            hintStyle: const TextStyle(),
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5.0)),
+                                          ),
+                                          onChanged: (value) => title = value,
                                         ),
-                                        onChanged: (value) => title = value,
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
 
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                Container(
-                                  width: 490,
-                                  child: TextFormField(
-                                    textAlign: TextAlign.start,
-                                    maxLines: 7,
-                                    decoration: InputDecoration(
-                                      labelText: "Masukkan Keterangan News",
-                                      hintStyle: const TextStyle(),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0)),
-                                    ),
-                                    onChanged: (value) => news = value,
+                                  const SizedBox(
+                                    height: 30,
                                   ),
-                                ),
-                                SizedBox(height: 25,),
-                                Container(
-                                  width: 490,
-                                  child: TextFormField(
-                                    textAlign: TextAlign.start,
-                                    maxLines: 1,
-                                    decoration: InputDecoration(
-                                      labelText: "Masukkan Link News",
-                                      hintStyle: const TextStyle(),
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(5.0)),
+                                  Container(
+                                    width: 490,
+                                    child: TextFormField(
+                                      textAlign: TextAlign.start,
+                                      maxLines: 7,
+                                      decoration: InputDecoration(
+                                        labelText: "Masukkan Keterangan News",
+                                        hintStyle: const TextStyle(),
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0)),
+                                      ),
+                                      onChanged: (value) => news = value,
                                     ),
-                                    onChanged: (value) => link = value,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: 25,),
+                                  Container(
+                                    width: 490,
+                                    child: TextFormField(
+                                      textAlign: TextAlign.start,
+                                      maxLines: 1,
+                                      decoration: InputDecoration(
+                                        labelText: "Masukkan Link News",
+                                        hintStyle: const TextStyle(),
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(5.0)),
+                                      ),
+                                      onChanged: (value) => link = value,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           actions: <Widget>[
-                            TextButton(
+                            ElevatedButton(
                               onPressed: () {
                                 Navigator.pop(context);
                                 if (title.trim().isEmpty &&
