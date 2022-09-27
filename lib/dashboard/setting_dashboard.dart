@@ -59,7 +59,7 @@ class _SettingDashboardState extends State<SettingDashboard> {
   String id = '';
   String im = '';
   String tt = '';
-  String tl = '';
+
   String em = '';
   String no = '';
   final String role = 'MCS';
@@ -106,44 +106,115 @@ class _SettingDashboardState extends State<SettingDashboard> {
                               color: Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.normal)),
-                      // SizedBox(
-                      //   height: 0,
-                      //   width: 820,
-                      // ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          primary: const Color.fromARGB(255, 0, 67, 192),
-                        ),
-                        onPressed: () {
-                          switch (btnText) {
-                            case 'Save Setting':
-                              createSetting(im.toString(), tt.toString(),
-                                  em.toString(), no.toString());
-                              setState(() {
-                                btnText = 'Update Setting';
-                                enb = false;
-                              });
-                              break;
-                            case 'Update Setting':
-                              setState(() {
-                                enb = true;
-                                btnText = 'Save Update';
-                              });
-                              break;
-                            case 'Save Update':
-                              break;
-                            default:
-                          }
+
+
+                      FutureBuilder<List<dynamic>>(
+                        future: getSettingDesc(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot snapshot) {
+                          var pgm = snapshot.data[0];
+                          final mcsController = TextEditingController();
+                          return  ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              primary: const Color.fromARGB(255, 0, 67, 192),
+                            ),
+                            onPressed: () {
+                              switch (btnText) {
+                                case 'Save Setting':
+                                  if(em.isEmpty&&no.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt.toString(), em=pgm['email'].toString(), no=pgm['no'].toString());
+                                    print(pgm['idsetting']);
+                                    print('if pertama');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Title Success'),backgroundColor: Colors.green,),);
+                                  }else if(tt.isEmpty&&no.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt=pgm['title'], em.toString(), no=pgm['no'].toString());
+                                    print(pgm['idsetting']);
+                                    print('if kedua');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Email Success'),backgroundColor: Colors.green,),);
+                                  }else if(tt.isEmpty&&em.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt=pgm['title'], em=pgm['email'].toString(), no.toString());
+                                    print('if ketiga');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save No Success'),backgroundColor: Colors.green,),);
+                                  }else if(tt.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt=pgm['title'], em.toString(), no.toString());
+                                    print('if keempat');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Email and No Success'),backgroundColor: Colors.green,),);
+
+                                  }else if(em.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt.toString(), em=pgm['email'].toString(), no.toString());
+                                    print('if kelima');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Title and No Success'),backgroundColor: Colors.green,),);
+                                  }else if(no.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt.toString(), em.toString(), no=pgm['no'].toString());
+                                    print('if keenam');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Title and Email Success'),backgroundColor: Colors.green,),);
+                                  }
+                                  createSetting(im.toString(), tt.toString(),
+                                      em.toString(), no.toString());
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Data Success'),backgroundColor: Colors.green,),);
+
+
+                                  setState(() {
+                                    btnText = 'Update Setting';
+                                    enb = false;
+                                  });
+                                  break;
+                                case 'Update Setting':
+                                  setState(() {
+                                    enb = true;
+                                    btnText = 'Save Update';
+                                  });
+                                  break;
+                                case 'Save Update':
+                                  if(em.isEmpty&&no.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt.toString(), em=pgm['email'].toString(), no=pgm['no'].toString());
+                                    print(pgm['idsetting']);
+                                    print('if pertama');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Title Success'),backgroundColor: Colors.green,),);
+                                  }else if(tt.isEmpty&&no.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt=pgm['title'], em.toString(), no=pgm['no'].toString());
+                                    print(pgm['idsetting']);
+                                    print('if kedua');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Email Success'),backgroundColor: Colors.green,),);
+                                  }else if(tt.isEmpty&&em.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt=pgm['title'], em=pgm['email'].toString(), no.toString());
+                                    print('if ketiga');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save No Success'),backgroundColor: Colors.green,),);
+                                  }else if(tt.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt=pgm['title'], em.toString(), no.toString());
+                                    print('if keempat');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Email and No Success'),backgroundColor: Colors.green,),);
+
+                                  }else if(em.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt.toString(), em=pgm['email'].toString(), no.toString());
+                                    print('if kelima');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Title and No Success'),backgroundColor: Colors.green,),);
+                                  }else if(no.isEmpty){
+                                    updateSetting(id=pgm['idsetting'].toString(), tt.toString(), em.toString(), no=pgm['no'].toString());
+                                    print('if keenam');
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Title and Email Success'),backgroundColor: Colors.green,),);
+                                  }
+                                  createSetting(im.toString(), tt.toString(),
+                                      em.toString(), no.toString());
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Data Success'),backgroundColor: Colors.green,),);
+
+
+                                  break;
+                                default:
+                              }
+                            },
+                            child: Text(
+                              btnText,
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                          );
                         },
-                        child: Text(
-                          btnText,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
                       ),
+
                     ],
                   ),
                   const Divider(
