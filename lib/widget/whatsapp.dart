@@ -38,14 +38,9 @@ class WAChat extends StatelessWidget {
         },
       backgroundColor: Colors.green,
       child: FutureBuilder<List<dynamic>>(
-        future: getSosmedDesc(),
+        future: getWaDesc(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           var pgm = snapshot.data[0];
-          if (snapshot.hasError ||
-              snapshot.data == null ||
-              snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
-          }
           return GestureDetector(
             onTap: () {
               wa = pgm['whatsapp'];
