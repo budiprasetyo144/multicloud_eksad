@@ -27,8 +27,8 @@ class _NewsDashboardState extends State<NewsDashboard> {
 
   int selectedIndex = 0;
 
-  TextEditingController _controllerTitle = TextEditingController();
-  TextEditingController _controllerNews = TextEditingController();
+  final TextEditingController _controllerTitle = TextEditingController();
+  final TextEditingController _controllerNews = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +44,10 @@ class _NewsDashboardState extends State<NewsDashboard> {
             height: 100,
             child: Row(
               children: [
-                Container(
-                  child: const Text("News     ",
-                      style: TextStyle(
-                        fontSize: 20,
-                      )),
-                ),
+                const Text("News     ",
+                    style: TextStyle(
+                      fontSize: 20,
+                    )),
                 ElevatedButton(
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.all(16.0),
@@ -63,8 +61,8 @@ class _NewsDashboardState extends State<NewsDashboard> {
                         builder: (BuildContext context) => AlertDialog(
                           title: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.note),
+                            children: const [
+                               Icon(Icons.note),
                               Text('Add News'),
                             ],
                           ),
@@ -135,7 +133,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                       onChanged: (value) => news = value,
                                     ),
                                   ),
-                                  SizedBox(height: 25,),
+                                  const SizedBox(height: 25,),
                                   Container(
                                     width: 490,
                                     child: TextFormField(
@@ -166,7 +164,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                     const SnackBar(
                                         content: Text('Title Can\'t Be Empty')),
                                   );
-                                  print('Title News Kosong');
+                                  //print('Title News Kosong');
                                 } else if (news.trim().isEmpty &&
                                     title == null &&
                                     images == null) {
@@ -174,7 +172,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                     const SnackBar(
                                         content: Text('News Can\'t Be Empty')),
                                   );
-                                  print('Isi News kosong');
+                                 // print('Isi News kosong');
                                 } else if (images.trim().isEmpty &&
                                     title == null &&
                                     news == null) {
@@ -182,14 +180,14 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                     const SnackBar(
                                         content: Text('Image Can\'t Be Empty')),
                                   );
-                                  print('Images Kosong');
+                                  //print('Images Kosong');
                                 }
                                 createNews(title, news, images,link);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       content: Text('Data Saved')),
                                 );
-                                print('Data Tersimpan');
+                               // print('Data Tersimpan');
                                 // Navigator.push(
                                 //   context,
                                 //   MaterialPageRoute(
@@ -205,7 +203,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                       );
                     },
                     child: const Text('Add News')),
-                Spacer(flex: 10,),
+                const Spacer(flex: 10,),
                 SizedBox(
                   height: 40,
                   width: 200,
@@ -327,9 +325,9 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                       id = pgm['idnews'];
                                       selecttitle = pgm['title'];
                                       selectnews = pgm['news'];
-                                      print(selectedIndex);
-                                      print(pgm['idnews']);
-                                      print(selecttitle);
+                                      //print(selectedIndex);
+                                   //  print(pgm['idnews']);
+                                     // print(selecttitle);
 
                                       _controllerNews.clear();
                                       // _controllerId.clear();
@@ -466,7 +464,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                                     (isSuccess) {
                                                       if (isSuccess) {
                                                         setState(() {});
-                                                        Scaffold.of(
+                                                        ScaffoldMessenger.of(
                                                                 this.context)
                                                             .showSnackBar(
                                                           const SnackBar(
@@ -475,7 +473,7 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                                           ),
                                                         );
                                                       } else {
-                                                        Scaffold.of(
+                                                        ScaffoldMessenger.of(
                                                                 this.context)
                                                             .showSnackBar(
                                                           const SnackBar(
@@ -522,9 +520,9 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                       id = pgm['idnews'];
                                       selecttitle = pgm['title'];
                                       selectnews = pgm['news'];
-                                      print(selectedIndex);
-                                      print(pgm['idnews']);
-                                      print(selecttitle);
+                                      //print(selectedIndex);
+                                   //   print(pgm['idnews']);
+                                    //  print(selecttitle);
 
 
                                       showDialog(
@@ -543,13 +541,13 @@ class _NewsDashboardState extends State<NewsDashboard> {
                                                       .then((isSuccess) {
                                                     if (isSuccess) {
                                                       setState(() {});
-                                                      Scaffold.of(this.context)
+                                                      ScaffoldMessenger.of(this.context)
                                                           .showSnackBar(
                                                               const SnackBar(
                                                                   content: Text(
                                                                       "Delete data success")));
                                                     } else {
-                                                      Scaffold.of(this.context)
+                                                      ScaffoldMessenger.of(this.context)
                                                           .showSnackBar(
                                                               const SnackBar(
                                                                   content: Text(

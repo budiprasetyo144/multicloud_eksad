@@ -173,27 +173,27 @@ class _HomePageState extends State<HomePage> {
         width: 200,
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
               onTap: () => _scrollToIndex(0),
             ),
             ListTile(
-              leading: Icon(Icons.people),
-              title: Text('About Us'),
+              leading: const Icon(Icons.people),
+              title: const Text('About Us'),
               onTap: () => _scrollToIndex(420),
             ),
             ListTile(
-              leading: Icon(Icons.lightbulb_outline_rounded),
-              title: Text('Solution'),
+              leading: const Icon(Icons.lightbulb_outline_rounded),
+              title: const Text('Solution'),
               onTap: () => _scrollToIndex(840),
             ),
             ListTile(
-              leading: Icon(Icons.contact_phone),
-              title: Text('Contact Us'),
+              leading: const Icon(Icons.contact_phone),
+              title: const Text('Contact Us'),
               onTap: () => _scrollToIndex(5410),
             ),
           ],
@@ -222,7 +222,7 @@ class _HomePageState extends State<HomePage> {
         _scrollToIndex(5410);
       },
       style: ElevatedButton.styleFrom(
-          primary: const Color(0xff1e5ea8), fixedSize: Size(50, 20)),
+          primary: const Color(0xff1e5ea8), fixedSize: const Size(50, 20)),
       child: Text(
         'CONTACT US',
         style: GoogleFonts.poppins(
@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
             ),
             IconButton(
               onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-              icon: Icon(
+              icon: const Icon(
                 Icons.list_outlined,
                 size: 30,
               ),
@@ -257,7 +257,7 @@ class _HomePageState extends State<HomePage> {
               flex: 2,
             ),
             Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               height: 75,
               child: Image.asset("assets/logo/multicloudsolution.jpg"),
             ),
@@ -454,7 +454,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(0);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Home',
             )),
         const Spacer(),
@@ -462,7 +462,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(420);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'About Us',
             )),
         const Spacer(),
@@ -470,7 +470,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(750);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Solution',
             )),
         const Spacer(),
@@ -478,7 +478,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(3780);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Contact Us',
             )),
         const Spacer(
@@ -504,7 +504,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(1230);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Cloud Migration',
             )),
         const Spacer(),
@@ -512,7 +512,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(1230);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Consultation',
             )),
         const Spacer(),
@@ -520,7 +520,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(1230);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Local Support',
             )),
         const Spacer(),
@@ -528,7 +528,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(1230);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Cloud Implementation',
             )),
         const Spacer(
@@ -555,7 +555,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(0);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Home',
             )),
         const Spacer(),
@@ -563,7 +563,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(420);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'About Us',
             )),
         const Spacer(),
@@ -571,7 +571,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(840);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Solution',
             )),
         const Spacer(),
@@ -579,7 +579,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(5410);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Contact Us',
             )),
         const Spacer(
@@ -605,7 +605,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(1650);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Cloud Migration',
             )),
         const Spacer(),
@@ -613,7 +613,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(1650);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Consultation',
             )),
         const Spacer(),
@@ -621,7 +621,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(1650);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Local Support',
             )),
         const Spacer(),
@@ -629,7 +629,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scrollToIndex(1650);
             },
-            child: FooterBody(
+            child: const FooterBody(
               teks: 'Cloud Implementation',
             )),
         const Spacer(

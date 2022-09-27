@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import '../widget/responsive.dart';
 
-//
+
+
 
 class Home extends StatelessWidget {
   Home({Key? key, required this.wijet}) : super(key: key);
@@ -34,22 +34,20 @@ class Home extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                child: ShowUpAnimation(
-                  delayStart: const Duration(seconds: 1),
-                  direction: Direction.horizontal,
-                  child: Text(
-                    'Cloud Consulting Services.',
-                    style: GoogleFonts.poppins(
-                        fontSize: 27,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+              ShowUpAnimation(
+                delayStart: const Duration(seconds: 1),
+                direction: Direction.horizontal,
+                child: Text(
+                  'Cloud Consulting Services.',
+                  style: GoogleFonts.poppins(
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 5),
+                padding: const EdgeInsets.only(top: 5),
                 width: screenSize.width * 0.5,
                 height: screenSize.height * 0.21,
                 child: ShowUpAnimation(

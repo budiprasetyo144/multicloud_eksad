@@ -19,7 +19,7 @@ PreferredSize AppbarSmallSize(Size screenSize) {
           const Spacer(
             flex: 1,
           ),
-          IconButton(onPressed: (){}, icon: Icon(Icons.list_outlined)),
+          IconButton(onPressed: (){}, icon: const Icon(Icons.list_outlined)),
           const Spacer(
             flex: 1,
           ),

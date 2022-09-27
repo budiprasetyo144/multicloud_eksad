@@ -171,7 +171,7 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
           //    Text('Data Must Be Edited'),
            //   Text('For data that is not modified, Please copy last data , delete then paste again'),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               // FutureBuilder<List<dynamic>>(
@@ -202,7 +202,7 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                     return const CircularProgressIndicator();
                   }
                   return listsosmed(
-                                Icon(
+                      const Icon(
                                   Icons.whatsapp,
                                   color: Colors.green,
                                 ),
@@ -211,7 +211,7 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
 
                                   //initialValue: pgm['whatsapp'],
 
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     errorStyle: TextStyle(color: Colors.red),
                                     hintText:
                                     'Enter WhatsApp number without +,   Ex : 6280000000000 ',
@@ -238,11 +238,11 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                                                 content:Text('Active WA : '+pgm['whatsapp'])
                                             ) ,
                                       );
-                                    }, child: Text('View Active')));
+                                    }, child: const Text('View Active')));
                 },
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder<List<dynamic>>(
@@ -256,14 +256,14 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                     return const CircularProgressIndicator();
                   }
                   return listsosmed(
-                                Icon(
+                      const Icon(
                                   FontAwesomeIcons.linkedin,
                                   color: Colors.blue,
                                 ),
                                 TextFormField(
                                   controller: linkedController..text = pgm['linkedin'],
                                   //initialValue: pgm['linkedin'],
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       errorStyle: TextStyle(color: Colors.red),
                                       hintText: 'Enter a new Linkedin link address'),
                                   onChanged: (value) => ln = value,
@@ -284,11 +284,11 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                                                 content:Text('Active Linkedin : '+pgm['linkedin'])
                                             ) ,
                                       );
-                                    }, child: Text('View Active')));
+                                    }, child: const Text('View Active')));
                 },
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder<List<dynamic>>(
@@ -302,7 +302,7 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                     return const CircularProgressIndicator();
                   }
                   return listsosmed(
-                                Icon(
+                      const Icon(
                                   FontAwesomeIcons.twitterSquare,
                                   color: Colors.blueAccent,
                                 ),
@@ -310,7 +310,7 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                                 TextFormField(
                                   controller: twitterController..text = pgm['twitter'],
                                   //initialValue: pgm['twitter'],
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       errorStyle: TextStyle(color: Colors.red),
                                       hintText: 'Enter a new Twitter link address'),
                                   onChanged: (value) => tw = value,
@@ -331,11 +331,11 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                                                 content:Text('Active Twitter : '+pgm['twitter'])
                                             ) ,
                                       );
-                                    }, child: Text('View Active')));
+                                    }, child: const Text('View Active')));
                 },
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder<List<dynamic>>(
@@ -349,14 +349,14 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                     return const CircularProgressIndicator();
                   }
                   return  listsosmed(
-                                Icon(
+                      const Icon(
                                   FontAwesomeIcons.instagramSquare,
                                   color: Colors.pink,
                                 ),
                                 TextFormField(
                                   controller: igController..text = pgm['instagram'],
                                   // initialValue: pgm['instagram'],
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       errorStyle: TextStyle(color: Colors.red),
                                       hintText: 'Enter a new Instagram link address'),
                                   onChanged: (value) => ig = value,
@@ -377,11 +377,11 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                                                 content:Text('Active Instagram : '+pgm['instagram'])
                                             ) ,
                                       );
-                                    }, child: Text('View Active')));
+                                    }, child: const Text('View Active')));
                 },
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FutureBuilder<List<dynamic>>(
@@ -395,14 +395,14 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                     return const CircularProgressIndicator();
                   }
                   return listsosmed(
-                                Icon(
+                      const Icon(
                                   FontAwesomeIcons.youtube,
                                   color: Colors.red,
                                 ),
                                 TextFormField(
                                   controller: youtubeController..text =  pgm['youtube'],
                                   //initialValue: pgm['youtube'],
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       errorStyle: TextStyle(color: Colors.red),
                                       hintText: 'Enter a new Youtube link address'),
                                   onChanged: (value) => yt = value,
@@ -423,7 +423,7 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                                                 content:Text('Active Youtube : '+pgm['youtube'])
                                             ) ,
                                       );
-                                    }, child: Text('View Active')));
+                                    }, child: const Text('View Active')));
                 },
               ),
             ],

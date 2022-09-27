@@ -93,7 +93,7 @@ class Footer extends StatelessWidget {
                             //color: Colors.blue,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
+                              children: const [
                                 ApiLinkedin(),
                                 ApiTwitter(),
                                 ApiInstagram(),
@@ -127,8 +127,8 @@ class Footer extends StatelessWidget {
                             child: FooterHead('  Contact'),
                           ),
                           const Spacer(),
-                          TelphoneApi(),
-                          EmailAPI(),
+                          const TelphoneApi(),
+                          const EmailAPI(),
                           Container(
                             width: screenSize.width * 0.26,
                             height: screenSize.height * 0.27,
@@ -187,7 +187,7 @@ class Footer extends StatelessWidget {
 }
 
 class FooterBody extends StatelessWidget {
-  FooterBody({Key? key, required this.teks}) : super(key: key);
+  const FooterBody({Key? key, required this.teks}) : super(key: key);
   final String teks;
 
   @override
