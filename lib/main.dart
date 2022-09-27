@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Multi Cloud Solution By EKSAD",
+     // title: "Multi Cloud Solution By EKSAD",
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),

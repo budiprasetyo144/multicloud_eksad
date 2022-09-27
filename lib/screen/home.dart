@@ -60,31 +60,31 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.fastLinearToSlowEaseIn);
   }
 
-    late String titel;
-
-    @override
-    void initState(){
-      super.initState();
-      FutureBuilder<List<dynamic>> buildFutureBuilder2() {
-        return FutureBuilder<List<dynamic>>(
-          future: getSettingDesc(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            var pgm = snapshot.data[0];
-            if (snapshot.hasError ||
-                snapshot.data == null ||
-                snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
-            }
-            return Text(titel=pgm['title']);
-          },
-
-        );
-      }
-      titel = buildFutureBuilder2().toString();
-    }
-
-
-  String title = 'Multi Cloud Solution By Eksad';
+  //   late String titel;
+  //
+  //   @override
+  //   void initState(){
+  //     super.initState();
+  //     FutureBuilder<List<dynamic>> buildFutureBuilder2() {
+  //       return FutureBuilder<List<dynamic>>(
+  //         future: getSettingDesc(),
+  //         builder: (BuildContext context, AsyncSnapshot snapshot) {
+  //           var pgm = snapshot.data[0];
+  //           if (snapshot.hasError ||
+  //               snapshot.data == null ||
+  //               snapshot.connectionState == ConnectionState.waiting) {
+  //             return const CircularProgressIndicator();
+  //           }
+  //           return Text(titel=pgm['title']);
+  //         },
+  //
+  //       );
+  //     }
+  //     titel = buildFutureBuilder2().toString();
+  //   }
+  //
+  //
+  // String title = 'Multi Cloud Solution By Eksad';
 
 
  // late String title;
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     // setPageTitle('$titel', context);
-    setPageTitle(title, context);
+  //  setPageTitle(title, context);
 
     return Scaffold(
       key: _scaffoldKey,
@@ -109,47 +109,65 @@ class _HomePageState extends State<HomePage> {
       body: ResponsiveWidget.isSmallScreen(context)
           ? Stack(
             children: [
-              ListView(
-                  scrollDirection: Axis.vertical,
-                  controller: controller2,
-                  children: [
-                    SmallHome(wijet: Button_scroll_small()),
-                    const SmallHome2(),
-                    const SmallHome3_partner(),
-                    SmallHome4_solution(screenSize: screenSize),
-                    const SmallHome5_industry(),
-                    const SmallHome6_advantages(),
-                    const SmallHome7_news(),
-                    SmallHome8_contact_us(),
-                    SmallFooter(
-                      content1: kontenkecil1(screenSize),
-                      content2: kontenkecil2(screenSize),
-                    ),
-                  ],
-                ),
+              Title(
+                color: Colors.white,
+                child: ListView(
+                    scrollDirection: Axis.vertical,
+                    controller: controller2,
+                    children: [
+                      SmallHome(wijet: Button_scroll_small()),
+                      const SmallHome2(),
+                      const SmallHome3_partner(),
+                      SmallHome4_solution(screenSize: screenSize),
+                      const SmallHome5_industry(),
+                      const SmallHome6_advantages(),
+                      const SmallHome7_news(),
+                      SmallHome8_contact_us(),
+                      SmallFooter(
+                        content1: kontenkecil1(screenSize),
+                        content2: kontenkecil2(screenSize),
+                      ),
+                    ],
+                  ),
+              ),
               ScrollUpButton(controller2),
             ],
           )
           : Stack(
             children: [
-              ListView(
-                  scrollDirection: Axis.vertical,
-                  controller: controller2,
-                  children: [
-                    Home(wijet: Button_scroll()),
-                    const Home2(),
-                    const Home3_partner(),
-                    Home4_solution(screenSize: screenSize),
-                    const Home5_industry(),
-                    const Home6_advantages(),
-                    const Home7_news(),
-                    Home8_contact_us(),
-                    Footer(
-                      content1: konten1(screenSize),
-                      content2: konten2(screenSize),
-                    ),
-                  ],
-                ),
+      FutureBuilder<List<dynamic>>(
+        future: getSettingDesc(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          var pgm = snapshot.data[0];
+          if (snapshot.hasError ||
+              snapshot.data == null ||
+              snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+          return Title(title:pgm['title'],color: Colors.white,child:  ListView(
+            scrollDirection: Axis.vertical,
+            controller: controller2,
+            children: [
+              Home(wijet: Button_scroll()),
+              //
+
+              const Home2(),
+              const Home3_partner(),
+              Home4_solution(screenSize: screenSize),
+              const Home5_industry(),
+              const Home6_advantages(),
+              const Home7_news(),
+              Home8_contact_us(),
+              Footer(
+                content1: konten1(screenSize),
+                content2: konten2(screenSize),
+              ),
+            ],
+          ),);
+        },
+
+      ),
+
               ScrollUpButton(controller2),
             ],
           ),

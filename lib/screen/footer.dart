@@ -377,7 +377,7 @@ class _EmailAPIState extends State<EmailAPI> {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         var pgm = snapshot.data[0];
         if (snapshot.hasError ||
-            snapshot.data == null ||
+           // snapshot.data == null ||
             snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         }
