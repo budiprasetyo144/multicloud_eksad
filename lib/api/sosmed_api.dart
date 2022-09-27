@@ -159,3 +159,33 @@ Future<bool> createYT (yt) async{
     return false;
   }
 }
+
+Future<List<dynamic>> getWaDesc() async {
+  var response = await http.get(
+      Uri.parse('$qry/settingsosmed/getWhatsappByIdDesc'));
+  return jsonDecode(response.body)['data'];
+}
+
+Future<List<dynamic>> getLnDesc() async {
+  var response = await http.get(
+      Uri.parse('$qry/settingsosmed/getLinkedinByIdDesc'));
+  return jsonDecode(response.body)['data'];
+}
+
+Future<List<dynamic>> getTwDesc() async {
+  var response = await http.get(
+      Uri.parse('$qry/settingsosmed/getTwitterByIdDesc'));
+  return jsonDecode(response.body)['data'];
+}
+
+Future<List<dynamic>> getIgDesc() async {
+  var response = await http.get(
+      Uri.parse('$qry/settingsosmed/getInstagramByIdDesc'));
+  return jsonDecode(response.body)['data'];
+}
+
+Future<List<dynamic>> getYtDesc() async {
+  var response = await http.get(
+      Uri.parse('$qry/settingsosmed/getYoutubeByIdDesc'));
+  return jsonDecode(response.body)['data'];
+}

@@ -61,3 +61,9 @@ Future<List<dynamic>> getSettingDesc() async {
       Uri.parse('$qry/setting/getSettingByIdDesc'));
   return jsonDecode(response.body)['data'];
 }
+
+Future<dynamic> getSettingDesc2() async {
+  var response = await http.get(
+      Uri.parse('$qry/setting/getSettingByIdDesc'));
+  return jsonDecode(response.body)['data'];
+}

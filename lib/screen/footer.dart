@@ -88,75 +88,18 @@ class Footer extends StatelessWidget {
                             flex: 2,
                           ),
                           Container(
-                            width: screenSize.width * 0.14,
+                            width: screenSize.width * 0.16,
                             height: screenSize.height * 0.03,
                             //color: Colors.blue,
-                            child: FutureBuilder<List<dynamic>>(
-                              future: getSosmedDesc(),
-                              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                                var pgm = snapshot.data[0];
-                                if (snapshot.hasError ||
-                                    snapshot.data == null ||
-                                    snapshot.connectionState == ConnectionState.waiting) {
-                                  return const CircularProgressIndicator();
-                                }
-                                return Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    IconButton(
-                                        onPressed: () {
-                                          ln = pgm['linkedin'];
-                                          launch(ln);
-                                          // _launchLinkedIn();
-                                        },
-                                        icon: const Icon(
-                                          FontAwesomeIcons.linkedinIn,
-                                          size: 25,
-                                        ),
-                                        iconSize: 25,
-                                        color: Colors.black),
-                                    IconButton(
-                                      onPressed: () {
-                                        tw = pgm['twitter'];
-                                        launch(tw);
-                                        //_launchTwitter();
-                                      },
-                                      icon: const Icon(
-                                        FontAwesomeIcons.twitter,
-                                        size: 25,
-                                      ),
-                                      iconSize: 25,
-                                      color: Colors.black,
-                                    ),
-                                    IconButton(
-                                        onPressed: () {
-                                          ig = pgm['instagram'];
-                                          launch(ig);
-                                         // _launchInstagram();
-                                        },
-                                        icon: const Icon(
-                                          FontAwesomeIcons.instagram,
-                                          size: 25,
-                                        ),
-                                        iconSize: 25,
-                                        color: Colors.black),
-                                    IconButton(
-                                        onPressed: () {
-                                          yt = pgm['youtube'];
-                                          launch(yt);
-                                        //  _launchYoutube();
-                                        },
-                                        icon: const Icon(
-                                          FontAwesomeIcons.youtube,
-                                          size: 25,
-                                        ),
-                                        iconSize: 25,
-                                        color: Colors.black)
-                                  ],
-                                );
-                              },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ApiLinkedin(),
+                                ApiTwitter(),
+                                ApiInstagram(),
+                                ApiYoutube()
+                              ],
                             ),
-
                           ),
                           const Spacer(
                             flex: 8,
@@ -259,51 +202,150 @@ class FooterBody extends StatelessWidget {
   }
 }
 
-void _launchLinkedIn() async {
-  String url() {
-    return "https://www.linkedin.com/company/pt-tiga-daya-digital-indonesia-triputra-group-eksad-technology";
-  }
+class ApiLinkedin extends StatefulWidget {
+  const ApiLinkedin({Key? key}) : super(key: key);
 
-  if (await canLaunch(url())) {
-    await launch(url());
-  } else {
-    throw 'Could not launch ${url()}';
+  @override
+  State<ApiLinkedin> createState() => _ApiLinkedinState();
+}
+
+class _ApiLinkedinState extends State<ApiLinkedin> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<dynamic>>(
+      future: getWaDesc(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        var pgm = snapshot.data[0];
+
+        if (snapshot.hasError ||
+            snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        return IconButton(
+            onPressed: () {
+              // ln = ;
+              launch(pgm['linkedin']);
+              // _launchLinkedIn();
+            },
+            icon: const Icon(
+              FontAwesomeIcons.linkedinIn,
+              size: 25,
+            ),
+            iconSize: 35,
+            color: Colors.black);
+      },
+    );
   }
 }
 
-void _launchTwitter() async {
-  String url() {
-    return "https://twitter.com/eksadtechnology/";
-  }
+class ApiTwitter extends StatefulWidget {
+  const ApiTwitter({Key? key}) : super(key: key);
 
-  if (await canLaunch(url())) {
-    await launch(url());
-  } else {
-    throw 'Could not launch ${url()}';
+  @override
+  State<ApiTwitter> createState() => _ApiTwitterState();
+}
+
+class _ApiTwitterState extends State<ApiTwitter> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<dynamic>>(
+      future: getTwDesc(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        var pgm = snapshot.data[0];
+
+        if (snapshot.hasError ||
+            snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        return IconButton(
+            onPressed: () {
+              // ln = ;
+              launch(pgm['twitter']);
+              // _launchLinkedIn();
+            },
+            icon: const Icon(
+              FontAwesomeIcons.twitter,
+              size: 25,
+            ),
+            iconSize: 35,
+            color: Colors.black);
+      },
+    );
   }
 }
 
-void _launchInstagram() async {
-  String url() {
-    return "https://www.instagram.com/eksad_technology/";
-  }
+class ApiInstagram extends StatefulWidget {
+  const ApiInstagram({Key? key}) : super(key: key);
 
-  if (await canLaunch(url())) {
-    await launch(url());
-  } else {
-    throw 'Could not launch ${url()}';
+  @override
+  State<ApiInstagram> createState() => _ApiInstagramState();
+}
+
+class _ApiInstagramState extends State<ApiInstagram> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<dynamic>>(
+      future: getIgDesc(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        var pgm = snapshot.data[0];
+
+        if (snapshot.hasError ||
+            snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        return IconButton(
+            onPressed: () {
+              // ln = ;
+              launch(pgm['instagram']);
+              // _launchLinkedIn();
+            },
+            icon: const Icon(
+              FontAwesomeIcons.instagram,
+              size: 25,
+            ),
+            iconSize: 35,
+            color: Colors.black);
+      },
+    );
   }
 }
 
-void _launchYoutube() async {
-  String url() {
-    return "https://www.youtube.com/channel/UCiZgIbpWgrAMrHW-TaS9EPw";
-  }
+class ApiYoutube extends StatefulWidget {
+  const ApiYoutube({Key? key}) : super(key: key);
 
-  if (await canLaunch(url())) {
-    await launch(url());
-  } else {
-    throw 'Could not launch ${url()}';
+  @override
+  State<ApiYoutube> createState() => _ApiYoutubeState();
+}
+
+class _ApiYoutubeState extends State<ApiYoutube> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<dynamic>>(
+        future: getYtDesc(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          var pgm = snapshot.data[0];
+
+          if (snapshot.hasError ||
+              snapshot.data == null ||
+              snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+          return IconButton(
+              onPressed: () {
+                // ln = ;
+                launch(pgm['youtube']);
+                // _launchLinkedIn();
+              },
+              icon: const Icon(
+                FontAwesomeIcons.youtube,
+                size: 25,
+              ),
+              iconSize: 35,
+              color: Colors.black);
+        });
   }
 }
 
@@ -315,7 +357,6 @@ class TelphoneApi extends StatefulWidget {
 }
 
 class _TelphoneApiState extends State<TelphoneApi> {
-
   String no = '';
   @override
   Widget build(BuildContext context) {
@@ -338,18 +379,15 @@ class _TelphoneApiState extends State<TelphoneApi> {
               color: Colors.black,
             ),
             title: TextButton(
-                onPressed: ()  {
-                no = pgm['no'];
-                //02157958040
+                onPressed: () {
+                  no = pgm['no'];
+                  //02157958040
                   launch('tel:$no');
                 },
                 child: Text(
                   pgm['no'],
                   style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: Colors.black87,
-                    letterSpacing: 1.5
-                  ),
+                      fontSize: 16, color: Colors.black87, letterSpacing: 1.5),
                 )),
           ),
         );
@@ -357,8 +395,6 @@ class _TelphoneApiState extends State<TelphoneApi> {
     );
   }
 }
-
-
 
 class EmailAPI extends StatefulWidget {
   const EmailAPI({Key? key}) : super(key: key);
@@ -377,7 +413,7 @@ class _EmailAPIState extends State<EmailAPI> {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         var pgm = snapshot.data[0];
         if (snapshot.hasError ||
-           // snapshot.data == null ||
+            // snapshot.data == null ||
             snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         }
@@ -390,17 +426,16 @@ class _EmailAPIState extends State<EmailAPI> {
               color: Colors.black,
             ),
             title: TextButton(
-              onPressed: () {
-                email = pgm['email'];
-                launch(
-                    'mailto:$email?subject=Info MCS');
-              },
-              // child: SettingAPI(),
-              child: Text(pgm['email'],style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: Colors.black87,
-                  letterSpacing: 1.1),)
-            ),
+                onPressed: () {
+                  email = pgm['email'];
+                  launch('mailto:$email?subject=Info MCS');
+                },
+                // child: SettingAPI(),
+                child: Text(
+                  pgm['email'],
+                  style: GoogleFonts.poppins(
+                      fontSize: 16, color: Colors.black87, letterSpacing: 1.1),
+                )),
           ),
         );
       },

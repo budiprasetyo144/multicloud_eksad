@@ -26,15 +26,12 @@ import 'appbar.dart';
 import 'home5.dart';
 import 'package:flutter/services.dart';
 
-
-
 void setPageTitle(String title, BuildContext context) async {
   SystemChrome.setApplicationSwitcherDescription(ApplicationSwitcherDescription(
     label: title,
     primaryColor: Theme.of(context).primaryColor.value, // This line is required
   ));
 }
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -86,18 +83,16 @@ class _HomePageState extends State<HomePage> {
   //
   // String title = 'Multi Cloud Solution By Eksad';
 
-
- // late String title;
- // String title ='';
+  // late String title;
+  // String title ='';
 
   int selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    // setPageTitle('$titel', context);
-  //  setPageTitle(title, context);
 
+    //  setPageTitle(title, context);
     return Scaffold(
       key: _scaffoldKey,
       appBar: ResponsiveWidget.isSmallScreen(context)
@@ -108,10 +103,10 @@ class _HomePageState extends State<HomePage> {
       drawer: _drawerWidget(),
       body: ResponsiveWidget.isSmallScreen(context)
           ? Stack(
-            children: [
-              Title(
-                color: Colors.white,
-                child: ListView(
+              children: [
+                Title(
+                  color: Colors.white,
+                  child: ListView(
                     scrollDirection: Axis.vertical,
                     controller: controller2,
                     children: [
@@ -129,84 +124,81 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-              ),
-              ScrollUpButton(controller2),
-            ],
-          )
+                ),
+                ScrollUpButton(controller2),
+              ],
+            )
           : Stack(
-            children: [
-      FutureBuilder<List<dynamic>>(
-        future: getSettingDesc(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          var pgm = snapshot.data[0];
-          if (snapshot.hasError ||
-              snapshot.data == null ||
-              snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
-          }
-          return Title(title:pgm['title'],color: Colors.white,child:  ListView(
-            scrollDirection: Axis.vertical,
-            controller: controller2,
-            children: [
-              Home(wijet: Button_scroll()),
-              //
-
-              const Home2(),
-              const Home3_partner(),
-              Home4_solution(screenSize: screenSize),
-              const Home5_industry(),
-              const Home6_advantages(),
-              const Home7_news(),
-              Home8_contact_us(),
-              Footer(
-                content1: konten1(screenSize),
-                content2: konten2(screenSize),
-              ),
-            ],
-          ),);
-        },
-
-      ),
-
-              ScrollUpButton(controller2),
-            ],
-          ),
+              children: [
+                FutureBuilder<dynamic>(
+                  future: getSettingDesc2(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    var pgm = snapshot.data[0];
+                    // if (snapshot.hasError ||
+                    //     snapshot.data == null ||
+                    //     snapshot.connectionState == ConnectionState.waiting) {
+                    //   return const CircularProgressIndicator();
+                    // }
+                    return Title(
+                      title: pgm['title'],
+                      color: Colors.white,
+                      child: ListView(
+                        scrollDirection: Axis.vertical,
+                        controller: controller2,
+                        children: [
+                          Home(wijet: Button_scroll()),
+                          const Home2(),
+                          const Home3_partner(),
+                          Home4_solution(screenSize: screenSize),
+                          const Home5_industry(),
+                          const Home6_advantages(),
+                          const Home7_news(),
+                          Home8_contact_us(),
+                          Footer(
+                            content1: konten1(screenSize),
+                            content2: konten2(screenSize),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+                ScrollUpButton(controller2),
+              ],
+            ),
     );
   }
 
-
-
-
-
   Drawer _drawerWidget() => Drawer(
-    width: 200,
-    child: Column(
-      children: [
-        SizedBox(height: 50,),
-
-        ListTile(
-          leading: Icon(Icons.home),
-          title: Text('Home'),
-          onTap: () => _scrollToIndex(0) ,
+        width: 200,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 50,
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () => _scrollToIndex(0),
+            ),
+            ListTile(
+              leading: Icon(Icons.people),
+              title: Text('About Us'),
+              onTap: () => _scrollToIndex(420),
+            ),
+            ListTile(
+              leading: Icon(Icons.lightbulb_outline_rounded),
+              title: Text('Solution'),
+              onTap: () => _scrollToIndex(840),
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_phone),
+              title: Text('Contact Us'),
+              onTap: () => _scrollToIndex(5410),
+            ),
+          ],
         ),
-        ListTile(
-          leading: Icon(Icons.people),
-          title: Text('About Us'),
-          onTap: () => _scrollToIndex(420),
-        ),
-        ListTile(
-          leading: Icon(Icons.lightbulb_outline_rounded),
-          title: Text('Solution'),
-          onTap: () => _scrollToIndex(840),
-        ),
-        ListTile(
-          leading: Icon(Icons.contact_phone),
-          title: Text('Contact Us'),
-          onTap: () => _scrollToIndex(5410),
-        ),
-      ],
-    ),
-  );
+      );
 
   ElevatedButton Button_scroll() {
     return ElevatedButton(
@@ -254,13 +246,19 @@ class _HomePageState extends State<HomePage> {
             const Spacer(
               flex: 1,
             ),
-            IconButton(onPressed: () => _scaffoldKey.currentState!.openDrawer(), icon: Icon(Icons.list_outlined,size: 30,),),
+            IconButton(
+              onPressed: () => _scaffoldKey.currentState!.openDrawer(),
+              icon: Icon(
+                Icons.list_outlined,
+                size: 30,
+              ),
+            ),
             const Spacer(
-              flex:2,
+              flex: 2,
             ),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10),
-              height:75,
+              height: 75,
               child: Image.asset("assets/logo/multicloudsolution.jpg"),
             ),
             const Spacer(
@@ -320,7 +318,9 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               children: [
-                SizedBox(width: screenSize.width*0.05,),   //ilangin jika menggunakan searchbar
+                SizedBox(
+                  width: screenSize.width * 0.05,
+                ), //ilangin jika menggunakan searchbar
                 TextButton(
                   onPressed: () {
                     _scrollToIndex(0);
@@ -430,11 +430,12 @@ class _HomePageState extends State<HomePage> {
       );
 
   Center FooterHeadSmall(String title2) => Center(
-    child: Text(title2,
-    style: GoogleFonts.poppins(
-        fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 2),
-    ),
-  );
+        child: Text(
+          title2,
+          style: GoogleFonts.poppins(
+              fontSize: 22, fontWeight: FontWeight.bold, letterSpacing: 2),
+        ),
+      );
 
   Column konten1(Size screenSize) {
     return Column(

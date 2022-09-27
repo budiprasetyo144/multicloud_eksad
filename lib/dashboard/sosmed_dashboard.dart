@@ -70,8 +70,13 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                         case 'Save Setting':
 
                           if (formKey.currentState!.validate()) {
-                            await updateSosmed(wa, ln, tw, ig, yt);
-                            await createSosmed(wa, ln, tw, ig, yt);
+                            // await updateSosmed(wa, ln, tw, ig, yt);
+                            // await createSosmed(wa, ln, tw, ig, yt);
+                            await createWA(wa);
+                            await createLN(ln);
+                            await createTW(tw);
+                            await createIG(ig);
+                            await createYT(yt);
 
                             ScaffoldMessenger.of(context).showSnackBar(
 
@@ -117,7 +122,32 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                           });
                           break;
                         case 'Save Update':
+                          if (formKey.currentState!.validate()) {
+                            // await updateSosmed(wa, ln, tw, ig, yt);
+                            // await createSosmed(wa, ln, tw, ig, yt);
+                            await createWA(wa);
+                            await createLN(ln);
+                            await createTW(tw);
+                            await createIG(ig);
+                            await createYT(yt);
 
+                            ScaffoldMessenger.of(context).showSnackBar(
+
+                                const SnackBar(
+                                    content: Text('Data Saved'),
+                                    backgroundColor: Colors.green)
+
+                            );
+                          }else if(formKey.currentState!.validate()){}
+                          else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+
+                                const SnackBar(
+                                    content: Text('Failed to save data, please edit all field'),
+                                    backgroundColor: Colors.red)
+
+                            );
+                          }
                           break;
                         default:
 
@@ -138,13 +168,31 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                 // endIndent: 0,
                 color: Colors.grey,
               ),
-              Text('Data Must Be Edited'),
-              Text('For data that is not modified, Please copy last data , delete then paste again'),
+          //    Text('Data Must Be Edited'),
+           //   Text('For data that is not modified, Please copy last data , delete then paste again'),
+
               SizedBox(
                 height: 10,
               ),
+              // FutureBuilder<List<dynamic>>(
+              //   future: getSosmedDesc(),
+              //   builder: (BuildContext context, AsyncSnapshot snapshot) {
+              //     var pgm = snapshot.data[0];
+              //
+              //     if (snapshot.hasError ||
+              //         snapshot.data == null ||
+              //         snapshot.connectionState == ConnectionState.waiting) {
+              //       return const CircularProgressIndicator();
+              //     }
+              //     return
+              //   },
+              // ),
+
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
               FutureBuilder<List<dynamic>>(
-                future: getSosmedDesc(),
+                future: getWaDesc(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   var pgm = snapshot.data[0];
 
@@ -153,185 +201,233 @@ class _SosmedDashboardState extends State<SosmedDashboard> {
                       snapshot.connectionState == ConnectionState.waiting) {
                     return const CircularProgressIndicator();
                   }
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      listsosmed(
-                          Icon(
-                            Icons.whatsapp,
-                            color: Colors.green,
-                          ),
-                          TextFormField(
-                            controller: waController..text = pgm['whatsapp'],
+                  return listsosmed(
+                                Icon(
+                                  Icons.whatsapp,
+                                  color: Colors.green,
+                                ),
+                                TextFormField(
+                                  controller: waController..text = pgm['whatsapp'],
 
-                            //initialValue: pgm['whatsapp'],
+                                  //initialValue: pgm['whatsapp'],
 
-                            decoration: InputDecoration(
-                                errorStyle: TextStyle(color: Colors.red),
-                                hintText:
-                                'Enter WhatsApp number without +,   Ex : 6280000000000 ',
-                              helperText: 'Enter WhatsApp number without +,   Ex : 6280000000000 ',
-                            ),
+                                  decoration: InputDecoration(
+                                    errorStyle: TextStyle(color: Colors.red),
+                                    hintText:
+                                    'Enter WhatsApp number without +,   Ex : 6280000000000 ',
+                                    helperText: 'Enter WhatsApp number without +,   Ex : 6280000000000 ',
+                                  ),
 
-                            onChanged: (value) => wa = value,
-                            enabled: enb,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your phone number';
-                              }else if(!RegExp(pattern).hasMatch(value)){
-                                return 'Please enter with 628 only';
-                              }
-                              return null;
-                            },
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context)=>
-                                      AlertDialog(
-                                        content:Text('Active WA : '+pgm['whatsapp'])
-                                      ) ,
-                                );
-                              }, child: Text('View Active'))),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      listsosmed(
-                          Icon(
-                            FontAwesomeIcons.linkedin,
-                            color: Colors.blue,
-                          ),
-                          TextFormField(
-                            controller: linkedController..text = pgm['linkedin'],
-                            //initialValue: pgm['linkedin'],
-                            decoration: InputDecoration(
-                                errorStyle: TextStyle(color: Colors.red),
-                                hintText: 'Enter a new Linkedin link address'),
-                            onChanged: (value) => ln = value,
-                            enabled: enb,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter linkedin link';
-                              }
-                              return null;
-                            },
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context)=>
-                                      AlertDialog(
-                                        content:Text('Active Linkedin : '+pgm['linkedin'])
-                                      ) ,
-                                );
-                              }, child: Text('View Active'))),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      listsosmed(
-                          Icon(
-                            FontAwesomeIcons.twitterSquare,
-                            color: Colors.blueAccent,
-                          ),
-
-                          TextFormField(
-                            controller: twitterController..text = pgm['twitter'],
-                            //initialValue: pgm['twitter'],
-                            decoration: InputDecoration(
-                                errorStyle: TextStyle(color: Colors.red),
-                                hintText: 'Enter a new Twitter link address'),
-                            onChanged: (value) => tw = value,
-                            enabled: enb,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter twitter link';
-                              }
-                              return null;
-                            },
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context)=>
-                                      AlertDialog(
-                                        content:Text('Active Twitter : '+pgm['twitter'])
-                                      ) ,
-                                );
-                              }, child: Text('View Active'))),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      listsosmed(
-                          Icon(
-                            FontAwesomeIcons.instagramSquare,
-                            color: Colors.pink,
-                          ),
-                          TextFormField(
-                            controller: igController..text = pgm['instagram'],
-                           // initialValue: pgm['instagram'],
-                            decoration: InputDecoration(
-                                errorStyle: TextStyle(color: Colors.red),
-                                hintText: 'Enter a new Instagram link address'),
-                            onChanged: (value) => ig = value,
-                            enabled: enb,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter instagram link';
-                              }
-                              return null;
-                            },
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context)=>
-                                      AlertDialog(
-                                        content:Text('Active Instagram : '+pgm['instagram'])
-                                      ) ,
-                                );
-                              }, child: Text('View Active'))),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      listsosmed(
-                          Icon(
-                            FontAwesomeIcons.youtube,
-                            color: Colors.red,
-                          ),
-                          TextFormField(
-                           controller: youtubeController..text =  pgm['youtube'],
-                            //initialValue: pgm['youtube'],
-                            decoration: InputDecoration(
-                                errorStyle: TextStyle(color: Colors.red),
-                                hintText: 'Enter a new Youtube link address'),
-                            onChanged: (value) => yt = value,
-                            enabled: enb,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter youtube link';
-                              }
-                              return null;
-                            },
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context)=>
-                                      AlertDialog(
-                                        content:Text('Active Youtube : '+pgm['youtube'])
-                                      ) ,
-                                );
-                              }, child: Text('View Active'))),
-                    ],
-                  );
+                                  onChanged: (value) => wa = value,
+                                  enabled: enb,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter your phone number';
+                                    }else if(!RegExp(pattern).hasMatch(value)){
+                                      return 'Please enter with 628 only';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context)=>
+                                            AlertDialog(
+                                                content:Text('Active WA : '+pgm['whatsapp'])
+                                            ) ,
+                                      );
+                                    }, child: Text('View Active')));
                 },
               ),
 
+              SizedBox(
+                height: 10,
+              ),
+              FutureBuilder<List<dynamic>>(
+                future: getLnDesc(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  var pgm = snapshot.data[0];
+
+                  if (snapshot.hasError ||
+                      snapshot.data == null ||
+                      snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  return listsosmed(
+                                Icon(
+                                  FontAwesomeIcons.linkedin,
+                                  color: Colors.blue,
+                                ),
+                                TextFormField(
+                                  controller: linkedController..text = pgm['linkedin'],
+                                  //initialValue: pgm['linkedin'],
+                                  decoration: InputDecoration(
+                                      errorStyle: TextStyle(color: Colors.red),
+                                      hintText: 'Enter a new Linkedin link address'),
+                                  onChanged: (value) => ln = value,
+                                  enabled: enb,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter linkedin link';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context)=>
+                                            AlertDialog(
+                                                content:Text('Active Linkedin : '+pgm['linkedin'])
+                                            ) ,
+                                      );
+                                    }, child: Text('View Active')));
+                },
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+              FutureBuilder<List<dynamic>>(
+                future: getTwDesc(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  var pgm = snapshot.data[0];
+
+                  if (snapshot.hasError ||
+                      snapshot.data == null ||
+                      snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  return listsosmed(
+                                Icon(
+                                  FontAwesomeIcons.twitterSquare,
+                                  color: Colors.blueAccent,
+                                ),
+
+                                TextFormField(
+                                  controller: twitterController..text = pgm['twitter'],
+                                  //initialValue: pgm['twitter'],
+                                  decoration: InputDecoration(
+                                      errorStyle: TextStyle(color: Colors.red),
+                                      hintText: 'Enter a new Twitter link address'),
+                                  onChanged: (value) => tw = value,
+                                  enabled: enb,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter twitter link';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context)=>
+                                            AlertDialog(
+                                                content:Text('Active Twitter : '+pgm['twitter'])
+                                            ) ,
+                                      );
+                                    }, child: Text('View Active')));
+                },
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+              FutureBuilder<List<dynamic>>(
+                future: getIgDesc(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  var pgm = snapshot.data[0];
+
+                  if (snapshot.hasError ||
+                      snapshot.data == null ||
+                      snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  return  listsosmed(
+                                Icon(
+                                  FontAwesomeIcons.instagramSquare,
+                                  color: Colors.pink,
+                                ),
+                                TextFormField(
+                                  controller: igController..text = pgm['instagram'],
+                                  // initialValue: pgm['instagram'],
+                                  decoration: InputDecoration(
+                                      errorStyle: TextStyle(color: Colors.red),
+                                      hintText: 'Enter a new Instagram link address'),
+                                  onChanged: (value) => ig = value,
+                                  enabled: enb,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter instagram link';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context)=>
+                                            AlertDialog(
+                                                content:Text('Active Instagram : '+pgm['instagram'])
+                                            ) ,
+                                      );
+                                    }, child: Text('View Active')));
+                },
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+              FutureBuilder<List<dynamic>>(
+                future: getYtDesc(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  var pgm = snapshot.data[0];
+
+                  if (snapshot.hasError ||
+                      snapshot.data == null ||
+                      snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  return listsosmed(
+                                Icon(
+                                  FontAwesomeIcons.youtube,
+                                  color: Colors.red,
+                                ),
+                                TextFormField(
+                                  controller: youtubeController..text =  pgm['youtube'],
+                                  //initialValue: pgm['youtube'],
+                                  decoration: InputDecoration(
+                                      errorStyle: TextStyle(color: Colors.red),
+                                      hintText: 'Enter a new Youtube link address'),
+                                  onChanged: (value) => yt = value,
+                                  enabled: enb,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter youtube link';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context)=>
+                                            AlertDialog(
+                                                content:Text('Active Youtube : '+pgm['youtube'])
+                                            ) ,
+                                      );
+                                    }, child: Text('View Active')));
+                },
+              ),
+            ],
+          ),
             ],
           ),
         ),
