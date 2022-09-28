@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 class Home extends StatelessWidget {
-  Home({Key? key, required this.wijet}) : super(key: key);
+  const Home({Key? key, required this.wijet}) : super(key: key);
   final Widget wijet;
 
   @override

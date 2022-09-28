@@ -57,34 +57,7 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.fastLinearToSlowEaseIn);
   }
 
-  //   late String titel;
-  //
-  //   @override
-  //   void initState(){
-  //     super.initState();
-  //     FutureBuilder<List<dynamic>> buildFutureBuilder2() {
-  //       return FutureBuilder<List<dynamic>>(
-  //         future: getSettingDesc(),
-  //         builder: (BuildContext context, AsyncSnapshot snapshot) {
-  //           var pgm = snapshot.data[0];
-  //           if (snapshot.hasError ||
-  //               snapshot.data == null ||
-  //               snapshot.connectionState == ConnectionState.waiting) {
-  //             return const CircularProgressIndicator();
-  //           }
-  //           return Text(titel=pgm['title']);
-  //         },
-  //
-  //       );
-  //     }
-  //     titel = buildFutureBuilder2().toString();
-  //   }
-  //
-  //
-  // String title = 'Multi Cloud Solution By Eksad';
 
-  // late String title;
-  // String title ='';
 
   int selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -134,11 +107,6 @@ class _HomePageState extends State<HomePage> {
                   future: getSettingDesc2(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     var pgm = snapshot.data[0];
-                    // if (snapshot.hasError ||
-                    //     snapshot.data == null ||
-                    //     snapshot.connectionState == ConnectionState.waiting) {
-                    //   return const CircularProgressIndicator();
-                    // }
                     return Title(
                       title: pgm['title'],
                       color: Colors.white,

@@ -224,9 +224,10 @@ class _SettingDashboardState extends State<SettingDashboard> {
                     // endIndent: 0,
                     color: Colors.grey,
                   ),
-                  Text('Data Must Be Edited'),
-                  Text(
-                      'For data that is not modified, Please copy last data , delete then paste again'),
+                  // Text('Data Must Be Edited'),
+                  // Text(
+                  //     'For data that is not modified, Please copy last data , delete then paste again'),
+                  //
                   SizedBox(
                     height: 25,
                   ),
