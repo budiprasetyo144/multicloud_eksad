@@ -371,24 +371,24 @@ class _TelphoneApiState extends State<TelphoneApi> {
           return const CircularProgressIndicator();
         }
         return Container(
-          width: screenSize.width * 0.19,
+          width: screenSize.width * 0.23,
           child: ListTile(
+            onTap: (){
+              no = pgm['no'];
+              //02157958040
+              launch('tel:$no');
+            },
+            minLeadingWidth: 50,
             leading: const Icon(
               Icons.phone,
               size: 23,
               color: Colors.black,
             ),
-            title: TextButton(
-                onPressed: () {
-                  no = pgm['no'];
-                  //02157958040
-                  launch('tel:$no');
-                },
-                child: Text(
-                  pgm['no'],
-                  style: GoogleFonts.poppins(
-                      fontSize: 16, color: Colors.black87, letterSpacing: 1.5),
-                )),
+            title: Text(
+              pgm['no'],
+              style: GoogleFonts.poppins(
+                  fontSize: 16, color: Colors.black87, letterSpacing: 1.5),
+            ),
           ),
         );
       },
@@ -420,22 +420,21 @@ class _EmailAPIState extends State<EmailAPI> {
         return Container(
           width: screenSize.width * 0.22,
           child: ListTile(
+            minLeadingWidth: 50,
+            onTap: (){
+              email = pgm['email'];
+              launch('mailto:$email?subject=Info MCS');
+            },
             leading: const Icon(
               Icons.mail,
               size: 23,
               color: Colors.black,
             ),
-            title: TextButton(
-                onPressed: () {
-                  email = pgm['email'];
-                  launch('mailto:$email?subject=Info MCS');
-                },
-                // child: SettingAPI(),
-                child: Text(
-                  pgm['email'],
-                  style: GoogleFonts.poppins(
-                      fontSize: 16, color: Colors.black87, letterSpacing: 1.1),
-                )),
+            title: Text(
+              pgm['email'],
+              style: GoogleFonts.poppins(
+                  fontSize: 16, color: Colors.black87, letterSpacing: 1.1),
+            ),
           ),
         );
       },
