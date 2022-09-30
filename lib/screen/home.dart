@@ -77,27 +77,35 @@ class _HomePageState extends State<HomePage> {
       body: ResponsiveWidget.isSmallScreen(context)
           ? Stack(
               children: [
-                Title(
-                  color: Colors.white,
-                  child: ListView(
-                    scrollDirection: Axis.vertical,
-                    controller: controller2,
-                    children: [
-                      SmallHome(wijet: Button_scroll_small()),
-                      const SmallHome2(),
-                      const SmallHome3_partner(),
-                      SmallHome4_solution(screenSize: screenSize),
-                      const SmallHome5_industry(),
-                      const SmallHome6_advantages(),
-                      const SmallHome7_news(),
-                      SmallHome8_contact_us(),
-                      SmallFooter(
-                        content1: kontenkecil1(screenSize),
-                        content2: kontenkecil2(screenSize),
+                FutureBuilder<dynamic>(
+                  future: getSettingDesc2(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    var pgm = snapshot.data[0];
+                    return  Title(
+                      title: pgm['title'],
+                      color: Colors.white,
+                      child: ListView(
+                        scrollDirection: Axis.vertical,
+                        controller: controller2,
+                        children: [
+                          SmallHome(wijet: Button_scroll_small()),
+                          const SmallHome2(),
+                          const SmallHome3_partner(),
+                          SmallHome4_solution(screenSize: screenSize),
+                          const SmallHome5_industry(),
+                          const SmallHome6_advantages(),
+                          const SmallHome7_news(),
+                          SmallHome8_contact_us(),
+                          SmallFooter(
+                            content1: kontenkecil1(screenSize),
+                            content2: kontenkecil2(screenSize),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
+
                 ScrollUpButton(controller2),
               ],
             )
@@ -210,10 +218,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Spacer(
-              flex: 1,
-            ),
+            Spacer(),
             IconButton(
               onPressed: () => _scaffoldKey.currentState!.openDrawer(),
               icon: const Icon(
@@ -221,37 +228,31 @@ class _HomePageState extends State<HomePage> {
                 size: 30,
               ),
             ),
-            const Spacer(
-              flex: 2,
-            ),
+            Spacer(flex: 4,),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               height: 75,
               child: Image.asset("assets/logo/multicloudsolution.jpg"),
             ),
-            const Spacer(
-              flex: 1,
-            ),
-            SizedBox(
-              height: 40,
-              width: 150,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Search",
-                  suffixIcon: const Icon(Icons.search),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: const BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
-              ),
-            ),
-            const Spacer(
-              flex: 1,
-            ),
+            Spacer(flex: 6,)
+            // SizedBox(
+            //   height: 40,
+            //   width: 150,
+            //   child: TextFormField(
+            //     decoration: InputDecoration(
+            //       labelText: "Search",
+            //       suffixIcon: const Icon(Icons.search),
+            //       enabledBorder: const OutlineInputBorder(
+            //         borderSide: BorderSide(width: 1, color: Colors.grey),
+            //       ),
+            //       focusedBorder: OutlineInputBorder(
+            //         borderRadius: BorderRadius.circular(15),
+            //         borderSide: const BorderSide(width: 1, color: Colors.grey),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+
           ],
         ),
       ),

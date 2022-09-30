@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:multi_cloudv3/api/setting_api.dart';
+import 'package:multi_cloudv3/screen/footer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SmallFooter extends StatelessWidget {
@@ -80,47 +82,10 @@ class SmallFooter extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              IconButton(
-                                  onPressed: () {
-                                    _launchLinkedIn();
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.linkedinIn,
-                                    size: 25,
-                                  ),
-                                  iconSize: 25,
-                                  color: Colors.black),
-                              IconButton(
-                                onPressed: () {
-                                  _launchTwitter();
-                                },
-                                icon: const Icon(
-                                  FontAwesomeIcons.twitter,
-                                  size: 25,
-                                ),
-                                iconSize: 25,
-                                color: Colors.black,
-                              ),
-                              IconButton(
-                                  onPressed: () {
-                                    _launchInstagram();
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.instagram,
-                                    size: 25,
-                                  ),
-                                  iconSize: 25,
-                                  color: Colors.black),
-                              IconButton(
-                                  onPressed: () {
-                                    _launchYoutube();
-                                  },
-                                  icon: const Icon(
-                                    FontAwesomeIcons.youtube,
-                                    size: 25,
-                                  ),
-                                  iconSize: 25,
-                                  color: Colors.black)
+                              ApiLinkedin(),
+                              ApiTwitter(),
+                              ApiInstagram(),
+                              ApiYoutube()
                             ],
                           ),
                         ),
@@ -162,51 +127,53 @@ class SmallFooter extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            Container(
-                              width: screenSize.width,
-                              child: ListTile(
-                                minLeadingWidth: 1,
-                                leading: const Icon(
-                                  Icons.phone,
-                                  size: 19,
-                                  color: Colors.black,
-                                ),
-                                title: TextButton(
-                                    onPressed: () {
-                                      launch('tel:02157958040');
-                                    },
-                                    child: Text(
-                                      '(021) 5795 - 8040',
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 13,
-                                        color: Colors.black87,
-                                      ),
-                                    )),
-                              ),
-                            ),
-                            Container(
-                              width: screenSize.width,
-
-                              child: ListTile(
-                                minLeadingWidth: 1,
-                                leading: const Icon(
-                                  Icons.mail,
-                                  size: 19,
-                                  color: Colors.black,
-                                ),
-                                title: TextButton(
-                                  onPressed: () {
-                                    launch(
-                                        'mailto:Info@eksad.com?subject=Info MCS');
-                                  },
-                                  child: Text(
-                                    'info@eksad.com',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 13, color: Colors.black87,letterSpacing: 1.1),
-                                  ),
-                                ),
-                              ),
-                            ),
+                            TelphoneApiSmall(),
+                            EmailAPISmall(),
+                            // Container(
+                            //   width: screenSize.width,
+                            //   child: ListTile(
+                            //     minLeadingWidth: 1,
+                            //     leading: const Icon(
+                            //       Icons.phone,
+                            //       size: 19,
+                            //       color: Colors.black,
+                            //     ),
+                            //     title: TextButton(
+                            //         onPressed: () {
+                            //           launch('tel:02157958040');
+                            //         },
+                            //         child: Text(
+                            //           '(021) 5795 - 8040',
+                            //           style: GoogleFonts.poppins(
+                            //             fontSize: 13,
+                            //             color: Colors.black87,
+                            //           ),
+                            //         )),
+                            //   ),
+                            // ),
+                            // Container(
+                            //   width: screenSize.width,
+                            //
+                            //   child: ListTile(
+                            //     minLeadingWidth: 1,
+                            //     leading: const Icon(
+                            //       Icons.mail,
+                            //       size: 19,
+                            //       color: Colors.black,
+                            //     ),
+                            //     title: TextButton(
+                            //       onPressed: () {
+                            //         launch(
+                            //             'mailto:Info@eksad.com?subject=Info MCS');
+                            //       },
+                            //       child: Text(
+                            //         'info@eksad.com',
+                            //         style: GoogleFonts.poppins(
+                            //             fontSize: 13, color: Colors.black87,letterSpacing: 1.1),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                         Container(
@@ -334,3 +301,101 @@ void _launchYoutube() async {
     throw 'Could not launch ${url()}';
   }
 }
+
+class TelphoneApiSmall extends StatefulWidget {
+  const TelphoneApiSmall({Key? key}) : super(key: key);
+
+  @override
+  State<TelphoneApiSmall> createState() => _TelphoneApiSmallState();
+}
+
+class _TelphoneApiSmallState extends State<TelphoneApiSmall> {
+  String no = '';
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return FutureBuilder<List<dynamic>>(
+      future: getSettingDesc(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        var pgm = snapshot.data[0];
+        if (snapshot.hasError ||
+            snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        return Container(
+          width: screenSize.width,
+          child: ListTile(
+            minLeadingWidth: 1,
+            leading: const Icon(
+              Icons.phone,
+              size: 19,
+              color: Colors.black,
+            ),
+            title: TextButton(
+                onPressed: () {
+                  no = pgm['no'];
+                  //02157958040
+                  launch('tel:$no');
+                },
+                child: Text(
+                  pgm['no'],
+                  style: GoogleFonts.poppins(
+                      fontSize: 15, color: Colors.black87,letterSpacing: 1.2),
+                )),
+          ),
+
+        );
+      },
+    );
+  }
+}
+
+class EmailAPISmall extends StatefulWidget {
+  const EmailAPISmall({Key? key}) : super(key: key);
+
+  @override
+  State<EmailAPISmall> createState() => _EmailAPISmallState();
+}
+
+class _EmailAPISmallState extends State<EmailAPISmall> {
+  String email = '';
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return FutureBuilder<List<dynamic>>(
+      future: getSettingDesc(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        var pgm = snapshot.data[0];
+        if (snapshot.hasError ||
+            // snapshot.data == null ||
+            snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+        return Container(
+          width: screenSize.width,
+          child: ListTile(
+            minLeadingWidth: 1,
+            leading: const Icon(
+              Icons.mail,
+              size: 19,
+              color: Colors.black,
+            ),
+            title: TextButton(
+                onPressed: () {
+                  email = pgm['email'];
+                  launch('mailto:$email?subject=Info MCS');
+                },
+                // child: SettingAPI(),
+                child: Text(
+                  pgm['email'],
+                  style: GoogleFonts.poppins(
+                      fontSize: 15, color: Colors.black87,letterSpacing: 1.2),
+                )),
+          ),
+        );
+      },
+    );
+  }
+}
+
