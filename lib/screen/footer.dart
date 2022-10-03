@@ -213,7 +213,7 @@ class _ApiLinkedinState extends State<ApiLinkedin> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<dynamic>>(
-      future: getWaDesc(),
+      future: getLnDesc(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         var pgm = snapshot.data[0];
 
