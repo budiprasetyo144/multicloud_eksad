@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_cloudv3/screen/footer.dart';
 import 'package:multi_cloudv3/screen/home1.dart';
@@ -40,7 +41,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   //   Untuk pake PAGE per index
   PageController controller = PageController();
   void _scrollToIndex2(int index) {
@@ -49,15 +51,61 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.fastLinearToSlowEaseIn);
   }
 
+  bool _showAppbar = true;
   //   Untuk pake LIST per height container
-  ScrollController controller2 = ScrollController();
+  ScrollController controller2 = new ScrollController();
   void _scrollToIndex(double index) {
     controller2.animateTo(index,
         duration: const Duration(seconds: 1),
         curve: Curves.fastLinearToSlowEaseIn);
   }
 
+  bool _show = true;
+  bool isScrollingDown = false;
 
+  @override
+  void initState() {
+    super.initState();
+    myScroll();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller2.removeListener(() {});
+    super.dispose();
+  }
+
+  void showBottomBar() {
+    setState(() {
+      _show = true;
+    });
+  }
+
+  void hideBottomBar() {
+    setState(() {
+      _show = false;
+    });
+  }
+
+  void myScroll() async {
+    controller2.addListener(() {
+      if (controller2.position.userScrollDirection == ScrollDirection.reverse) {
+        if (!isScrollingDown) {
+          isScrollingDown = true;
+          _showAppbar = false;
+          hideBottomBar();
+        }
+      }
+      if (controller2.position.userScrollDirection == ScrollDirection.forward) {
+        if (isScrollingDown) {
+          isScrollingDown = false;
+          _showAppbar = true;
+          showBottomBar();
+        }
+      }
+    });
+  }
 
   int selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -68,9 +116,14 @@ class _HomePageState extends State<HomePage> {
     //  setPageTitle(title, context);
     return Scaffold(
       key: _scaffoldKey,
-      appBar: ResponsiveWidget.isSmallScreen(context)
-          ? AppbarSmall(screenSize)
-          : AppbarLarge(screenSize),
+      appBar: _showAppbar
+         ? ResponsiveWidget.isSmallScreen(context)
+             ? AppbarSmall(screenSize)
+              : AppbarLarge(screenSize)
+          : PreferredSize(
+              child: Container(),
+              preferredSize: Size(0.0, 0.0),
+            ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: WAChat(),
       drawer: _drawerWidget(),
@@ -81,13 +134,13 @@ class _HomePageState extends State<HomePage> {
                   future: getSettingDesc2(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     var pgm = snapshot.data[0];
-                    return  Title(
+                    return Title(
                       title: pgm['title'],
                       color: Colors.white,
                       child: ListView(
                         scrollDirection: Axis.vertical,
                         controller: controller2,
-                        children: [
+                        children: <Widget>[
                           SmallHome(wijet: Button_scroll_small()),
                           const SmallHome2(),
                           const SmallHome3_partner(),
@@ -105,7 +158,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
-
                 ScrollUpButton(controller2),
               ],
             )
@@ -121,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                       child: ListView(
                         scrollDirection: Axis.vertical,
                         controller: controller2,
-                        children: [
+                        children:<Widget> [
                           Home(wijet: Button_scroll()),
                           const Home2(),
                           const Home3_partner(),
@@ -228,13 +280,17 @@ class _HomePageState extends State<HomePage> {
                 size: 30,
               ),
             ),
-            Spacer(flex: 4,),
+            Spacer(
+              flex: 4,
+            ),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               height: 75,
               child: Image.asset("assets/logo/multicloudsolution.jpg"),
             ),
-            Spacer(flex: 6,)
+            Spacer(
+              flex: 6,
+            )
             // SizedBox(
             //   height: 40,
             //   width: 150,
@@ -252,7 +308,6 @@ class _HomePageState extends State<HomePage> {
             //     ),
             //   ),
             // ),
-
           ],
         ),
       ),
